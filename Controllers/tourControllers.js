@@ -1,4 +1,7 @@
 import Tour from '../models/Tour.js'
+import Booking from '../models/Booking.js'
+import Employer from '../models/Employer.js'
+import Customer from '../models/Customer.js'
 
 //Create new tour
 export const createTour = async (req, res) => {
@@ -41,12 +44,31 @@ export const deleteTour = async (req, res) => {
    }
 }
 
-//Getsingle Tour
+//Get single Tour
 export const getSingleTour = async (req, res) => {
    const id = req.params.id
 
    try {
-      const tour = await Tour.findById(id).populate('reviews')
+      const tour = await Tour.findOne({
+         where: { id: id },
+         include: [{
+            model: Booking,
+            as: "bookings",
+            include: [
+               {
+                  model: Customer,
+                  as: "customer",
+                  attributes: ["id", "full_name"],
+               },
+               {
+                  model: Employer,
+                  as: "assignedEmployer",
+                  attributes: ["id", "full_name"],
+               },
+            ],
+            order: [["createdAt", "DESC"]],
+         }],
+      });
 
       res.status(200).json({ success: true, message: 'Successfully', data: tour })
    } catch (error) {
