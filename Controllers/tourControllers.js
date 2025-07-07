@@ -76,18 +76,19 @@ export const getSingleTour = async (req, res) => {
 
 //Get All Tour
 export const getAllTour = async (req, res) => {
-   const page = parseInt(req.query.page) || 0;
-   const limit = 20;
+   const page = parseInt(req.query.page) || 1;
+   const limit = parseInt(req.query.limit) || 20;
+   const offset = (page - 1) * limit;
 
    try {
-      const tours = await Tour.findAll({
-         offset: page * limit,
-         limit: limit,
+      const { rows: tours, count } = await Tour.findAndCountAll({
+         offset,
+         limit,
       });
 
       res.status(200).json({
          success: true,
-         count: tours.length,
+         count: count,
          message: 'Successfully',
          data: tours
       })
@@ -122,12 +123,12 @@ const buildTourFilter = (query) => {
       where.price = { [Op.lte]: max };
    }
 
-   if (start_date && end_date) {
-      where.start_date = { [Op.between]: [start_date, end_date] };
-   } else if (start_date) {
+   if (start_date) {
       where.start_date = { [Op.gte]: start_date };
-   } else if (end_date) {
-      where.start_date = { [Op.lte]: end_date };
+   }
+
+   if (end_date) {
+      where.end_date = { [Op.lte]: end_date };
    }
 
    return where;
@@ -135,16 +136,21 @@ const buildTourFilter = (query) => {
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {
+   const page = parseInt(req.query.page) || 1;
+   const limit = parseInt(req.query.limit) || 20;
+   const offset = (page - 1) * limit;
    const whereCondition = buildTourFilter(req.query);
 
    try {
-      const tours = await Tour.findAll({
+      const { rows: tours, count } = await Tour.findAndCountAll({
          where: whereCondition,
-      })
+         offset,
+         limit,
+      });
 
       res.status(200).json({
          success: true,
-         count: tours.length,
+         count: count,
          message: 'Successfully',
          data: tours
       })
