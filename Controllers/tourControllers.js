@@ -1,7 +1,5 @@
-import Tour from '../models/Tour.js'
-import Booking from '../models/Booking.js'
-import Employer from '../models/Employer.js'
-import Customer from '../models/Customer.js'
+import { Tour, Booking, Employer, Customer } from "../models/index.js"
+import { Op } from "sequelize";
 
 //Create new tour
 export const createTour = async (req, res) => {
@@ -98,20 +96,58 @@ export const getAllTour = async (req, res) => {
    }
 }
 
+const buildTourFilter = (query) => {
+   const {
+      name, location, price_min, price_max, start_date, end_date
+   } = query;
+
+   const where = {};
+
+   if (name) {
+      where.name = { [Op.like]: `%${name}%`}
+   }
+
+   if (location) {
+      where.location = { [Op.like]: `%${location}%`}
+   }
+
+   const min = price_min !== undefined ? Number(price_min) : undefined;
+   const max = price_max !== undefined ? Number(price_max) : undefined;
+
+   if (!isNaN(min) && !isNaN(max)) {
+      where.price = { [Op.between]: [min, max] };
+   } else if (!isNaN(min)) {
+      where.price = { [Op.gte]: min };
+   } else if (!isNaN(max)) {
+      where.price = { [Op.lte]: max };
+   }
+
+   if (start_date && end_date) {
+      where.start_date = { [Op.between]: [start_date, end_date] };
+   } else if (start_date) {
+      where.start_date = { [Op.gte]: start_date };
+   } else if (end_date) {
+      where.start_date = { [Op.lte]: end_date };
+   }
+
+   return where;
+}
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {
-
-   // hear 'i' means case sensitive 
-   const city = new RegExp(req.query.city, 'i')
-   const distance = parseInt(req.query.distance)
-   const maxGroupSize = parseInt(req.query.maxGroupSize)
+   const whereCondition = buildTourFilter(req.query);
 
    try {
-      // gte means greater than equal
-      const tours = await Tour.find({ city, distance: { $gte: distance }, maxGroupSize: { $gte: maxGroupSize } }).populate('reviews')
+      const tours = await Tour.findAll({
+         where: whereCondition,
+      })
 
-      res.status(200).json({ success: true, message: 'Successfully', data: tours })
+      res.status(200).json({
+         success: true,
+         count: tours.length,
+         message: 'Successfully',
+         data: tours
+      })
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
