@@ -39,7 +39,7 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: "employers",
+        model: "admins",
         key: "id",
       },
       onUpdate: "CASCADE",
@@ -47,6 +47,14 @@ export async function up(queryInterface, Sequelize) {
     },
     note: {
       type: Sequelize.TEXT,
+      allowNull: true,
+    },
+    created_at: {
+      type: Sequelize.DATE,
+      allowNull: true,
+    },
+    updated_at: {
+      type: Sequelize.DATE,
       allowNull: true,
     },
   });

@@ -15,11 +15,6 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    role: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      comment: "admin | employer | customer",
-    },
     created_at: {
       type: Sequelize.DATE,
       allowNull: true,

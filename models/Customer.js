@@ -12,7 +12,7 @@ const Customer = sequelize.define(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     card_id: {
       type: DataTypes.STRING,
