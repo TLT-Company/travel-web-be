@@ -1,4 +1,5 @@
-import Tour from '../models/Tour.js'
+import { Tour, Booking, Employer, Customer } from "../models/index.js"
+import { Op } from "sequelize";
 
 //Create new tour
 export const createTour = async (req, res) => {
@@ -41,12 +42,31 @@ export const deleteTour = async (req, res) => {
    }
 }
 
-//Getsingle Tour
+//Get single Tour
 export const getSingleTour = async (req, res) => {
    const id = req.params.id
 
    try {
-      const tour = await Tour.findById(id).populate('reviews')
+      const tour = await Tour.findOne({
+         where: { id: id },
+         include: [{
+            model: Booking,
+            as: "bookings",
+            include: [
+               {
+                  model: Customer,
+                  as: "customer",
+                  attributes: ["id", "full_name"],
+               },
+               {
+                  model: Employer,
+                  as: "assignedEmployer",
+                  attributes: ["id", "full_name"],
+               },
+            ],
+            order: [["createdAt", "DESC"]],
+         }],
+      });
 
       res.status(200).json({ success: true, message: 'Successfully', data: tour })
    } catch (error) {
@@ -56,18 +76,19 @@ export const getSingleTour = async (req, res) => {
 
 //Get All Tour
 export const getAllTour = async (req, res) => {
-   const page = parseInt(req.query.page) || 0;
-   const limit = 20;
+   const page = parseInt(req.query.page) || 1;
+   const limit = parseInt(req.query.limit) || 20;
+   const offset = (page - 1) * limit;
 
    try {
-      const tours = await Tour.findAll({
-         offset: page * limit,
-         limit: limit,
+      const { rows: tours, count } = await Tour.findAndCountAll({
+         offset,
+         limit,
       });
 
       res.status(200).json({
          success: true,
-         count: tours.length,
+         count: count,
          message: 'Successfully',
          data: tours
       })
@@ -76,20 +97,63 @@ export const getAllTour = async (req, res) => {
    }
 }
 
+const buildTourFilter = (query) => {
+   const {
+      name, location, price_min, price_max, start_date, end_date
+   } = query;
+
+   const where = {};
+
+   if (name) {
+      where.name = { [Op.like]: `%${name}%`}
+   }
+
+   if (location) {
+      where.location = { [Op.like]: `%${location}%`}
+   }
+
+   const min = price_min !== undefined ? Number(price_min) : undefined;
+   const max = price_max !== undefined ? Number(price_max) : undefined;
+
+   if (!isNaN(min) && !isNaN(max)) {
+      where.price = { [Op.between]: [min, max] };
+   } else if (!isNaN(min)) {
+      where.price = { [Op.gte]: min };
+   } else if (!isNaN(max)) {
+      where.price = { [Op.lte]: max };
+   }
+
+   if (start_date) {
+      where.start_date = { [Op.gte]: start_date };
+   }
+
+   if (end_date) {
+      where.end_date = { [Op.lte]: end_date };
+   }
+
+   return where;
+}
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {
-
-   // hear 'i' means case sensitive 
-   const city = new RegExp(req.query.city, 'i')
-   const distance = parseInt(req.query.distance)
-   const maxGroupSize = parseInt(req.query.maxGroupSize)
+   const page = parseInt(req.query.page) || 1;
+   const limit = parseInt(req.query.limit) || 20;
+   const offset = (page - 1) * limit;
+   const whereCondition = buildTourFilter(req.query);
 
    try {
-      // gte means greater than equal
-      const tours = await Tour.find({ city, distance: { $gte: distance }, maxGroupSize: { $gte: maxGroupSize } }).populate('reviews')
+      const { rows: tours, count } = await Tour.findAndCountAll({
+         where: whereCondition,
+         offset,
+         limit,
+      });
 
-      res.status(200).json({ success: true, message: 'Successfully', data: tours })
+      res.status(200).json({
+         success: true,
+         count: count,
+         message: 'Successfully',
+         data: tours
+      })
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
