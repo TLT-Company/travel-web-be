@@ -16,6 +16,11 @@ async function cleanupDatabase() {
       "users",
       "document_customer",
       "document_export_histories",
+      "document",
+      "document_customer",
+      "admins",
+      "permissions",
+      "admin_permissions",
     ];
 
     console.log("🗑️ Dropping all tables...");

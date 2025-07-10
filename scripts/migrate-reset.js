@@ -15,6 +15,8 @@ async function resetAndMigrate() {
 
     // Drop all tables in reverse order to avoid foreign key constraints
     const tablesToDrop = [
+      "admin_permissions",
+      "permissions",
       "task_assignments",
       "bookings",
       "tours",
@@ -23,6 +25,8 @@ async function resetAndMigrate() {
       "users",
       "document_customer",
       "document_export_histories",
+      "document",
+      "admins",
     ];
 
     console.log("🗑️ Dropping existing tables...");

@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 
-const Employer = sequelize.define(
-  "Employer",
+const Admin = sequelize.define(
+  "Admin",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -10,25 +10,34 @@ const Employer = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
-    admin_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    role: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      comment: "super_admin | admin",
     },
-    full_name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    position: {
+    password_hash: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    updated_at: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
   },
   {
-    tableName: "employers",
+    tableName: "admins",
     timestamps: true,
     createdAt: "created_at",
-    updatedAt: false,
+    updatedAt: "updated_at",
   }
 );
 
-export default Employer;
+export default Admin;

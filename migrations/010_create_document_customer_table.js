@@ -3,10 +3,16 @@ import { sequelize } from "../config/database.js";
 
 export const up = async () => {
   await sequelize.getQueryInterface().createTable("document_customer", {
-    document_number: {
-      type: DataTypes.STRING(255),
+    document_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      comment: "Số công văn",
+      references: {
+        model: "document",
+        key: "id",
+      },
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE",
+      comment: "Liên kết tới công văn",
     },
     customer_id: {
       type: DataTypes.INTEGER,
@@ -31,10 +37,15 @@ export const up = async () => {
 
   // Add composite primary key (this also serves as unique constraint)
   await sequelize.getQueryInterface().addConstraint("document_customer", {
-    fields: ["document_number", "customer_id"],
+    fields: ["document_id", "customer_id"],
     type: "primary key",
     name: "document_customer_pkey",
   });
+
+  // Add comment to table
+  await sequelize.query(`
+    COMMENT ON TABLE document_customer IS 'Bảng liên kết giữa công văn và khách hàng';
+  `);
 };
 
 export const down = async () => {

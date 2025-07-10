@@ -34,7 +34,7 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: "users",
+        model: "admins",
         key: "id",
       },
       onUpdate: "CASCADE",

@@ -45,7 +45,7 @@ Table customers {
 
 Table employers {
   id         id [pk, unique, not null]
-  user_id    id [ref: > users.id, not null]
+  admin_id    id [ref: > admins.id, not null]
   full_name  varchar
   position   varchar
   created_at timestamp
@@ -71,7 +71,7 @@ Table bookings {
   tour_id      id [ref: > tours.id, not null]
   booking_date timestamp
   status       varchar [note: 'pending | confirmed | cancelled']
-  assigned_to  id [ref: > employers.id]
+  assigned_to  id [ref: > admins.id]
   note         text
 }
 
@@ -83,8 +83,19 @@ Table task_assignments {
   status       varchar [note: 'new | in_progress | completed']
 }
 
-Table document_customer {
+
+
+
+Table document {
+  id           id [pk, unique, not null]
   document_number  varchar(255) [not null]          // Số công văn
+  created_at       datetime
+  updated_at       datetime
+}
+
+
+Table document_customer {
+  document_id      id [ref: > document.id, not null]  // Liên kết tới công văn
   customer_id      id [ref: > customers.id, not null]  // Liên kết tới khách hàng
   created_at       datetime
   updated_at       datetime
@@ -92,10 +103,9 @@ Table document_customer {
   Note: 'Bảng liên kết giữa công văn và khách hàng'
 
   Indexes {
-    (document_number, customer_id) [pk, unique]
+    (document_id, customer_id) [pk, unique]
   }
 }
-
 
 Table document_export_histories {
   id          id [pk, unique, not null]
@@ -105,4 +115,36 @@ Table document_export_histories {
   status      varchar(255)         // Trạng thái (success, failed, etc.)
   created_at  datetime
   updated_at  datetime
+}
+
+Table admins {
+  id         id [pk, unique, not null]
+  role       varchar [note: 'admin | employer']
+  username  varchar
+  created_at timestamp
+  updated_at timestamp
+
+  Note: 'Tài khoản admin, phân biệt super_admin và admin'
+}
+
+Table permissions {
+  id         id [pk, unique, not null]
+  name       varchar(100) [unique, not null]   // Tên quyền, ví dụ: "manage_users"
+  description text                             // Mô tả chức năng
+  created_at timestamp
+  updated_at timestamp
+
+  Note: 'Danh sách quyền hệ thống có thể gán cho admin'
+}
+
+Table admin_permissions {
+  admin_id      id [ref: > admins.id, not null]
+  permission_id id [ref: > permissions.id, not null]
+  granted_at    timestamp
+
+  Indexes {
+    (admin_id, permission_id) [pk, unique]
+  }
+
+  Note: 'Bảng trung gian: gán quyền cho admin'
 }

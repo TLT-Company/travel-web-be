@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 
-const Employer = sequelize.define(
-  "Employer",
+const Permission = sequelize.define(
+  "Permission",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -10,25 +10,30 @@ const Employer = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
-    admin_id: {
-      type: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING(100),
       allowNull: false,
+      unique: true,
     },
-    full_name: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
       allowNull: true,
     },
-    position: {
-      type: DataTypes.STRING,
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    updated_at: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
   },
   {
-    tableName: "employers",
+    tableName: "permissions",
     timestamps: true,
     createdAt: "created_at",
-    updatedAt: false,
+    updatedAt: "updated_at",
   }
 );
 
-export default Employer;
+export default Permission;

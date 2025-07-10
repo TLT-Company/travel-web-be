@@ -4,11 +4,11 @@ import { sequelize } from "../config/database.js";
 const DocumentCustomer = sequelize.define(
   "DocumentCustomer",
   {
-    document_number: {
-      type: DataTypes.STRING(255),
+    document_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      comment: "Số công văn",
+      comment: "Liên kết tới công văn",
     },
     customer_id: {
       type: DataTypes.INTEGER,

@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 
-const Employer = sequelize.define(
-  "Employer",
+const Document = sequelize.define(
+  "Document",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -10,25 +10,25 @@ const Employer = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
-    admin_id: {
-      type: DataTypes.INTEGER,
+    document_number: {
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
-    full_name: {
-      type: DataTypes.STRING,
+    created_at: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
-    position: {
-      type: DataTypes.STRING,
+    updated_at: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
   },
   {
-    tableName: "employers",
+    tableName: "document",
     timestamps: true,
     createdAt: "created_at",
-    updatedAt: false,
+    updatedAt: "updated_at",
   }
 );
 
-export default Employer;
+export default Document;

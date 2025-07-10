@@ -1,12 +1,14 @@
 import { sequelize } from "../config/database.js";
 import {
   User,
+  Admin,
   Customer,
   Employer,
   Tour,
   Booking,
   TaskAssignment,
   DocumentExportHistory,
+  Document,
   DocumentCustomer,
 } from "../models/index.js";
 import bcrypt from "bcryptjs";
@@ -17,18 +19,18 @@ async function seedInitialData() {
 
     // Create admin user
     const adminPassword = await bcrypt.hash("admin123", 10);
-    const adminUser = await User.create({
-      email: "admin@example.com",
+    const adminUser = await Admin.create({
+      username: "admin",
       password_hash: adminPassword,
-      role: "admin",
+      role: "super_admin",
     });
 
     // Create employer user
     const employerPassword = await bcrypt.hash("employer123", 10);
-    const employerUser = await User.create({
-      email: "employer@example.com",
+    const employerUser = await Admin.create({
+      username: "employer",
       password_hash: employerPassword,
-      role: "employer",
+      role: "admin",
     });
 
     // Create customer user
@@ -36,12 +38,11 @@ async function seedInitialData() {
     const customerUser = await User.create({
       email: "customer@example.com",
       password_hash: customerPassword,
-      role: "customer",
     });
 
     // Create employer profile
     const employer = await Employer.create({
-      user_id: employerUser.id,
+      admin_id: employerUser.id,
       full_name: "Nguyễn Văn A",
       position: "Tour Guide",
     });
@@ -186,19 +187,32 @@ async function seedInitialData() {
       status: "new",
     });
 
+    // Create documents
+    const document1 = await Document.create({
+      document_number: "CV-2024-001",
+    });
+
+    const document2 = await Document.create({
+      document_number: "CV-2024-002",
+    });
+
+    const document3 = await Document.create({
+      document_number: "CV-2024-003",
+    });
+
     // Create document customers
     await DocumentCustomer.create({
-      document_number: "CV-2024-001",
+      document_id: document1.id,
       customer_id: customer.id,
     });
 
     await DocumentCustomer.create({
-      document_number: "CV-2024-002",
+      document_id: document2.id,
       customer_id: customer2.id,
     });
 
     await DocumentCustomer.create({
-      document_number: "CV-2024-003",
+      document_id: document3.id,
       customer_id: customer.id,
     });
 
@@ -226,7 +240,6 @@ async function seedInitialData() {
 
     console.log("✅ Initial data seeded successfully!");
     console.log("📋 Created:");
-    console.log("  - 3 users (admin, employer, customer)");
     console.log("  - 1 employer profile");
     console.log("  - 2 customer profiles");
     console.log("  - 4 tours");

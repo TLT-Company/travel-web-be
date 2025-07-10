@@ -6,11 +6,11 @@ export async function up(queryInterface, Sequelize) {
       autoIncrement: true,
       allowNull: false,
     },
-    user_id: {
+    admin_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: "users",
+        model: "admins",
         key: "id",
       },
       onUpdate: "CASCADE",

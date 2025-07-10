@@ -8,13 +8,7 @@ export async function up(queryInterface, Sequelize) {
     },
     user_id: {
       type: Sequelize.INTEGER,
-      allowNull: false,
-      references: {
-        model: "users",
-        key: "id",
-      },
-      onUpdate: "CASCADE",
-      onDelete: "CASCADE",
+      allowNull: true,
     },
     card_id: {
       type: Sequelize.STRING,
