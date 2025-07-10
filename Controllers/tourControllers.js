@@ -1,4 +1,4 @@
-import { Tour, Booking, Employer, Customer } from "../models/index.js"
+import { Tour, Booking, Admin, Customer } from "../models/index.js"
 import { Op } from "sequelize";
 
 //Create new tour
@@ -59,9 +59,9 @@ export const getSingleTour = async (req, res) => {
                   attributes: ["id", "full_name"],
                },
                {
-                  model: Employer,
-                  as: "assignedEmployer",
-                  attributes: ["id", "full_name"],
+                  model: Admin,
+                  as: "assignedAdmin",
+                  attributes: ["id", "username"],
                },
             ],
             order: [["createdAt", "DESC"]],
