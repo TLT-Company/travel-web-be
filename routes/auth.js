@@ -8,7 +8,8 @@ import {
   getCurrentUser,
   getCurrentAdmin,
 } from "../Controllers/authController.js";
-import { verifyToken } from "../utils/verifyToken.js";
+
+import { verifyToken, verifySuperAdmin } from "../utils/verifyToken.js";
 // import bcrypt from 'bcryptjs'
 // import jwt from 'jsonwebtoken'
 

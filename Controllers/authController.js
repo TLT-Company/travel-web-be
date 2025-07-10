@@ -144,13 +144,13 @@ export const userLogin = async (req, res) => {
 // Admin register (only super_admin can create new admin)
 export const adminRegister = async (req, res) => {
   try {
-    const { username, password, role } = req.body;
+    const { email, password, role } = req.body;
 
     // Validate required fields
-    if (!username || !password || !role) {
+    if (!email || !password || !role) {
       return res.status(400).json({
         success: false,
-        message: "Username, password là bắt buộc!",
+        message: "Email, password là bắt buộc!",
       });
     }
 
@@ -163,11 +163,11 @@ export const adminRegister = async (req, res) => {
     }
 
     // Check if admin already exists
-    const existingAdmin = await Admin.findOne({ where: { username } });
+    const existingAdmin = await Admin.findOne({ where: { email } });
     if (existingAdmin) {
       return res.status(400).json({
         success: false,
-        message: "Username đã tồn tại!",
+        message: "Email đã tồn tại!",
       });
     }
 
@@ -177,7 +177,7 @@ export const adminRegister = async (req, res) => {
 
     // Create admin
     const admin = await Admin.create({
-      username,
+      email,
       password_hash,
       role,
     });
@@ -213,19 +213,19 @@ export const adminRegister = async (req, res) => {
 // Admin login
 export const adminLogin = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Validate required fields
-    if (!username || !password) {
+    if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: "Username và password là bắt buộc!",
+        message: "Email và password là bắt buộc!",
       });
     }
 
     // Find admin with employer profile
     const admin = await Admin.findOne({
-      where: { username },
+      where: { email },
       include: [
         {
           model: sequelize.models.Employer,
@@ -246,7 +246,7 @@ export const adminLogin = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
-        message: "Username hoặc mật khẩu không đúng!",
+        message: "Email hoặc mật khẩu không đúng!",
       });
     }
 

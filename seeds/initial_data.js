@@ -20,7 +20,7 @@ async function seedInitialData() {
     // Create admin user
     const adminPassword = await bcrypt.hash("admin123", 10);
     const adminUser = await Admin.create({
-      username: "admin",
+      email: "admin@example.com",
       password_hash: adminPassword,
       role: "super_admin",
     });
@@ -28,7 +28,7 @@ async function seedInitialData() {
     // Create employer user
     const employerPassword = await bcrypt.hash("employer123", 10);
     const employerUser = await Admin.create({
-      username: "employer",
+      email: "employer@example.com",
       password_hash: employerPassword,
       role: "admin",
     });
