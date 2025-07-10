@@ -79,9 +79,11 @@ export const getAllTour = async (req, res) => {
    const page = parseInt(req.query.page) || 1;
    const limit = parseInt(req.query.limit) || 20;
    const offset = (page - 1) * limit;
+   const whereCondition = buildTourFilter(req.query);
 
    try {
       const { rows: tours, count } = await Tour.findAndCountAll({
+         where: whereCondition,
          offset,
          limit,
       });
