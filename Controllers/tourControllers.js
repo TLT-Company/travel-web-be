@@ -61,7 +61,7 @@ export const getSingleTour = async (req, res) => {
                {
                   model: Admin,
                   as: "assignedAdmin",
-                  attributes: ["id", "username"],
+                  attributes: ["id", "email"],
                },
             ],
             order: [["createdAt", "DESC"]],
