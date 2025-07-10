@@ -15,9 +15,13 @@ const Admin = sequelize.define(
       allowNull: true,
       comment: "super_admin | admin",
     },
-    username: {
+    email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
     password_hash: {
       type: DataTypes.STRING,
