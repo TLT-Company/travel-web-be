@@ -376,15 +376,3 @@ export const getCurrentAdmin = async (req, res) => {
   }
 };
 
-// user logout
-export const logout = async (req, res) => {
-  try {
-    res
-      .clearCookie("accessToken")
-      .status(200)
-      .json({ success: true, message: "Đăng xuất thành công!" });
-  } catch (error) {
-    console.error("Logout error:", error);
-    res.status(500).json({ success: false, message: "Failed to logout" });
-  }
-};
