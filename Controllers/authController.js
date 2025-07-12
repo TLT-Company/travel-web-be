@@ -116,7 +116,7 @@ export const userLogin = async (req, res) => {
         customer_id: user.customer?.id,
       },
       process.env.JWT_SECRET_KEY || "your-secret-key",
-      { expiresIn: "15d" }
+      { expiresIn: "24h" }
     );
 
     // Remove password from response
@@ -373,5 +373,18 @@ export const getCurrentAdmin = async (req, res) => {
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",
     });
+  }
+};
+
+// user logout
+export const logout = async (req, res) => {
+  try {
+    res
+      .clearCookie("accessToken")
+      .status(200)
+      .json({ success: true, message: "Đăng xuất thành công!" });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ success: false, message: "Failed to logout" });
   }
 };
