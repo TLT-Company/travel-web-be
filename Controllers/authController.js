@@ -4,6 +4,7 @@ import Customer from "../models/Customer.js";
 import { sequelize } from "../config/database.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import nodemailer from 'nodemailer';
 
 // ==================== USER AUTHENTICATION ====================
 
@@ -282,6 +283,62 @@ export const adminLogin = async (req, res) => {
   }
 };
 
+// ==================== FORGOT ADMIN PASSWORD ====================
+// Forgot password (for both user and admin)
+const resetTokens = {}; // { email: token }
+
+export const forgotPasswordAdmin = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: "Email là bắt buộc!" });
+    }
+
+    const user = await Admin.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Tài khoản không tồn tại!" });
+    }
+
+    const resetLink = `http://localhost:3000/admin/reset-password?email=${email}`;
+
+    // 👉 Tạo transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail', // hoặc 'hotmail', 'sendgrid', SMTP riêng,...
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS, // Dùng app password nếu Gmail
+      },
+    });
+
+    // 👉 Gửi email
+    await transporter.sendMail({
+      from: '"Hệ thống" <trankimthat2603@gmail.com>',
+      to: email,
+      subject: "Yêu cầu đặt lại mật khẩu",
+      html: `
+        <p>Chào bạn,</p>
+        <p>Bạn đã yêu cầu đặt lại mật khẩu. Vui lòng nhấn vào liên kết bên dưới để tiếp tục:</p>
+        <a href="${resetLink}">${resetLink}</a>
+        <p>Nếu bạn không yêu cầu, hãy bỏ qua email này.</p>
+      `,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Yêu cầu đặt lại mật khẩu đã được gửi đến email của bạn!",
+    });
+
+  } catch (error) {
+    console.error("Forgot password error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
 // ==================== LOGOUT ====================
 
 // Logout (for both user and admin)
@@ -369,6 +426,42 @@ export const getCurrentAdmin = async (req, res) => {
     });
   } catch (error) {
     console.error("Get current admin error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
+// ==================== RESET ADMINPASSWORD ====================
+export const resetPasswordAdmin = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+      return res.status(400).json({ success: false, message: "Email và mật khẩu mới là bắt buộc!" });
+    }
+
+    const user = await Admin.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Tài khoản không tồn tại!" });
+    }
+
+    // Hash new password
+    const salt = bcrypt.genSaltSync(10);
+    const password_hash = bcrypt.hashSync(newPassword, salt);
+
+    // Update password
+    await user.update({ password_hash });
+
+    res.status(200).json({
+      success: true,
+      message: "Mật khẩu đã được cập nhật thành công!",
+    });
+
+  } catch (error) {
+    console.error("Reset password error:", error);
     res.status(500).json({
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",
