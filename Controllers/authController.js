@@ -259,7 +259,7 @@ export const adminLogin = async (req, res) => {
         employer_id: admin.employers?.[0]?.id,
       },
       process.env.JWT_SECRET_KEY || "your-secret-key",
-      { expiresIn: "15d" }
+      { expiresIn: "24h" }
     );
 
     // Remove password from response
