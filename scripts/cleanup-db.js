@@ -8,6 +8,7 @@ async function cleanupDatabase() {
 
     // Drop all tables in reverse order to avoid foreign key constraints
     const tablesToDrop = [
+      "tasks",
       "task_assignments",
       "bookings",
       "tours",

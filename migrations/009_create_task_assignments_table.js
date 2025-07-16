@@ -6,6 +6,16 @@ export async function up(queryInterface, Sequelize) {
       autoIncrement: true,
       allowNull: false,
     },
+    task_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: "tasks",
+        key: "id",
+      },
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE",
+    },
     employer_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -18,7 +28,7 @@ export async function up(queryInterface, Sequelize) {
     },
     booking_id: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "bookings",
         key: "id",

@@ -10,13 +10,19 @@ const TaskAssignment = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
+
+    task_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
     employer_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     booking_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     assigned_at: {
       type: DataTypes.DATE,

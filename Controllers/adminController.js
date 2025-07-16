@@ -1,4 +1,5 @@
 import Admin from "../models/Admin.js";
+import Employer from "../models/Employer.js";
 import { sequelize } from "../config/database.js";
 
 // ==================== LIST ADMINS ====================
@@ -110,41 +111,37 @@ export const getAdminById = async (req, res) => {
 // ==================== UPDATE ADMIN ====================
 
 // Update admin
-export const updateAdmin = async (req, res) => {
+export const adminUpdateEmployer = async (req, res) => {
   try {
     const { id } = req.params;
-    const { email, role } = req.body;
+    const { full_name, position } = req.body;
 
-    const admin = await Admin.findOne({
+    const employer = await Employer.findOne({
       where: {
-        id: parseInt(id),
-        role: "admin",
+        admin_id: parseInt(id),
       },
     });
 
-    if (!admin) {
+    if (!employer) {
       return res.status(404).json({
         success: false,
-        message: "Admin không tồn tại!",
+        message: "Employer không tồn tại!",
       });
     }
 
     // Update admin
-    await admin.update({
-      email: email || admin.email,
-      role: role || admin.role,
+    await employer.update({
+      full_name: full_name || employer.full_name,
+      position: position || employer.position,
     });
-
-    // Remove password from response
-    const { password_hash, ...adminWithoutPassword } = admin.toJSON();
 
     res.status(200).json({
       success: true,
-      message: "Cập nhật admin thành công!",
-      data: adminWithoutPassword,
+      message: "Cập nhật employer thành công!",
+      data: employer,
     });
   } catch (error) {
-    console.error("Update admin error:", error);
+    console.error("Update employer error:", error);
     res.status(500).json({
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",

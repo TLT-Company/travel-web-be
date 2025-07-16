@@ -2,7 +2,7 @@ import express from "express";
 import {
   listAdmins,
   getAdminById,
-  updateAdmin,
+  adminUpdateEmployer,
   deleteAdmin,
 } from "../Controllers/adminController.js";
 import { verifySuperAdmin } from "../utils/verifyToken.js";
@@ -18,7 +18,7 @@ router.get("/list", verifySuperAdmin, listAdmins);
 router.get("/:id", verifySuperAdmin, getAdminById);
 
 // Update admin (super_admin only)
-router.put("/:id", verifySuperAdmin, updateAdmin);
+router.put("/:id", verifySuperAdmin, adminUpdateEmployer);
 
 // Delete admin (super_admin only)
 router.delete("/:id", verifySuperAdmin, deleteAdmin);

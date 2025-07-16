@@ -17,6 +17,7 @@ async function resetAndMigrate() {
     const tablesToDrop = [
       "admin_permissions",
       "permissions",
+      "tasks",
       "task_assignments",
       "bookings",
       "tours",
