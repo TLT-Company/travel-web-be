@@ -7,6 +7,7 @@ import {
   Tour,
   Booking,
   TaskAssignment,
+  Task,
   DocumentExportHistory,
   Document,
   DocumentCustomer,
@@ -172,8 +173,18 @@ async function seedInitialData() {
       note: "Khách hàng hủy do lý do cá nhân",
     });
 
+    // Create tasks
+    const task1 = await Task.create({
+      name: "Task 1",
+    });
+
+    const task2 = await Task.create({
+      name: "Task 2",
+    });
+
     // Create task assignments
     await TaskAssignment.create({
+      task_id: task1.id,
       employer_id: employer.id,
       booking_id: booking1.id,
       assigned_at: new Date(),
@@ -181,6 +192,7 @@ async function seedInitialData() {
     });
 
     await TaskAssignment.create({
+      task_id: task2.id,
       employer_id: employer.id,
       booking_id: booking2.id,
       assigned_at: new Date(),
