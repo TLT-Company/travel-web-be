@@ -18,6 +18,7 @@ const DocumentCustomer = sequelize.define(
     },
   },
   {
+    paranoid: true,
     tableName: "document_customer",
     timestamps: true,
     createdAt: "created_at",

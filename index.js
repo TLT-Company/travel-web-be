@@ -9,6 +9,7 @@ import adminRoute from "./routes/admin.js";
 // import reviewRoute from "./routes/reviews.js";
 import bookingRoute from "./routes/bookings.js";
 import documentExportRoute from "./routes/documentExport.js";
+import documentCustomerRoute from "./routes/documentCustomer.js";
 import { sequelize } from "./config/database.js";
 import "./models/index.js";
 
@@ -43,6 +44,7 @@ app.use("/api/v1/users", userRoute);
 // app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
 app.use("/api/v1/document-export", documentExportRoute);
+app.use("/api/v1/documents", documentCustomerRoute);
 
 app.listen(port, () => {
   connect();
