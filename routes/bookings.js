@@ -1,10 +1,18 @@
 import express from 'express'
 import { createBooking, getAllBooking, getBooking } from '../Controllers/bookingController.js'
 import { verifyAdmin, verifyUser } from '../utils/verifyToken.js'
+import { upload } from '../middlewares/upload.js';
+import multer from 'multer';
 
-const router = express.Router()
-
-router.post('/', verifyUser, createBooking)
+const router = express.Router();
+router.post(
+  '/',
+  upload.fields([
+    { name: 'front_image', maxCount: 1 },
+    { name: 'back_image', maxCount: 1 },
+  ]),
+  createBooking
+);
 router.get('/:id', verifyUser, getBooking)
 router.get('/', verifyAdmin, getAllBooking)
 

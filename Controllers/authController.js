@@ -143,9 +143,13 @@ export const userLogin = async (req, res) => {
 // ==================== ADMIN AUTHENTICATION ====================
 
 // Admin register (only super_admin can create new admin)
+function generateReferralCode(length = 6) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+}
 export const adminRegister = async (req, res) => {
   try {
-    const { email, password, role } = req.body;
+    const { email, password, role, full_name } = req.body;
 
     // Validate required fields
     if (!email || !password || !role) {
@@ -156,7 +160,7 @@ export const adminRegister = async (req, res) => {
     }
 
     // Validate role
-    if (!["super_admin", "admin"].includes(role)) {
+    if (!["super_admin", "admin", "collaborator"].includes(role)) {
       return res.status(400).json({
         success: false,
         message: "Role phải là 'super_admin' hoặc 'admin'!",
@@ -188,9 +192,16 @@ export const adminRegister = async (req, res) => {
     if (role === "admin") {
       employer = await sequelize.models.Employer.create({
         admin_id: admin.id,
+        full_name: full_name
       });
     }
-
+    if (role === "collaborator") {
+      employer = await sequelize.models.Employer.create({
+        admin_id: admin.id,
+        referral_code: generateReferralCode(),
+        full_name: full_name
+      });
+    }
     // Remove password from response
     const { password_hash: _, ...adminWithoutPassword } = admin.toJSON();
 
@@ -230,7 +241,7 @@ export const adminLogin = async (req, res) => {
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
     });
