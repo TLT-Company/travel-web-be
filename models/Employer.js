@@ -22,6 +22,10 @@ const Employer = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    referral_code: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     tableName: "employers",
@@ -30,5 +34,12 @@ const Employer = sequelize.define(
     updatedAt: false,
   }
 );
+
+Employer.associate = (models) => {
+  Employer.belongsTo(models.Admin, {
+    foreignKey: "admin_id",
+    as: "admin",
+  });
+};
 
 export default Employer;

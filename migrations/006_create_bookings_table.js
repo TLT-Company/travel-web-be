@@ -8,7 +8,7 @@ export async function up(queryInterface, Sequelize) {
     },
     customer_id: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "customers",
         key: "id",

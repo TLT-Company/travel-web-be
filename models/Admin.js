@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
+import Employer from "./Employer.js";
 
 const Admin = sequelize.define(
   "Admin",
@@ -43,5 +44,9 @@ const Admin = sequelize.define(
     updatedAt: "updated_at",
   }
 );
+Admin.hasOne(Employer, {
+  foreignKey: "admin_id",
+  as: "employer",
+});
 
 export default Admin;

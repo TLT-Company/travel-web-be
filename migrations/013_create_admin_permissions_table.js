@@ -6,6 +6,7 @@ export const up = async () => {
     admin_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: "admins",
         key: "id",
@@ -16,6 +17,7 @@ export const up = async () => {
     permission_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: "permissions",
         key: "id",
@@ -29,14 +31,6 @@ export const up = async () => {
     },
   });
 
-  // Add composite primary key
-  await sequelize.getQueryInterface().addConstraint("admin_permissions", {
-    fields: ["admin_id", "permission_id"],
-    type: "primary key",
-    name: "admin_permissions_pkey",
-  });
-
-  // Add comment to table
   await sequelize.query(`
     COMMENT ON TABLE admin_permissions IS 'Bảng trung gian: gán quyền cho admin';
   `);
