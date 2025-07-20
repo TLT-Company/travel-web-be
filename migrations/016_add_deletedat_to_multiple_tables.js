@@ -13,7 +13,7 @@ export async function up(queryInterface, Sequelize) {
     "document_customer",
     "permissions",
     "admin_permissions",
-    "reviews",
+    // "reviews",
   ];
 
   for (const table of tables) {
@@ -39,7 +39,7 @@ export async function down(queryInterface, Sequelize) {
     "document_customer",
     "permissions",
     "admin_permissions",
-    "reviews",
+    // "reviews",
   ];
 
   for (const table of tables) {
