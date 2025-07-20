@@ -1,10 +1,23 @@
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.addColumn("employers", "referral_code", {
-    type: Sequelize.STRING,
-    allowNull: true,
-  });
+  const table = 'employers';
+  const column = 'referral_code';
+
+  // Kiểm tra cột đã tồn tại chưa
+  const tableDefinition = await queryInterface.describeTable(table);
+  if (!tableDefinition[column]) {
+    await queryInterface.addColumn(table, column, {
+      type: Sequelize.STRING,
+      allowNull: true,
+    });
+  }
 }
 
 export async function down(queryInterface, Sequelize) {
-  await queryInterface.removeColumn("employers", "referral_code");
+  const table = 'employers';
+  const column = 'referral_code';
+
+  const tableDefinition = await queryInterface.describeTable(table);
+  if (tableDefinition[column]) {
+    await queryInterface.removeColumn(table, column);
+  }
 }
