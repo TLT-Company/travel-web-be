@@ -10,8 +10,14 @@ import adminRoute from "./routes/admin.js";
 import bookingRoute from "./routes/bookings.js";
 import documentExportRoute from "./routes/documentExport.js";
 import taskRoute from "./routes/tasks.js";
+import uploadRoute from './routes/upload.js'
 import { sequelize } from "./config/database.js";
 import "./models/index.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 const app = express();
@@ -47,7 +53,8 @@ app.use("/api/v1/booking", bookingRoute);
 app.use("/api/v1/document-export", documentExportRoute);
 app.use("/api/v1/tasks", taskRoute);
 app.use("/api/v1/bookings", bookingRoute);
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/api/v1/uploads", uploadRoute);
 
 app.listen(port, () => {
   connect();

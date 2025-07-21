@@ -3,14 +3,50 @@ import { Op } from "sequelize";
 
 //Create new tour
 export const createTour = async (req, res) => {
-   const newTour = new Tour(req.body)
+   const {
+      name, description, location, price, start_date, end_date,
+      image_url_1, image_url_2, image_url_3, image_url_4, image_url_5,
+      image_url_6, image_url_7, image_url_8, image_url_9, image_url_10
+   } = req.body;
+   const created_by = req.user.id;
+
+   let imageUrls = {};
+   if (req.files && req.files.length > 0) {
+      imageUrls = Array.from({ length: 10 }).reduce((acc, _, i) => {
+         acc[`image_url_${i + 1}`] = req.files[i]
+            ? `/uploads/${req.files[i].filename}`
+            : null;
+         return acc;
+      }, {});
+   } else {
+      imageUrls = {
+         image_url_1, image_url_2, image_url_3, image_url_4, image_url_5,
+         image_url_6, image_url_7, image_url_8, image_url_9, image_url_10
+      };
+   }
 
    try {
-      const savedTour = await newTour.save()
+      const tour = await Tour.create({
+         name,
+         description,
+         location,
+         price: Number(price),
+         start_date,
+         end_date,
+         created_by,
+         ...imageUrls,
+      });
 
-      res.status(200).json({ success: true, message: 'Successfully created', data: savedTour })
+      res.status(200).json({
+         success: true,
+         message: 'Successfully created',
+         data: tour
+      })
    } catch (error) {
-      res.status(500).json({ success: true, message: 'Failed to create. Try again!' })
+      res.status(500).json({
+         success: false,
+         message: 'Failed to create. Try again!'
+      })
    }
 }
 
@@ -19,13 +55,36 @@ export const updateTour = async (req, res) => {
    const id = req.params.id
 
    try {
-      const updatedTour = await Tour.findByIdAndUpdate(id, {
-         $set: req.body
-      }, { new: true })
+      const updateData = { ...req.body };
 
-      res.status(200).json({ success: true, message: 'Successfully updated', data: updatedTour })
+      if (typeof updateData.price === "string") {
+         updateData.price = Number(updateData.price);
+      }
+
+      const [updatedCount, updatedRows] = await Tour.update(updateData, {
+         where: { id },
+         returning: true,
+      });
+
+      if (updatedCount === 0) {
+         return res.status(404).json({
+            success: false,
+            message: "Không tìm thấy tour để cập nhật",
+         });
+      }
+
+      res.status(200).json({
+         success: true,
+         message: "Cập nhật tour thành công",
+         data: updatedRows[0],
+      });
    } catch (error) {
-      res.status(500).json({ success: false, message: 'Failed to update' })
+      console.error("Lỗi cập nhật tour:", error);
+      res.status(500).json({
+         success: false,
+         message: "Cập nhật tour thất bại",
+         error: error.message,
+      });
    }
 }
 
@@ -34,11 +93,11 @@ export const deleteTour = async (req, res) => {
    const id = req.params.id
 
    try {
-      await Tour.findByIdAndDelete(id)
+      await Tour.destroy({ where: { id } });
 
-      res.status(200).json({ success: true, message: 'Successfully deleted' })
+      res.status(200).json({ success: true, message: 'Xóa tour thành công' })
    } catch (error) {
-      res.status(500).json({ success: false, message: 'Failed to delete' })
+      res.status(500).json({ success: false, message: 'Xóa tour thất bại' })
    }
 }
 
