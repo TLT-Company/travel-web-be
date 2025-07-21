@@ -268,7 +268,7 @@ export const adminLogin = async (req, res) => {
         id: admin.id,
         username: admin.username,
         role: admin.role,
-        employer_id: admin.employers?.[0]?.id,
+        employer_id: admin.employers?.id,
       },
       process.env.JWT_SECRET_KEY || "your-secret-key",
       { expiresIn: "24h" }
@@ -417,7 +417,7 @@ export const getCurrentAdmin = async (req, res) => {
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
     });

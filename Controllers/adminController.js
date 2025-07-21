@@ -29,7 +29,7 @@ export const listAdmins = async (req, res) => {
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
       limit: parseInt(limit),
@@ -93,7 +93,7 @@ export const listCollaborators = async (req, res) => {
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
       limit: parseInt(limit),
@@ -140,13 +140,13 @@ export const getAdminById = async (req, res) => {
     const admin = await Admin.findOne({
       where: {
         id: parseInt(id),
-        role: "admin",
+        role: ["admin", "collaborator"],
       },
       attributes: { exclude: ["password_hash"] },
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
     });
