@@ -3,7 +3,7 @@ import DocumentCustomer from "../models/DocumentCustomer.js";
 import Customer from "../models/Customer.js"
 import { Op, Sequelize } from "sequelize";
 
-// Get all document
+// Get list documents
 export const getAllDocuments = async (req, res) => {
   try {
     const page = req.query.page ? parseInt(req.query.page) : 1;
@@ -38,14 +38,14 @@ export const getAllDocuments = async (req, res) => {
     res.status(200).json({
       success: true,
       count: count,
-      message: "Successfully Get all documents",
+      message: "lấy danh sách số thông hành thành công",
       data: paged,
     });
   } catch (error) {
     console.error("Get all documents error:", error);
     res.status(500).json({
       success: false,
-      message: "Failed to get all documents",
+      message: "lỗi lấy danh sách số thông hành",
     });
   }
 };
@@ -76,10 +76,10 @@ export const getSingleDocument = async (req, res) => {
 
       const customers = rows.slice(offset, offset + limit);
 
-      res.status(200).json({ success: true, count: count, message: 'Successfully', data: customers })
+      res.status(200).json({ success: true, count: count, message: 'lấy thông tin chi tiết số thông hành thành công', data: customers })
    } catch (error) {
       console.error("Get single document customers error:", error);
-      res.status(404).json({ success: false, message: 'Not Found' })
+      res.status(500).json({ success: false, message: 'lỗi lấy thông tin chi tiết số thông hànhh' })
    }
 }
 
@@ -119,20 +119,19 @@ const buildCustomerFilter = (query) => {
   return where;
 }
 
+// addCustomerToDocument
 export const addCustomerToDocument = async (req, res) => {
     try {
       const card_id = req.body.card_id;
       const document_id = req.params.id;
 
       if (!card_id) {
-        return res.status(400).json({ message: "Thiếu ID thẻ" });
+        return res.status(404).json({ message: "Thiếu ID thẻ" });
       }
 
       if (!document_id) {
-        return res.status(400).json({ message: "Thiếu số thông hành" });
+        return res.status(404).json({ message: "Thiếu số thông hành" });
       }
-
-      console.log(document_id)
 
       // find customer by card_id
       let customer = await Customer.findOne({ where: { card_id: card_id } });
@@ -162,14 +161,23 @@ export const addCustomerToDocument = async (req, res) => {
         customer = await Customer.create(req.body);
       }
 
-      if (customer.id) {
-        await DocumentCustomer.create({
+      const [record, created] = await DocumentCustomer.findOrCreate({
+        where: {
           document_id: document.id,
-          customer_id: customer.id
-        })
+          customer_id: customer.id,
+        },
+        defaults: {
+          document_id: document.id,
+          customer_id: customer.id,
+        },
+        paranoid: false,
+      });
+
+      if (!created && record.deletedAt) {
+        await record.restore();
       }
 
-      res.status(200).json({ success: true, message: 'Successfully created', data: customer })
+      res.status(200).json({ success: true, message: 'Thêm khách hàng thành công', data: record })
     } catch (error) {
         console.error("create customers error:", error);
         res.status(500).json({ success: true, message: 'Đã xảy ra lỗi. Vui lòng thử lại sau!' })
@@ -179,6 +187,7 @@ export const addCustomerToDocument = async (req, res) => {
 //Get single Customer
 export const getSingleCustomer = async (req, res) => {
    try {
+
       const { customer_id } = req.params;
 
       const customer = await Customer.findByPk(customer_id);
@@ -190,10 +199,10 @@ export const getSingleCustomer = async (req, res) => {
         });
       }
 
-      res.status(200).json({ success: true, count: 1, message: 'Successfully', data: customer })
+      res.status(200).json({ success: true, count: 1, message: 'lấy thông tin khách hàng thành công', data: customer })
    } catch (error) {
       console.error("Get single document customers error:", error);
-      res.status(404).json({ success: false, message: 'Not Found' })
+      res.status(500).json({ success: false, message: 'Lỗi lấy thông tin khách hàng' })
    }
 }
 
@@ -202,29 +211,21 @@ export const updateCustomer = async (req, res) => {
    try {
       const { customer_id } = req.params;
 
-      const customer = await Customer.findByPk(customer_id);
+      const updateData = { ...req.body };
 
-      if (!customer) {
-        return res.status(404).json({
-          status: "error",
-          message: "Không tìm thấy khách hàng",
-        });
+      const [updatedCount, updatedRows] = await Customer.update(updateData, {
+         where: { id: customer_id },
+         returning: true,
+      });
+
+      if (updatedCount === 0) {
+         return res.status(404).json({
+            success: false,
+            message: "Không tìm thấy khách hàng để cập nhật",
+         });
       }
 
-      customer.card_id = req.body.card_id;
-      customer.full_name = req.body.full_name;
-      customer.day_of_birth = req.body.day_of_birth;
-      customer.gender = req.body.gender;
-      customer.national = req.body.national;
-      customer.place_of_birth = req.body.place_of_birth;
-      customer.village = req.body.village;
-      customer.card_created_at = req.body.card_created_at;
-      customer.province = req.body.province;
-      customer.district = req.body.district;
-      customer.commune = req.body.commune;
-
-      const editcustomer = await customer.save();
-      res.status(200).json({ success: true, count: 1, message: 'Successfully', data: editcustomer })
+      res.status(200).json({ success: true, count: 1, message: 'Successfully', data: updatedRows[0] })
    } catch (error) {
       console.error("Get single document customers error:", error);
       res.status(500).json({ success: false, message: 'Đã xảy ra lỗi. Vui lòng thử lại sau!' })
@@ -235,11 +236,10 @@ export const deleteCustomer = async (req, res) => {
    try {
     const {id, customer_id} = req.params;
 
-
     const document_customer = await DocumentCustomer.findOne({
       where: {
-      document_id: id,
-      customer_id: customer_id
+        document_id: id,
+        customer_id: customer_id
       }
     });
 
@@ -252,6 +252,6 @@ export const deleteCustomer = async (req, res) => {
     return res.status(200).json({ message: 'Xóa thành công khách hàng' });
   } catch (error) {
     console.error('Lỗi xóa:', error);
-    return res.status(500).json({ message: 'Lỗi server khi xóa' });
+    return res.status(500).json({ message: 'Lỗi khi xóa khách hàng' });
   }
 }

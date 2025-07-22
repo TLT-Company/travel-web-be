@@ -7,15 +7,16 @@ import {
   updateCustomer,
   deleteCustomer
 } from "../Controllers/documentCustomerController.js";
+import { verifyAdmin } from '../utils/verifyToken.js'
 
 const router = express.Router();
 
 // Get all document customer
-router.get("/", getAllDocuments);
-router.get("/:id", getSingleDocument);
-router.post("/:id", addCustomerToDocument);
-router.get("/customers/:customer_id", getSingleCustomer);
-router.put("/customers/:customer_id", updateCustomer);
-router.delete("/:id/customers/:customer_id", deleteCustomer);
+router.get("/", verifyAdmin, getAllDocuments);
+router.get("/:id", verifyAdmin, getSingleDocument);
+router.post("/:id", verifyAdmin, addCustomerToDocument);
+router.get("/customers/:customer_id", verifyAdmin, getSingleCustomer);
+router.put("/customers/:customer_id", verifyAdmin, updateCustomer);
+router.delete("/:id/customers/:customer_id", verifyAdmin, deleteCustomer);
 
 export default router;
