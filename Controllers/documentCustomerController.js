@@ -122,7 +122,7 @@ const buildCustomerFilter = (query) => {
 // addCustomerToDocument
 export const addCustomerToDocument = async (req, res) => {
     try {
-      const card_id = req.body.card_id;
+      const { card_id, ...customerData } = req.body;
       const document_id = req.params.id;
 
       if (!card_id) {
@@ -133,9 +133,6 @@ export const addCustomerToDocument = async (req, res) => {
         return res.status(404).json({ message: "Thiếu số thông hành" });
       }
 
-      // find customer by card_id
-      let customer = await Customer.findOne({ where: { card_id: card_id } });
-
       // find document by document_id
       const document = await Document.findByPk(document_id)
 
@@ -143,41 +140,50 @@ export const addCustomerToDocument = async (req, res) => {
         return res.status(404).json({ message: "không tồn tại số thông hành "});
       }
 
+      // find customer by card_id
+      let customer = await Customer.findOne({ where: { card_id: card_id } });
+
       if (customer) {
-        // check exits customer in Document
         const exists = await DocumentCustomer.findOne({
           where: {
             customer_id: customer.id,
             document_id: document.id,
           },
+          paranoid: false,
         });
 
-        if (exists) {
+        // check exits customer in Document
+        if (exists && !exists.deletedAt) {
           return res.status(409).json({message: "Khách hàng có CCCD " + card_id + " đã tồn tại trong số thông hành " + document.document_number})
         }
 
-        customer = await customer.update(req.body);
+        // If the customer exists in the document but has been soft-deleted -> restore it
+        if (exists && exists.deletedAt) {
+          await exists.restore();
+        }
+
+        // update customer
+        await customer.update(customerData);
+
+        // If not found, insert a new record.
+        if (!exists) {
+          await DocumentCustomer.create({
+            document_id: document.id,
+            customer_id: customer.id,
+          });
+        }
       } else {
-        customer = await Customer.create(req.body);
-      }
+        //  If the customer doesn't exist -> create a new one and link it to the document
+        customer = await Customer.create({ card_id, ...customerData });
 
-      const [record, created] = await DocumentCustomer.findOrCreate({
-        where: {
+        // If not found, insert a new record.
+        await DocumentCustomer.create({
           document_id: document.id,
           customer_id: customer.id,
-        },
-        defaults: {
-          document_id: document.id,
-          customer_id: customer.id,
-        },
-        paranoid: false,
-      });
-
-      if (!created && record.deletedAt) {
-        await record.restore();
+        });
       }
 
-      res.status(200).json({ success: true, message: 'Thêm khách hàng thành công', data: record })
+      res.status(200).json({ success: true, message: 'Thêm khách hàng thành công', data: customer })
     } catch (error) {
         console.error("create customers error:", error);
         res.status(500).json({ success: true, message: 'Đã xảy ra lỗi. Vui lòng thử lại sau!' })
