@@ -7,6 +7,8 @@ import {
   logout,
   getCurrentUser,
   getCurrentAdmin,
+  forgotPasswordAdmin,
+  resetPasswordAdmin,
 } from "../Controllers/authController.js";
 
 import { verifyToken, verifySuperAdmin } from "../utils/verifyToken.js";
@@ -24,6 +26,8 @@ router.get("/user/me", verifyToken, getCurrentUser);
 router.post("/admin/register", adminRegister);
 router.post("/admin/login", adminLogin);
 router.get("/admin/me", verifyToken, getCurrentAdmin);
+router.post("/admin/forgot-password", forgotPasswordAdmin);
+router.post("/admin/reset-password", resetPasswordAdmin);
 
 // ==================== COMMON ROUTES ====================
 router.post("/logout", logout);

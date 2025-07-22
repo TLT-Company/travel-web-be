@@ -12,7 +12,7 @@ const Booking = sequelize.define(
     },
     customer_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     tour_id: {
       type: DataTypes.INTEGER,
@@ -29,6 +29,18 @@ const Booking = sequelize.define(
         isIn: [["pending", "confirmed", "cancelled"]],
       },
       comment: "pending | confirmed | cancelled",
+    },
+    referral_code: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    front_image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    back_image: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     assigned_to: {
       type: DataTypes.INTEGER,

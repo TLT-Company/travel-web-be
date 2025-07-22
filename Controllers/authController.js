@@ -4,6 +4,7 @@ import Customer from "../models/Customer.js";
 import { sequelize } from "../config/database.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import nodemailer from 'nodemailer';
 
 // ==================== USER AUTHENTICATION ====================
 
@@ -116,7 +117,7 @@ export const userLogin = async (req, res) => {
         customer_id: user.customer?.id,
       },
       process.env.JWT_SECRET_KEY || "your-secret-key",
-      { expiresIn: "15d" }
+      { expiresIn: "24h" }
     );
 
     // Remove password from response
@@ -142,9 +143,13 @@ export const userLogin = async (req, res) => {
 // ==================== ADMIN AUTHENTICATION ====================
 
 // Admin register (only super_admin can create new admin)
+function generateReferralCode(length = 6) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+}
 export const adminRegister = async (req, res) => {
   try {
-    const { email, password, role } = req.body;
+    const { email, password, role, full_name } = req.body;
 
     // Validate required fields
     if (!email || !password || !role) {
@@ -155,7 +160,7 @@ export const adminRegister = async (req, res) => {
     }
 
     // Validate role
-    if (!["super_admin", "admin"].includes(role)) {
+    if (!["super_admin", "admin", "collaborator"].includes(role)) {
       return res.status(400).json({
         success: false,
         message: "Role phải là 'super_admin' hoặc 'admin'!",
@@ -187,9 +192,16 @@ export const adminRegister = async (req, res) => {
     if (role === "admin") {
       employer = await sequelize.models.Employer.create({
         admin_id: admin.id,
+        full_name: full_name
       });
     }
-
+    if (role === "collaborator") {
+      employer = await sequelize.models.Employer.create({
+        admin_id: admin.id,
+        referral_code: generateReferralCode(),
+        full_name: full_name
+      });
+    }
     // Remove password from response
     const { password_hash: _, ...adminWithoutPassword } = admin.toJSON();
 
@@ -229,7 +241,7 @@ export const adminLogin = async (req, res) => {
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
     });
@@ -256,10 +268,10 @@ export const adminLogin = async (req, res) => {
         id: admin.id,
         username: admin.username,
         role: admin.role,
-        employer_id: admin.employers?.[0]?.id,
+        employer_id: admin.employers?.id,
       },
       process.env.JWT_SECRET_KEY || "your-secret-key",
-      { expiresIn: "15d" }
+      { expiresIn: "24h" }
     );
 
     // Remove password from response
@@ -275,6 +287,62 @@ export const adminLogin = async (req, res) => {
     });
   } catch (error) {
     console.error("Admin login error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
+// ==================== FORGOT ADMIN PASSWORD ====================
+// Forgot password (for both user and admin)
+const resetTokens = {}; // { email: token }
+
+export const forgotPasswordAdmin = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: "Email là bắt buộc!" });
+    }
+
+    const user = await Admin.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Tài khoản không tồn tại!" });
+    }
+
+    const resetLink = `http://localhost:3000/admin/reset-password?email=${email}`;
+
+    // 👉 Tạo transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail', // hoặc 'hotmail', 'sendgrid', SMTP riêng,...
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS, // Dùng app password nếu Gmail
+      },
+    });
+
+    // 👉 Gửi email
+    await transporter.sendMail({
+      from: '"Hệ thống" <trankimthat2603@gmail.com>',
+      to: email,
+      subject: "Yêu cầu đặt lại mật khẩu",
+      html: `
+        <p>Chào bạn,</p>
+        <p>Bạn đã yêu cầu đặt lại mật khẩu. Vui lòng nhấn vào liên kết bên dưới để tiếp tục:</p>
+        <a href="${resetLink}">${resetLink}</a>
+        <p>Nếu bạn không yêu cầu, hãy bỏ qua email này.</p>
+      `,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Yêu cầu đặt lại mật khẩu đã được gửi đến email của bạn!",
+    });
+
+  } catch (error) {
+    console.error("Forgot password error:", error);
     res.status(500).json({
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",
@@ -349,7 +417,7 @@ export const getCurrentAdmin = async (req, res) => {
       include: [
         {
           model: sequelize.models.Employer,
-          as: "employers",
+          as: "employer",
         },
       ],
     });
@@ -375,3 +443,40 @@ export const getCurrentAdmin = async (req, res) => {
     });
   }
 };
+
+// ==================== RESET ADMINPASSWORD ====================
+export const resetPasswordAdmin = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+      return res.status(400).json({ success: false, message: "Email và mật khẩu mới là bắt buộc!" });
+    }
+
+    const user = await Admin.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Tài khoản không tồn tại!" });
+    }
+
+    // Hash new password
+    const salt = bcrypt.genSaltSync(10);
+    const password_hash = bcrypt.hashSync(newPassword, salt);
+
+    // Update password
+    await user.update({ password_hash });
+
+    res.status(200).json({
+      success: true,
+      message: "Mật khẩu đã được cập nhật thành công!",
+    });
+
+  } catch (error) {
+    console.error("Reset password error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+

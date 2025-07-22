@@ -1,16 +1,43 @@
 import Booking from "./../models/Booking.js";
 
 // create new booking
+// export const createBooking = async (req, res) => {
+//   try {
+//     const savedBooking = await Booking.create(req.body);
+
+//     res.status(200).json({
+//       success: true,
+//       message: "Your tour is booked!",
+//       data: savedBooking,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: "Internal server error!" });
+//   }
+// };
+
 export const createBooking = async (req, res) => {
   try {
-    const savedBooking = await Booking.create(req.body);
+    const { note, referral_code, tour_id } = req.body;
+    const frontImagePath = req.files?.front_image?.[0]?.path || null;
+    const backImagePath = req.files?.back_image?.[0]?.path || null;
 
+    const savedBooking = await Booking.create({
+      customer_id: null,
+      note: note,
+      referral_code: referral_code,
+      tour_id: tour_id,
+      front_image: frontImagePath,
+      back_image: backImagePath,
+      status: 'confirmed',
+      booking_date: new Date(),
+    });
     res.status(200).json({
       success: true,
-      message: "Your tour is booked!",
+      message: 'Đặt tour thành công!',
       data: savedBooking,
     });
   } catch (error) {
+    console.error("Booking Error:", error);
     res.status(500).json({ success: false, message: "Internal server error!" });
   }
 };

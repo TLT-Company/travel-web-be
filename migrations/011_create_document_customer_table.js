@@ -33,16 +33,22 @@ export const up = async () => {
       type: DataTypes.DATE,
       allowNull: true,
     },
+  }, {
+    // ✅ Khai báo composite primary key trực tiếp ở đây
+    primaryKeys: {
+      document_customer_pkey: {
+        fields: ["document_id", "customer_id"],
+      },
+    },
   });
 
-  // Add composite primary key (this also serves as unique constraint)
-  await sequelize.getQueryInterface().addConstraint("document_customer", {
-    fields: ["document_id", "customer_id"],
-    type: "primary key",
-    name: "document_customer_pkey",
-  });
+  // ✅ Hoặc nếu cách trên không hoạt động, dùng `uniqueKeys` để đảm bảo tính duy nhất (nếu bạn chỉ muốn là khóa duy nhất chứ không phải PK)
+  // uniqueKeys: {
+  //   document_customer_unique: {
+  //     fields: ['document_id', 'customer_id']
+  //   }
+  // }
 
-  // Add comment to table
   await sequelize.query(`
     COMMENT ON TABLE document_customer IS 'Bảng liên kết giữa công văn và khách hàng';
   `);
