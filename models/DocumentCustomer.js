@@ -22,6 +22,7 @@ const DocumentCustomer = sequelize.define(
     timestamps: true,
     createdAt: "created_at",
     updatedAt: "updated_at",
+    paranoid: true,
     comment: "Bảng liên kết giữa công văn và khách hàng",
   }
 );
