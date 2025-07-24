@@ -160,7 +160,7 @@ export const getAllTour = async (req, res) => {
 
 const buildTourFilter = (query) => {
    const {
-      name, location, price_min, price_max, start_date, end_date
+      name, location, price_min, price_max, start_date, end_date, month_year
    } = query;
 
    const where = {};
@@ -192,11 +192,22 @@ const buildTourFilter = (query) => {
       where.end_date = { [Op.lte]: end_date };
    }
 
+   if (month_year) {
+      const [year, month] = month_year.split("-").map(Number);
+      const firstDay = new Date(year, month - 1, 1); // ngày đầu tháng
+      const lastDay = new Date(year, month, 0, 23, 59, 59); // cuối tháng
+
+      where.end_date = {
+         [Op.between]: [firstDay, lastDay],
+         [Op.lt]: new Date()
+      };
+   }
+
    return where;
 }
 
 // Get tour by search
-export const getTourBySearch = async (req, res) => {
+export const getListToursByMonth = async (req, res) => {
    const page = parseInt(req.query.page) || 1;
    const limit = parseInt(req.query.limit) || 20;
    const offset = (page - 1) * limit;
