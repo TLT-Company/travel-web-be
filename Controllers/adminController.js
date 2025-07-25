@@ -213,6 +213,56 @@ export const adminUpdateEmployer = async (req, res) => {
   }
 };
 
+export const adminUpdateCollaborator = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { full_name, position, email, password, confirmPassword } = req.body;
+
+    const employer = await Employer.findOne({
+      where: {
+        admin_id: parseInt(id),
+      },
+    });
+
+    if (!employer) {
+      return res.status(404).json({
+        success: false,
+        message: "Employer không tồn tại!",
+      });
+    }
+
+    // Update admin
+    const updateData = {
+      full_name: full_name || employer.full_name,
+      position: position || employer.position,
+      email: email || employer.email,
+    };
+    
+    // Chỉ thêm password và confirm_password nếu cả 2 đều có giá trị
+    if (password && confirmPassword) {
+      updateData.password = password;
+      updateData.confirm_password = confirmPassword;
+    }
+    
+    await employer.update(updateData);
+
+    res.status(200).json({
+      success: true,
+      message: "Cập nhật employer thành công!",
+      data: employer,
+    });
+  } catch (error) {
+    console.error("Update employer error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
+
+
+
 // ==================== DELETE ADMIN ====================
 
 // Delete admin
@@ -224,6 +274,44 @@ export const deleteAdmin = async (req, res) => {
       where: {
         id: parseInt(id),
         role: "admin",
+      },
+    });
+
+    if (!admin) {
+      return res.status(404).json({
+        success: false,
+        message: "Admin không tồn tại!",
+      });
+    }
+
+    // Delete admin
+    await admin.destroy();
+
+    res.status(200).json({
+      success: true,
+      message: "Xóa admin thành công!",
+    });
+  } catch (error) {
+    console.error("Delete admin error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
+
+// ==================== DELETE COLLABORATOR ====================
+
+// Delete collaborator
+export const deleteCollaborator = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const admin = await Admin.findOne({
+      where: {
+        id: parseInt(id),
+        role: "collaborator",
       },
     });
 

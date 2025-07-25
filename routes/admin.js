@@ -5,6 +5,8 @@ import {
   adminUpdateEmployer,
   deleteAdmin,
   listCollaborators,
+  adminUpdateCollaborator,
+  deleteCollaborator,
 } from "../Controllers/adminController.js";
 import { verifySuperAdmin } from "../utils/verifyToken.js";
 
@@ -22,8 +24,11 @@ router.get("/:id", verifySuperAdmin, getAdminById);
 
 // Update admin (super_admin only)
 router.put("/:id", verifySuperAdmin, adminUpdateEmployer);
+router.put("/collaborator/:id", verifySuperAdmin, adminUpdateCollaborator);
 
 // Delete admin (super_admin only)
 router.delete("/:id", verifySuperAdmin, deleteAdmin);
+router.delete("/collaborator/:id", verifySuperAdmin, deleteCollaborator);
+
 
 export default router;
