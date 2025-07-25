@@ -1,5 +1,5 @@
 import { Tour, Booking, Admin, Customer } from "../models/index.js"
-import { Op } from "sequelize";
+import { col, fn, Op } from "sequelize";
 
 //Create new tour
 export const createTour = async (req, res) => {
@@ -143,13 +143,21 @@ export const getAllTour = async (req, res) => {
    try {
       const { rows: tours, count } = await Tour.findAndCountAll({
          where: whereCondition,
+         attributes: {
+            include: [
+               [fn("COUNT", col("bookings.id")), "total_customers"],
+            ]
+         },
+         include: [{ model: Booking, as: "bookings", attributes: [] }],
+         group: ["Tour.id"],
          offset,
          limit,
+         subQuery: false,
       });
 
       res.status(200).json({
          success: true,
-         count: count,
+         count: count.length,
          message: 'Successfully',
          data: tours
       })
@@ -216,13 +224,21 @@ export const getListToursByMonth = async (req, res) => {
    try {
       const { rows: tours, count } = await Tour.findAndCountAll({
          where: whereCondition,
+         attributes: {
+            include: [
+               [fn("COUNT", col("bookings.id")), "total_customers"],
+            ]
+         },
+         include: [{ model: Booking, as: "bookings", attributes: [] }],
+         group: ["Tour.id"],
          offset,
          limit,
+         subQuery: false,
       });
 
       res.status(200).json({
          success: true,
-         count: count,
+         count: count.length,
          message: 'Successfully',
          data: tours
       })
