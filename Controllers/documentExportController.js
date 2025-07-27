@@ -1,6 +1,7 @@
 import DocumentExportHistory from "../models/DocumentExportHistory.js";
 import Customer from "../models/Customer.js";
 import DocumentCustomer from "../models/DocumentCustomer.js";
+import Document from "../models/Document.js";
 import ExcelJS from "exceljs";
 import fs from "fs";
 import archiver from "archiver";
@@ -231,9 +232,16 @@ export const performAnalysisFile = async (req, res) => {
         {
           model: DocumentCustomer,
           as: "documentCustomers",
-          where: {
-            document_number: fileName,
-          },
+          include: [
+            {
+              model: Document,
+              as: "document",
+              where: {
+                document_number: fileName,
+              },
+              required: true,
+            },
+          ],
           required: true,
         },
       ],
