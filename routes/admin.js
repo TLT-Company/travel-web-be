@@ -8,7 +8,7 @@ import {
   adminUpdateCollaborator,
   deleteCollaborator,
 } from "../Controllers/adminController.js";
-import { verifySuperAdmin } from "../utils/verifyToken.js";
+import { verifySuperAdmin, verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
@@ -17,18 +17,17 @@ const router = express.Router();
 // List all admins with role "admin" (super_admin only)
 router.get("/list", verifySuperAdmin, listAdmins);
 
-router.get("/list/Collaborators", verifySuperAdmin, listCollaborators);
+router.get("/list/Collaborators", verifyAdmin, listCollaborators);
 
 // Get admin by ID (super_admin only)
 router.get("/:id", verifySuperAdmin, getAdminById);
 
 // Update admin (super_admin only)
-router.put("/:id", verifySuperAdmin, adminUpdateEmployer);
-router.put("/collaborator/:id", verifySuperAdmin, adminUpdateCollaborator);
+router.put("/:id", verifyAdmin, adminUpdateEmployer);
+router.put("/collaborator/:id", verifyAdmin, adminUpdateCollaborator);
 
 // Delete admin (super_admin only)
 router.delete("/:id", verifySuperAdmin, deleteAdmin);
-router.delete("/collaborator/:id", verifySuperAdmin, deleteCollaborator);
-
+router.delete("/collaborator/:id", verifyAdmin, deleteCollaborator);
 
 export default router;
