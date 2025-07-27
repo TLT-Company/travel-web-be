@@ -26,6 +26,31 @@ const Employer = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    phone_number: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    day_of_birth: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isIn: [["Nam", "Nữ", "Khác"]],
+      },
+      comment: "Nam | Nữ | Khác",
+    },
+    address: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
   {
     tableName: "employers",
