@@ -6,7 +6,7 @@ import multer from 'multer';
 
 const router = express.Router();
 router.post(
-  '/',
+  '/', verifyUser,
   upload.fields([
     { name: 'front_image', maxCount: 1 },
     { name: 'back_image', maxCount: 1 },

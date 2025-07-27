@@ -16,6 +16,10 @@ const DocumentCustomer = sequelize.define(
       primaryKey: true,
       comment: "Liên kết tới khách hàng",
     },
+    deleted_at: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   },
   {
     tableName: "document_customer",
@@ -23,6 +27,7 @@ const DocumentCustomer = sequelize.define(
     createdAt: "created_at",
     updatedAt: "updated_at",
     paranoid: true,
+    deletedAt: "deleted_at", 
     comment: "Bảng liên kết giữa công văn và khách hàng",
   }
 );

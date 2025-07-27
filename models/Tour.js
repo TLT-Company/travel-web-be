@@ -89,6 +89,7 @@ const Tour = sequelize.define(
     createdAt: "created_at",
     updatedAt: false,
     paranoid: true,
+    deletedAt: "deleted_at",
     comment: "Tour được tạo bởi admin",
   }
 );

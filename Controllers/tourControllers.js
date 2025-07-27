@@ -1,5 +1,5 @@
-import { Tour, Booking, Admin, Customer } from "../models/index.js"
-import { col, fn, Op } from "sequelize";
+import { Tour, Booking, Admin, Customer, User } from "../models/index.js"
+import { Op, fn, col } from "sequelize";
 
 //Create new tour
 export const createTour = async (req, res) => {
@@ -113,14 +113,21 @@ export const getSingleTour = async (req, res) => {
             as: "bookings",
             include: [
                {
-                  model: Customer,
-                  as: "customer",
-                  attributes: ["id", "full_name"],
+                  model: User,
+                  as: "user",
+                  attributes: ["id", "email","role"],
+                  include: [
+                     {
+                       model: Customer,
+                       as: "customer",
+                       attributes: ["id", "full_name"],
+                     },
+                   ],
                },
                {
                   model: Admin,
                   as: "assignedAdmin",
-                  attributes: ["id", "email"],
+                  attributes: ["id", "email", "role"],
                },
             ],
             order: [["createdAt", "DESC"]],
@@ -174,11 +181,13 @@ const buildTourFilter = (query) => {
    const where = {};
 
    if (name) {
-      where.name = { [Op.like]: `%${name}%`}
-   }
+      where.name = {
+        [Op.iLike]: `%${name.trim()}%`
+      };
+    }
 
    if (location) {
-      where.location = { [Op.like]: `%${location}%`}
+      where.location = { [Op.iLike]: `%${location.trim()}%`}
    }
 
    const min = price_min !== undefined ? Number(price_min) : undefined;
