@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 import Employer from "./Employer.js";
+import Booking from "./Booking.js";
 
 const Admin = sequelize.define(
   "Admin",
@@ -14,7 +15,7 @@ const Admin = sequelize.define(
     role: {
       type: DataTypes.STRING,
       allowNull: true,
-      comment: "super_admin | admin",
+      comment: "super_admin | admin | collaborator",
     },
     email: {
       type: DataTypes.STRING,
@@ -46,9 +47,5 @@ const Admin = sequelize.define(
     deletedAt: 'deleted_at',
   }
 );
-Admin.hasOne(Employer, {
-  foreignKey: "admin_id",
-  as: "employer",
-});
 
 export default Admin;

@@ -10,7 +10,7 @@ const Booking = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
-    customer_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },

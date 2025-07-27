@@ -36,8 +36,9 @@ export const userRegister = async (req, res) => {
 
     // Create user
     const user = await User.create({
-      email,
-      password_hash,
+      email: email,
+      password_hash : password_hash,
+      role: "user",
     });
 
     // Create customer profile

@@ -3,12 +3,16 @@ import { sequelize } from "../config/database.js";
 
 export const up = async () => {
   const queryInterface = sequelize.getQueryInterface();
+  const tableDefinition = await queryInterface.describeTable("tours");
 
   for (let i = 1; i <= 10; i++) {
-    await queryInterface.addColumn("tours", `image_url_${i}`, {
-      type: DataTypes.STRING,
-      allowNull: true,
-    })
+    const columnName = `image_url_${i}`;
+    if (!tableDefinition[columnName]) {
+      await queryInterface.addColumn("tours", columnName, {
+        type: DataTypes.STRING,
+        allowNull: true,
+      });
+    }
   }
 };
 
@@ -16,6 +20,7 @@ export const down = async () => {
   const queryInterface = sequelize.getQueryInterface();
 
   for (let i = 1; i <= 10; i++) {
-    await queryInterface.removeColumn("tours", `image_url_${i}`);
+    const columnName = `image_url_${i}`;
+    await queryInterface.removeColumn("tours", columnName);
   }
 };

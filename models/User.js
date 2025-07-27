@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
+import Customer from "./Customer.js";
 
 const User = sequelize.define(
   "User",
@@ -21,6 +22,11 @@ const User = sequelize.define(
     password_hash: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      comment: "user | admin | super_admin | collaborator",
     },
   },
   {
