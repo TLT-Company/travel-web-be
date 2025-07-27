@@ -1,3 +1,5 @@
+import Admin from "../models/Admin.js";
+import Employer from "../models/Employer.js";
 import Booking from "./../models/Booking.js";
 
 // create new booking
@@ -21,13 +23,27 @@ export const createBooking = async (req, res) => {
     const frontImagePath = req.files?.front_image?.[0]?.path || null;
     const backImagePath = req.files?.back_image?.[0]?.path || null;
 
+    const userId = req.user?.id || null;
+    const collaborator = await Admin.findOne({
+      include: [
+        {
+          model: Employer,
+          as: "employer", // phải đúng với alias đã định nghĩa trong model
+          where: {
+            referral_code: referral_code, // lọc theo referral_code trong Employer
+          },
+        },
+      ],
+    });
+
     const savedBooking = await Booking.create({
-      customer_id: null,
+      user_id: userId || null,
       note: note,
       referral_code: referral_code,
       tour_id: tour_id,
       front_image: frontImagePath,
       back_image: backImagePath,
+      assigned_to: collaborator.id || null,
       status: 'confirmed',
       booking_date: new Date(),
     });

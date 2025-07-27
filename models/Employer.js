@@ -60,11 +60,4 @@ const Employer = sequelize.define(
   }
 );
 
-Employer.associate = (models) => {
-  Employer.belongsTo(models.Admin, {
-    foreignKey: "admin_id",
-    as: "admin",
-  });
-};
-
 export default Employer;

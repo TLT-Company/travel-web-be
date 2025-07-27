@@ -147,7 +147,7 @@ async function seedInitialData() {
 
     // Create sample bookings
     const booking1 = await Booking.create({
-      customer_id: customer.id,
+      user_id: customerUser.id,
       tour_id: tour1.id,
       booking_date: new Date(),
       status: "confirmed",
@@ -156,7 +156,7 @@ async function seedInitialData() {
     });
 
     const booking2 = await Booking.create({
-      customer_id: customer2.id,
+      user_id: customerUser.id,
       tour_id: tour2.id,
       booking_date: new Date(),
       status: "pending",
@@ -165,7 +165,7 @@ async function seedInitialData() {
     });
 
     const booking3 = await Booking.create({
-      customer_id: customer.id,
+      user_id: customerUser.id,
       tour_id: tour3.id,
       booking_date: new Date(),
       status: "cancelled",

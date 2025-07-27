@@ -36,8 +36,9 @@ export const userRegister = async (req, res) => {
 
     // Create user
     const user = await User.create({
-      email,
-      password_hash,
+      email: email,
+      password_hash : password_hash,
+      role: "user",
     });
 
     // Create customer profile
@@ -150,6 +151,15 @@ function generateReferralCode(length = 6) {
 export const adminRegister = async (req, res) => {
   try {
     const { email, password, role, full_name } = req.body;
+    const emailNormalized = email.toLowerCase().trim();
+
+    const existingeMailAdmin = await Admin.findOne({ where: { email: emailNormalized } });
+    if (existingeMailAdmin) {
+      return res.status(400).json({
+        success: false,
+        message: "Email đã tồn tại!",
+      });
+    }
 
     // Validate required fields
     if (!email || !password || !role) {
@@ -215,6 +225,21 @@ export const adminRegister = async (req, res) => {
     });
   } catch (error) {
     console.error("Admin register error:", error);
+    if (error.name === "SequelizeUniqueConstraintError") {
+      const field = error.errors?.[0]?.path;
+      if (field === "email") {
+        return res.status(400).json({
+          success: false,
+          message: "Email đã tồn tại!",
+        });
+      }
+  
+      return res.status(400).json({
+        success: false,
+        message: `${field} đã tồn tại!`,
+      });
+    }
+  
     res.status(500).json({
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",
@@ -268,7 +293,7 @@ export const adminLogin = async (req, res) => {
         id: admin.id,
         username: admin.username,
         role: admin.role,
-        employer_id: admin.employers?.id,
+        employer_id: admin.employer?.id,
       },
       process.env.JWT_SECRET_KEY || "your-secret-key",
       { expiresIn: "24h" }

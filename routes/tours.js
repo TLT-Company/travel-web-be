@@ -5,7 +5,7 @@ import {
   getAllTour,
   getFeaturedTour,
   getSingleTour,
-  getTourBySearch,
+  getListToursByMonth,
   getTourCount,
   updateTour
 } from '../Controllers/tourControllers.js'
@@ -23,15 +23,15 @@ router.patch('/:id', verifyAdmin, uploadMultiImage, updateTour)
 //Delete tour
 router.delete('/:id', verifyAdmin, deleteTour)
 
-//Get single tour
-router.get('/:id', getSingleTour)
-
 //Get all tour
 router.get('/', getAllTour)
 
 //Get tour by search
-router.get("/search/getTourBySearch", getTourBySearch)
+router.get("/by-month", getListToursByMonth)
 router.get("/search/getFeaturedTour", getFeaturedTour)
 router.get("/search/getTourCount", getTourCount)
+
+//Get single tour
+router.get('/:id', getSingleTour)
 
 export default router

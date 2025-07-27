@@ -17,10 +17,13 @@ export async function up(queryInterface, Sequelize) {
   ];
 
   for (const table of tables) {
-    await queryInterface.addColumn(table, "deleted_at", {
-      type: Sequelize.DATE,
-      allowNull: true,
-    });
+    const tableDefinition = await queryInterface.describeTable(table);
+    if (!tableDefinition.deleted_at) {
+      await queryInterface.addColumn(table, "deleted_at", {
+        type: Sequelize.DATE,
+        allowNull: true,
+      });
+    }
   }
 }
 

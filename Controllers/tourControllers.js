@@ -1,5 +1,5 @@
-import { Tour, Booking, Admin, Customer } from "../models/index.js"
-import { Op } from "sequelize";
+import { Tour, Booking, Admin, Customer, User } from "../models/index.js"
+import { Op, fn, col } from "sequelize";
 
 //Create new tour
 export const createTour = async (req, res) => {
@@ -113,14 +113,21 @@ export const getSingleTour = async (req, res) => {
             as: "bookings",
             include: [
                {
-                  model: Customer,
-                  as: "customer",
-                  attributes: ["id", "full_name"],
+                  model: User,
+                  as: "user",
+                  attributes: ["id", "email","role"],
+                  include: [
+                     {
+                       model: Customer,
+                       as: "customer",
+                       attributes: ["id", "full_name"],
+                     },
+                   ],
                },
                {
                   model: Admin,
                   as: "assignedAdmin",
-                  attributes: ["id", "email"],
+                  attributes: ["id", "email", "role"],
                },
             ],
             order: [["createdAt", "DESC"]],
@@ -143,13 +150,21 @@ export const getAllTour = async (req, res) => {
    try {
       const { rows: tours, count } = await Tour.findAndCountAll({
          where: whereCondition,
+         attributes: {
+            include: [
+               [fn("COUNT", col("bookings.id")), "total_customers"],
+            ]
+         },
+         include: [{ model: Booking, as: "bookings", attributes: [] }],
+         group: ["Tour.id"],
          offset,
          limit,
+         subQuery: false,
       });
 
       res.status(200).json({
          success: true,
-         count: count,
+         count: count.length,
          message: 'Successfully',
          data: tours
       })
@@ -160,17 +175,19 @@ export const getAllTour = async (req, res) => {
 
 const buildTourFilter = (query) => {
    const {
-      name, location, price_min, price_max, start_date, end_date
+      name, location, price_min, price_max, start_date, end_date, month_year
    } = query;
 
    const where = {};
 
    if (name) {
-      where.name = { [Op.like]: `%${name}%`}
-   }
+      where.name = {
+        [Op.iLike]: `%${name.trim()}%`
+      };
+    }
 
    if (location) {
-      where.location = { [Op.like]: `%${location}%`}
+      where.location = { [Op.iLike]: `%${location.trim()}%`}
    }
 
    const min = price_min !== undefined ? Number(price_min) : undefined;
@@ -192,11 +209,22 @@ const buildTourFilter = (query) => {
       where.end_date = { [Op.lte]: end_date };
    }
 
+   if (month_year) {
+      const [year, month] = month_year.split("-").map(Number);
+      const firstDay = new Date(year, month - 1, 1); // ngày đầu tháng
+      const lastDay = new Date(year, month, 0, 23, 59, 59); // cuối tháng
+
+      where.end_date = {
+         [Op.between]: [firstDay, lastDay],
+         [Op.lt]: new Date()
+      };
+   }
+
    return where;
 }
 
 // Get tour by search
-export const getTourBySearch = async (req, res) => {
+export const getListToursByMonth = async (req, res) => {
    const page = parseInt(req.query.page) || 1;
    const limit = parseInt(req.query.limit) || 20;
    const offset = (page - 1) * limit;
@@ -205,13 +233,21 @@ export const getTourBySearch = async (req, res) => {
    try {
       const { rows: tours, count } = await Tour.findAndCountAll({
          where: whereCondition,
+         attributes: {
+            include: [
+               [fn("COUNT", col("bookings.id")), "total_customers"],
+            ]
+         },
+         include: [{ model: Booking, as: "bookings", attributes: [] }],
+         group: ["Tour.id"],
          offset,
          limit,
+         subQuery: false,
       });
 
       res.status(200).json({
          success: true,
-         count: count,
+         count: count.length,
          message: 'Successfully',
          data: tours
       })
