@@ -10,7 +10,7 @@ const Booking = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
-    user_id: {
+    customer_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
@@ -31,14 +31,6 @@ const Booking = sequelize.define(
       comment: "pending | confirmed | cancelled",
     },
     referral_code: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    front_image: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    back_image: {
       type: DataTypes.STRING,
       allowNull: true,
     },

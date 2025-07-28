@@ -113,14 +113,14 @@ export const getSingleTour = async (req, res) => {
             as: "bookings",
             include: [
                {
-                  model: User,
-                  as: "user",
-                  attributes: ["id", "email","role"],
+                  model: Customer,
+                  as: "customer",
+                  attributes: ["id", "full_name"],
                   include: [
                      {
-                       model: Customer,
-                       as: "customer",
-                       attributes: ["id", "full_name"],
+                       model: User,
+                       as: "user",
+                       attributes: ["id", "email","role"],
                      },
                    ],
                },

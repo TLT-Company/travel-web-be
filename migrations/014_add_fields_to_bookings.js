@@ -7,18 +7,4 @@ export async function up(queryInterface, Sequelize) {
       allowNull: true,
     });
   }
-
-  if (!table.front_image) {
-    await queryInterface.addColumn("bookings", "front_image", {
-      type: Sequelize.STRING,
-      allowNull: true,
-    });
-  }
-
-  if (!table.back_image) {
-    await queryInterface.addColumn("bookings", "back_image", {
-      type: Sequelize.STRING,
-      allowNull: true,
-    });
-  }
 }
