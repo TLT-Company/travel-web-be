@@ -4,14 +4,14 @@ import {
   updateProfileCollaborator
 } from "../Controllers/collaboratorController.js";
 import { verifyCollaborator } from "../utils/verifyToken.js";
-import { upload } from "../middlewares/upload.js";
+import { createUploadMiddleware } from "../middlewares/uploadImage.js";
+import { handleUploadErrors } from "../middlewares/handleUploadErrors.js"
 
 const router = express.Router();
-
-// ==================== ADMIN MANAGEMENT ROUTES ====================
+const uploadAvatar = createUploadMiddleware('uploads/profile/collaborator');
 
 // Get collaborator by ID
 router.get("/profile", verifyCollaborator, getProfileCollaborator);
-router.put("/profile",upload.single("picture"), verifyCollaborator, updateProfileCollaborator);
+router.put("/profile",uploadAvatar.single("picture"), handleUploadErrors, verifyCollaborator, updateProfileCollaborator);
 
 export default router;

@@ -1,6 +1,7 @@
 import Admin from "../models/Admin.js";
 import Employer from "../models/Employer.js";
 import { Op } from "sequelize";
+import path from 'path';
 
 // Get ProfileCollaborator
 export const getProfileCollaborator = async (req, res) => {
@@ -9,7 +10,7 @@ export const getProfileCollaborator = async (req, res) => {
 
     const collaborator = await Admin.findOne({
       where: {
-        id: parseInt(id),
+        id: Number(id),
         role: "collaborator"
       },
       attributes: { exclude: ["password_hash"] },
@@ -34,7 +35,7 @@ export const getProfileCollaborator = async (req, res) => {
       data: collaborator,
     });
   } catch (error) {
-    console.error("Get admin by ID error:", error);
+    console.error("Get profile collaborator error:", error);
     res.status(500).json({
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",
@@ -45,7 +46,9 @@ export const getProfileCollaborator = async (req, res) => {
 // update ProfileCollaborator
 export const updateProfileCollaborator = async (req, res) => {
   try {
-    const filepath = req.file?.path || "";
+    const absolutePath  = req.file?.path || "";
+    const filepath = path.relative(process.cwd(), absolutePath).replace(/\\/g, '/');
+
     const { id } = req.user;
     const {
       email,
@@ -56,13 +59,20 @@ export const updateProfileCollaborator = async (req, res) => {
       address,
     } = req.body;
 
-    const admin = await Admin.findByPk(parseInt(id))
+    const admin = await Admin.findByPk(Number(id))
 
     const collaborator = await Employer.findOne({
       where: {
-        admin_id: parseInt(id)
+        admin_id: Number(id)
       }
     });
+
+    if(!collaborator || !admin) {
+      return res.status(404).json({
+          success: false,
+          message: "Cộng tác viên không tồn tại",
+      });
+    }
 
     if (email) {
       const existingEmail = await Admin.findOne({
@@ -98,20 +108,11 @@ export const updateProfileCollaborator = async (req, res) => {
       }
     }
 
-    if(!collaborator) {
-        return res.status(404).json({
-            success: false,
-            message: "Cộng tác viên không tồn tại",
-        });
-    }
-
-    Object.assign(collaborator, {
-      full_name,
-      day_of_birth,
-      phone_number,
-      gender,
-      address,
-    });
+    if (full_name !== undefined) collaborator.full_name = full_name;
+    if (day_of_birth !== undefined) collaborator.day_of_birth = day_of_birth;
+    if (phone_number !== undefined) collaborator.phone_number = phone_number;
+    if (gender !== undefined) collaborator.gender = gender;
+    if (address !== undefined) collaborator.address = address;
 
     if (filepath) {
         collaborator.picture = filepath;
