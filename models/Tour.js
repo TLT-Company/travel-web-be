@@ -1,6 +1,11 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 
+const removeVietnameseTones = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d").replace(/Đ/g, "D").toLowerCase();
+};
+
 const Tour = sequelize.define(
   "Tour",
   {
@@ -82,6 +87,14 @@ const Tour = sequelize.define(
       type: DataTypes.DATE,
       allowNull: true
     },
+    slug_name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    slug_location: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     tableName: "tours",
@@ -93,5 +106,23 @@ const Tour = sequelize.define(
     comment: "Tour được tạo bởi admin",
   }
 );
+
+Tour.beforeCreate((tour) => {
+  if (tour.name) {
+    tour.slug_name = removeVietnameseTones(tour.name);
+  }
+  if (tour.location) {
+    tour.slug_location = removeVietnameseTones(tour.location);
+  }
+});
+
+Tour.beforeUpdate((tour) => {
+  if (tour.name) {
+    tour.slug_name = removeVietnameseTones(tour.name);
+  }
+  if (tour.location) {
+    tour.slug_location = removeVietnameseTones(tour.location);
+  }
+});
 
 export default Tour;
