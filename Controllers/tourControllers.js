@@ -112,23 +112,23 @@ export const getSingleTour = async (req, res) => {
         model: Booking,
         as: "bookings",
         include: [
-          {
-            model: User,
-            as: "user",
-            attributes: ["id", "email","role"],
-            include: [
-              {
-                model: Customer,
-                as: "customer",
-                attributes: ["id", "full_name"],
-              },
-            ],
-          },
-          {
-            model: Admin,
-            as: "assignedAdmin",
-            attributes: ["id", "email", "role"],
-          },
+            {
+               model: Customer,
+               as: "customer",
+               attributes: ["id", "full_name"],
+               include: [
+                  {
+                  model: User,
+                  as: "user",
+                  attributes: ["id", "email","role"],
+                  },
+               ],
+            },
+            {
+               model: Admin,
+               as: "assignedAdmin",
+               attributes: ["id", "email", "role"],
+            },
         ],
         order: [["createdAt", "DESC"]],
       }],

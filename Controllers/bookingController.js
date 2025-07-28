@@ -1,4 +1,5 @@
 import Admin from "../models/Admin.js";
+import Customer from "../models/Customer.js";
 import Employer from "../models/Employer.js";
 import Booking from "./../models/Booking.js";
 
@@ -19,9 +20,10 @@ import Booking from "./../models/Booking.js";
 
 export const createBooking = async (req, res) => {
   try {
-    const { note, referral_code, tour_id } = req.body;
+    const { note, referral_code, tour_id, cccd } = req.body;
     const frontImagePath = req.files?.front_image?.[0]?.path || null;
     const backImagePath = req.files?.back_image?.[0]?.path || null;
+    const pictureAvatarPath = req.files?.picture_avatar?.[0]?.path || null;
 
     const userId = req.user?.id || null;
     const collaborator = await Admin.findOne({
@@ -36,13 +38,40 @@ export const createBooking = async (req, res) => {
       ],
     });
 
+    console.log("pictureAvatarPath:", pictureAvatarPath);
+
+    const customer = await Customer.findOne({
+      where: { card_id: cccd },
+    });
+    if (customer) {
+      await Customer.update(
+        {
+          user_id: userId,
+          id_card_front: frontImagePath,
+          id_card_back: backImagePath,
+          picture: pictureAvatarPath,
+          verified_status: 'verified',
+        },
+        {
+          where: { card_id: cccd },
+        }
+      );
+    }else {
+      await Customer.create({
+        user_id: userId,
+        card_id: cccd,
+        id_card_front: frontImagePath,
+        id_card_back: backImagePath,
+        picture: pictureAvatarPath,
+        verified_status: 'verified'
+      });
+    }
+
     const savedBooking = await Booking.create({
-      user_id: userId || null,
+      customer_id: req.user?.customer_id || null,
       note: note,
       referral_code: referral_code,
       tour_id: tour_id,
-      front_image: frontImagePath,
-      back_image: backImagePath,
       assigned_to: collaborator.id || null,
       status: 'confirmed',
       booking_date: new Date(),
