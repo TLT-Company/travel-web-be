@@ -10,6 +10,7 @@ router.post(
   upload.fields([
     { name: 'front_image', maxCount: 1 },
     { name: 'back_image', maxCount: 1 },
+    { name: 'picture_avatar', maxCount: 1 },
   ]),
   createBooking
 );

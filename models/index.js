@@ -14,7 +14,7 @@ import AdminPermission from "./AdminPermission.js";
 
 // User relationships
 User.hasOne(Customer, { foreignKey: "user_id", as: "customer" });
-User.hasMany(Booking, { foreignKey: "user_id", as: "bookings" });
+// User.hasMany(Booking, { foreignKey: "user_id", as: "bookings" });
 
 // Admin relationships
 Admin.hasOne(Employer, { foreignKey: "admin_id", as: "employer" });
@@ -28,7 +28,7 @@ Booking.belongsTo(Admin, { foreignKey: "assigned_to", as: "assignedAdmin" });
 
 // Customer relationships
 Customer.belongsTo(User, { foreignKey: "user_id", as: "user" });
-// Customer.hasMany(Booking, { foreignKey: "customer_id", as: "bookings" });
+Customer.hasMany(Booking, { foreignKey: "customer_id", as: "bookings" });
 // Booking.belongsTo(Customer, { foreignKey: "user_id", as: "user" });
 
 // Tour relationships
@@ -55,7 +55,7 @@ Booking.hasMany(TaskAssignment, {
   as: "taskAssignments",
 });
 TaskAssignment.belongsTo(Booking, { foreignKey: "booking_id", as: "booking" });
-Booking.belongsTo(User, { foreignKey: "user_id", as: "user" });
+Booking.belongsTo(Customer, { foreignKey: "customer_id", as: "customer" });
 
 
 // Document relationships
