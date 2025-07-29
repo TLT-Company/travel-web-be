@@ -98,17 +98,3 @@ export const verifyUserOrAdmin = (req, res, next) => {
     }
   });
 };
-
-// Verify collaborator token (for collaborator routes)
-export const verifyCollaborator = (req, res, next) => {
-  verifyToken(req, res, () => {
-    if (req.user.role === "collaborator") {
-      next();
-    } else {
-      return res.status(403).json({
-        success: false,
-        message: "Bạn không có quyền truy cập trang này!",
-      });
-    }
-  });
-};
