@@ -345,7 +345,6 @@ export const deleteCollaborator = async (req, res) => {
 export const getProfile = async (req, res) => {
   try {
     const id = req.user.id;
-    console.log("get Pròile")
 
     const admin = await Admin.findOne({
       where: {

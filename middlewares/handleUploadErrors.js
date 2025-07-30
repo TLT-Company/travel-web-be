@@ -3,6 +3,8 @@ import multer from 'multer';
 const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
 
 export function handleUploadErrors(err, req, res, next) {
+    if (!err) return next();
+
     if (err instanceof multer.MulterError) {
         if (err.code === 'LIMIT_FILE_SIZE') {
             return res.status(400).json({
@@ -19,8 +21,5 @@ export function handleUploadErrors(err, req, res, next) {
         }
     }
 
-    return res.status(500).json({
-        success: false,
-        message: 'Lỗi server khi upload file',
-    });
+    return next(err);
 }
