@@ -52,13 +52,26 @@ export const getAllDocuments = async (req, res) => {
 
 //Get single Document
 export const getSingleDocument = async (req, res) => {
-   const document_id = req.params.id
+   const document_id = Number(req.params.id);
    const page = parseInt(req.query.page) || 1;
    const limit = parseInt(req.query.limit) || 20;
    const offset = (page - 1) * limit;
    const whereCondition = buildCustomerFilter(req.query);
 
    try {
+      if (isNaN(document_id)) {
+        return res.status(400).json({ success: false, message: "ID thông hành không hợp lệ" });
+      }
+    
+      const document = await Document.findByPk(document_id);
+      if (!document) {
+        return res.status(404).json({ message: "Không tìm thấy công văn" });
+      }
+
+      const totalCustomers = await DocumentCustomer.count({
+        where: { document_id: document_id },
+      });
+
       const {rows, count} = await Customer.findAndCountAll({
         include: [{
           model: DocumentCustomer,
@@ -76,10 +89,22 @@ export const getSingleDocument = async (req, res) => {
 
       const customers = rows.slice(offset, offset + limit);
 
-      res.status(200).json({ success: true, count: count, message: 'lấy thông tin chi tiết số thông hành thành công', data: customers })
+      res.status(200).json({
+         success: true, 
+         count: count, 
+         message: 'lấy thông tin chi tiết số thông hành thành công', 
+         data: 
+          {
+            id: document_id,
+            document_number: document.document_number,
+            created_at: document.created_at,
+            customer_count: totalCustomers,
+            customers
+          } 
+        })
    } catch (error) {
       console.error("Get single document customers error:", error);
-      res.status(500).json({ success: false, message: 'lỗi lấy thông tin chi tiết số thông hànhh' })
+      res.status(500).json({ success: false, message: 'lỗi lấy thông tin chi tiết số thông hành' })
    }
 }
 
@@ -91,7 +116,7 @@ const buildDocumentFilter = (query) => {
   const where = {};
 
   if (document_number) {
-    where.document_number = { [Op.like]: `%${document_number}%`}
+    where.document_number = { [Op.iLike]: `%${document_number.trim()}%`}
   }
 
   if (start_date && end_date) {
@@ -113,7 +138,7 @@ const buildCustomerFilter = (query) => {
   }
 
   if (full_name) {
-    where.full_name = { [Op.like]: `%${full_name}%`};
+    where.full_name = { [Op.iLike]: `%${full_name.trim()}%`};
   }
 
   return where;
@@ -123,7 +148,11 @@ const buildCustomerFilter = (query) => {
 export const addCustomerToDocument = async (req, res) => {
     try {
       const { card_id, ...customerData } = req.body;
-      const document_id = req.params.id;
+      const document_id = Number(req.params.id);
+
+      if (isNaN(document_id)) {
+        return res.status(400).json({ success: false, message: "ID thông hành không hợp lệ" });
+      }
 
       if (!card_id) {
         return res.status(404).json({ message: "Thiếu ID thẻ" });
