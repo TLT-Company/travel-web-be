@@ -1,6 +1,8 @@
 import Admin from "../models/Admin.js";
 import Employer from "../models/Employer.js";
 import { sequelize } from "../config/database.js";
+import { Op } from "sequelize";
+import path from 'path';
 
 // ==================== LIST ADMINS ====================
 
@@ -331,6 +333,148 @@ export const deleteCollaborator = async (req, res) => {
     });
   } catch (error) {
     console.error("Delete admin error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
+
+// ==================== GET PROFILE ====================
+export const getProfile = async (req, res) => {
+  try {
+    const id = req.user.id;
+
+    const admin = await Admin.findOne({
+      where: {
+        id: Number(id)
+      },
+      attributes: { exclude: ["password_hash"] },
+      include: [
+        {
+          model: Employer,
+          as: "employer",
+        },
+      ],
+    });
+
+    if (!admin) {
+      return res.status(404).json({
+        success: false,
+        message: "Thông tin người dùng không tồn tại!",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Lấy thông tin người dùng thành công!",
+      data: admin,
+    });
+  } catch (error) {
+    console.error("Get profile error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server! Vui lòng thử lại.",
+    });
+  }
+};
+
+// ==================== UPDATE PROFILE ====================
+export const updateProfile = async (req, res) => {
+  try {
+    const absolutePath  = req.file?.path || "";
+    const filepath = path.relative(process.cwd(), absolutePath).replace(/\\/g, '/');
+
+    const { id } = req.user;
+    const {
+      email,
+      full_name,
+      day_of_birth,
+      phone_number,
+      gender,
+      address,
+    } = req.body;
+
+    const admin = await Admin.findByPk(Number(id))
+
+    const employer = await Employer.findOne({
+      where: {
+        admin_id: Number(id)
+      }
+    });
+
+    if(!employer || !admin) {
+      return res.status(404).json({
+          success: false,
+          message: "Thông tin người dùng không tồn tại",
+      });
+    }
+
+    if (email) {
+      const existingEmail = await Admin.findOne({
+        where: {
+          email: email,
+          id: { [Op.ne]: id }, 
+        },
+      });
+
+      if (existingEmail) {
+        return res.status(409).json({
+          success: false,
+          message: "Email đã tồn tại",
+        });
+      }
+
+      admin.email = email;
+    }
+
+    if (phone_number) {
+      const existingPhone = await Employer.findOne({
+        where: {
+          phone_number,
+          admin_id: { [Op.ne]: id },
+        },
+      });
+
+      if (existingPhone) {
+        return res.status(409).json({
+          success: false,
+          message: "Số điện thoại đã được sử dụng",
+        });
+      }
+    }
+
+    if (full_name !== undefined) employer.full_name = full_name;
+    if (day_of_birth !== undefined) employer.day_of_birth = day_of_birth;
+    if (phone_number !== undefined) employer.phone_number = phone_number;
+    if (gender !== undefined) employer.gender = gender;
+    if (address !== undefined) employer.address = address;
+
+    if (filepath) {
+        employer.picture = filepath;
+    }
+
+    await Promise.all([admin.save(), employer.save()]);
+
+    const updatedEmployer = await Admin.findOne({
+      where: { id: Number(id) },
+      attributes: { exclude: ["password_hash"] },
+      include: [
+        {
+          model: Employer,
+          as: "employer",
+        },
+      ],
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "cập nhật thông tin thành công!",
+      data: updatedEmployer,
+    });
+  } catch (error) {
+    console.error("update profile error:", error);
     res.status(500).json({
       success: false,
       message: "Lỗi server! Vui lòng thử lại.",
