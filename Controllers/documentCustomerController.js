@@ -2,6 +2,207 @@ import Document from "../models/Document.js";
 import DocumentCustomer from "../models/DocumentCustomer.js";
 import Customer from "../models/Customer.js"
 import { Op, Sequelize } from "sequelize";
+import fs from 'fs';
+import path from "path";
+import { fileURLToPath } from "url";
+import { LicenseManager, CaptureVisionRouter, EnumPresetTemplate } from "dynamsoft-capture-vision-for-node"
+LicenseManager.initLicense('');
+
+export const addCustomer = async (req, res) => {
+  try {
+    const document_id = Number(req.params.id);
+    if (isNaN(document_id)) {
+      return res.status(400).json({ success: false, message: "ID thông hành không hợp lệ" });
+    }
+
+    // find document by document_id
+    const document = await Document.findByPk(document_id)
+
+    if (!document) {
+      return res.status(404).json({ message: "không tồn tại số thông hành "});
+    }
+
+    const files = req.files;
+    if (files.length == 0) {
+      return res.status(400).json({ message: "không có file nào được tải lên "});
+    }
+    const maps = new Map();
+    const mapsValue = new Map();
+    for (const file of files) {
+      const fileBuffer = await fs.readFileSync(file.path);
+      let result = await CaptureVisionRouter.captureAsync(fileBuffer, EnumPresetTemplate.PT_READ_BARCODES_READ_RATE_FIRST);
+
+      if (result.barcodeResultItems.length > 0) {
+        maps.set(file.filename, result.barcodeResultItems[0].text);
+      } else {
+        maps.set(file.filename, "-1");
+      }
+    }
+
+    let count = 0;
+    for (const [key, value] of maps) {
+      if (value == '-1') {
+        mapsValue.set(key, "lỗi không thể giải mã file");
+        continue;
+      }
+
+      const items = value.split('|');
+
+      if (items.length < 7) {
+        mapsValue.set(key, "Dữ liệu QR không đủ để phân tích");
+        continue;
+      }
+
+      const parts = items[5].split(',').map(p => p.trim());
+      let province = '';
+      let commune = '';
+      let village = '';
+      if (parts.length >= 4) {
+        province = parts[parts.length - 1];
+        commune = parts[parts.length - 3];
+        village = parts[parts.length - 4];
+      } else {
+        mapsValue.set(key, "Địa chỉ không đầy đủ để phân tích");
+        continue;
+      }
+
+      const provinceAfterMerge = findAfterMerge(province)
+
+      // find customer by card_id
+      let customer = await Customer.findOne({ where: { card_id: items[0] } });
+
+      if (customer) {
+        const exists = await DocumentCustomer.findOne({
+          where: {
+            customer_id: customer.id,
+            document_id: document.id,
+          },
+          paranoid: false,
+        });
+
+        // check exits customer in Document
+        if (exists && !exists.deleted_at) {
+          mapsValue.set(key, "khách hàng đã tồn tại ở số thông hành này");
+          continue;
+        }
+
+        // If the customer exists in the document but has been soft-deleted -> restore it
+        if (exists && exists.deleted_at) {
+          await exists.restore();
+        }
+
+        // update customer
+        await customer.update({
+          full_name: items[2],
+          day_of_birth: parseDateDDMMYYYY(items[3]),
+          card_created_at: parseDateDDMMYYYY(items[6]),
+          gender: items[4],
+          province: cleanLocationName(provinceAfterMerge),
+          commune: commune,
+          village: village,
+          address: items[5]
+        });
+
+        // If not found, insert a new record.
+        if (!exists) {
+          await DocumentCustomer.create({
+            document_id: document.id,
+            customer_id: customer.id,
+          });
+        }
+      } else {
+        //  If the customer doesn't exist -> create a new one and link it to the document
+        customer = await Customer.create({ 
+          card_id: items[0],
+          full_name: items[2],
+          day_of_birth: parseDateDDMMYYYY(items[3]),
+          card_created_at: parseDateDDMMYYYY(items[6]),
+          gender: items[4],
+          province: cleanLocationName(provinceAfterMerge),
+          commune: commune,
+          village: village,
+          address: items[5]
+        });
+
+        // If not found, insert a new record.
+        await DocumentCustomer.create({
+          document_id: document.id,
+          customer_id: customer.id,
+        });
+      }
+      mapsValue.set(key, "xử lý thành công")
+      count++;
+    }
+
+    res.status(200).json({ success: true, message: count + "/" + maps.size, data: Array.from(mapsValue, ([key, value]) => ({ [key]: value })) })
+
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: false, message: "Lỗi xử lý ảnh." });
+  }
+}
+
+const parseDateDDMMYYYY = (str) => {
+  const day = str.substring(0, 2);
+  const month = str.substring(2, 4);
+  const year = str.substring(4, 8);
+
+  return new Date(year, month - 1, day);
+}
+
+// Đọc file JSON
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const tinhFilePath = path.join(__dirname, "..", "data", "tinh_rutgon.json");
+const data = JSON.parse(fs.readFileSync(tinhFilePath, 'utf8'));
+
+const findAfterMerge = (provinceName) => {
+
+  let result = data.find(item =>
+    item.truocsapnhap.toLowerCase().includes(provinceName.toLowerCase())
+  );
+
+  if (!result) {
+    result = data.find(item =>
+      item.tentinh.toLowerCase().includes(provinceName.toLowerCase())
+    );
+  }
+
+  if (!result) {
+    return provinceName;
+  }
+
+  return result.tentinh;
+}
+
+const cleanLocationName = (name) => {
+  return name.replace(/^(Thủ đô |tỉnh |Tỉnh |thành phố |Thành phố |Quận |Huyện |Thị xã |Phường |Xã |Thị trấn )/, '').trim();
+}
+
+export const addDocument = async (req, res) => {
+  try {
+    const document_number = req.body.document_number.trim();
+    if (!document_number) {
+      return res.status(400).json({ success: false, message: "thiếu số thông hành" });
+    }
+
+    const existing = await Document.findOne({ where: { document_number: document_number } });
+
+    if (existing) {
+       return res.status(409).json({ message: "số thông hành " + document_number + " đã tồn tại" });
+    }
+
+    const newDocument = await Document.create({ document_number });
+
+    res.status(200).json({ success: true, message: 'Thêm khách số thông hành thành công', data: newDocument })
+  } catch (error) {
+    console.error("Create document error:", error);
+    res.status(500).json({
+      success: false,
+      message: "lỗi thêm số thoong hành",
+    });
+  }
+}
 
 // Get list documents
 export const getAllDocuments = async (req, res) => {
@@ -62,7 +263,7 @@ export const getSingleDocument = async (req, res) => {
       if (isNaN(document_id)) {
         return res.status(400).json({ success: false, message: "ID thông hành không hợp lệ" });
       }
-    
+
       const document = await Document.findByPk(document_id);
       if (!document) {
         return res.status(404).json({ message: "Không tìm thấy công văn" });
@@ -107,6 +308,7 @@ export const getSingleDocument = async (req, res) => {
       res.status(500).json({ success: false, message: 'lỗi lấy thông tin chi tiết số thông hành' })
    }
 }
+
 
 const buildDocumentFilter = (query) => {
   const {
@@ -182,12 +384,12 @@ export const addCustomerToDocument = async (req, res) => {
         });
 
         // check exits customer in Document
-        if (exists && !exists.deletedAt) {
+        if (exists && !exists.deleted_at) {
           return res.status(409).json({message: "Khách hàng có CCCD " + card_id + " đã tồn tại trong số thông hành " + document.document_number})
         }
 
         // If the customer exists in the document but has been soft-deleted -> restore it
-        if (exists && exists.deletedAt) {
+        if (exists && exists.deleted_at) {
           await exists.restore();
         }
 

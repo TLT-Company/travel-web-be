@@ -1,0 +1,206 @@
+[
+    {
+        "id": 1,
+        "mahc": 1,
+        "tentinh": "Thủ đô Hà Nội",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 2,
+        "mahc": 7,
+        "tentinh": "tỉnh Cao Bằng",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 3,
+        "mahc": 8,
+        "tentinh": "tỉnh Tuyên Quang",
+        "truocsapnhap": "tỉnh Hà Giang và tỉnh Tuyên Quang"
+    },
+    {
+        "id": 4,
+        "mahc": 9,
+        "tentinh": "tỉnh Lào Cai",
+        "truocsapnhap": "tỉnh Yên Bái và tỉnh Lào Cai"
+    },
+    {
+        "id": 5,
+        "mahc": 13,
+        "tentinh": "tỉnh Điện Biên",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 6,
+        "mahc": 14,
+        "tentinh": "tỉnh Lai Châu",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 7,
+        "mahc": 15,
+        "tentinh": "tỉnh Sơn La",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 8,
+        "mahc": 10,
+        "tentinh": "tỉnh Thái Nguyên",
+        "truocsapnhap": "tỉnh Bắc Kạn và tỉnh Thái Nguyên"
+    },
+    {
+        "id": 9,
+        "mahc": 11,
+        "tentinh": "tỉnh Lạng Sơn",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 10,
+        "mahc": 3,
+        "tentinh": "tỉnh Quảng Ninh",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 11,
+        "mahc": 12,
+        "tentinh": "tỉnh Phú Thọ",
+        "truocsapnhap": "tỉnh Vĩnh Phúc, tỉnh Hòa Bình và tỉnh Phú Thọ"
+    },
+    {
+        "id": 12,
+        "mahc": 2,
+        "tentinh": "tỉnh Bắc Ninh",
+        "truocsapnhap": "tỉnh Bắc Giang và tỉnh Bắc Ninh"
+    },
+    {
+        "id": 13,
+        "mahc": 4,
+        "tentinh": "thành phố Hải Phòng",
+        "truocsapnhap": "thành phố Hải Phòng và tỉnh Hải Dương"
+    },
+    {
+        "id": 14,
+        "mahc": 5,
+        "tentinh": "tỉnh Hưng Yên",
+        "truocsapnhap": "tỉnh Thái Bình và tỉnh Hưng Yên"
+    },
+    {
+        "id": 15,
+        "mahc": 6,
+        "tentinh": "tỉnh Ninh Bình",
+        "truocsapnhap": "tỉnh Hà Nam, tỉnh Nam Định và tỉnh Ninh Bình"
+    },
+    {
+        "id": 16,
+        "mahc": 16,
+        "tentinh": "tỉnh Thanh Hóa",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 17,
+        "mahc": 17,
+        "tentinh": "tỉnh Nghệ An",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 18,
+        "mahc": 18,
+        "tentinh": "tỉnh Hà Tĩnh",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 19,
+        "mahc": 19,
+        "tentinh": "tỉnh Quảng Trị",
+        "truocsapnhap": "tỉnh Quảng Bình và tỉnh Quảng Trị"
+    },
+    {
+        "id": 20,
+        "mahc": 20,
+        "tentinh": "thành phố Huế",
+        "truocsapnhap": "không sáp nhập"
+    },
+    {
+        "id": 21,
+        "mahc": 21,
+        "tentinh": "thành phố Đà Nẵng",
+        "truocsapnhap": "thành phố Đà Nẵng và tỉnh Quảng Nam"
+    },
+    {
+        "id": 22,
+        "mahc": 22,
+        "tentinh": "tỉnh Quảng Ngãi",
+        "truocsapnhap": "tỉnh Kon Tum và tỉnh Quảng Ngãi"
+    },
+    {
+        "id": 23,
+        "mahc": 23,
+        "tentinh": "tỉnh Khánh Hòa",
+        "truocsapnhap": "tỉnh Ninh Thuận và tỉnh Khánh Hòa"
+    },
+    {
+        "id": 24,
+        "mahc": 24,
+        "tentinh": "tỉnh Gia Lai",
+        "truocsapnhap": "tỉnh Bình Định và tỉnh Gia Lai"
+    },
+    {
+        "id": 25,
+        "mahc": 25,
+        "tentinh": "tỉnh Đắk Lắk",
+        "truocsapnhap": "tỉnh Phú Yên và tỉnh Đắk Lắk"
+    },
+    {
+        "id": 26,
+        "mahc": 26,
+        "tentinh": "tỉnh Lâm Đồng",
+        "truocsapnhap": "tỉnh Đắk Nông, tỉnh Bình Thuận và tỉnh Lâm Đồng"
+    },
+    {
+        "id": 27,
+        "mahc": 27,
+        "tentinh": "tỉnh Tây Ninh",
+        "truocsapnhap": "tỉnh Long An và tỉnh Tây Ninh"
+    },
+    {
+        "id": 28,
+        "mahc": 28,
+        "tentinh": "tỉnh Đồng Nai",
+        "truocsapnhap": "tỉnh Bình Phước và tỉnh Đồng Nai"
+    },
+    {
+        "id": 29,
+        "mahc": 29,
+        "tentinh": "thành phố Hồ Chí Minh",
+        "truocsapnhap": "TPHCM, tỉnh Bà Rịa - Vũng Tàu và tỉnh Bình Dương"
+    },
+    {
+        "id": 30,
+        "mahc": 30,
+        "tentinh": "tỉnh Vĩnh Long",
+        "truocsapnhap": "tỉnh Bến Tre, tỉnh Trà Vinh và tỉnh Vĩnh Long"
+    },
+    {
+        "id": 31,
+        "mahc": 31,
+        "tentinh": "tỉnh Đồng Tháp",
+        "truocsapnhap": "tỉnh Tiền Giang và tỉnh Đồng Tháp"
+    },
+    {
+        "id": 32,
+        "mahc": 32,
+        "tentinh": "tỉnh An Giang",
+        "truocsapnhap": "tỉnh Kiên Giang và tỉnh An Giang"
+    },
+    {
+        "id": 33,
+        "mahc": 33,
+        "tentinh": "thành phố Cần Thơ",
+        "truocsapnhap": "thành phố Cần Thơ, tỉnh Sóc Trăng và tỉnh Hậu Giang"
+    },
+    {
+        "id": 34,
+        "mahc": 34,
+        "tentinh": "tỉnh Cà Mau",
+        "truocsapnhap": "tỉnh Bạc Liêu và tỉnh Cà Mau"
+    }
+]
