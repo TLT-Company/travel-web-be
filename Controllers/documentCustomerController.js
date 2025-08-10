@@ -6,9 +6,12 @@ import fs from 'fs';
 import path from "path";
 import { fileURLToPath } from "url";
 import { LicenseManager, CaptureVisionRouter, EnumPresetTemplate } from "dynamsoft-capture-vision-for-node"
-LicenseManager.initLicense('');
+import dotenv from "dotenv";
 
-export const addCustomer = async (req, res) => {
+dotenv.config()
+LicenseManager.initLicense(process.env.LICENS_DYNAMSOFT);
+
+export const scanCCCDAndaddCustomer = async (req, res) => {
   try {
     const document_id = Number(req.params.id);
     if (isNaN(document_id)) {
@@ -23,13 +26,13 @@ export const addCustomer = async (req, res) => {
     }
 
     const files = req.files;
-    if (files.length == 0) {
-      return res.status(400).json({ message: "không có file nào được tải lên "});
+    if (!Array.isArray(files) || files.length === 0) {
+      return res.status(400).json({ message: "không có file nào được tải lên" });
     }
     const maps = new Map();
     const mapsValue = new Map();
     for (const file of files) {
-      const fileBuffer = await fs.readFileSync(file.path);
+      const fileBuffer = fs.readFileSync(file.path);
       let result = await CaptureVisionRouter.captureAsync(fileBuffer, EnumPresetTemplate.PT_READ_BARCODES_READ_RATE_FIRST);
 
       if (result.barcodeResultItems.length > 0) {

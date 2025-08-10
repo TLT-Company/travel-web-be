@@ -7,16 +7,17 @@ import {
   updateCustomer,
   deleteCustomer,
   addDocument,
-  addCustomer
+  scanCCCDAndaddCustomer
 } from "../Controllers/documentCustomerController.js";
 import { verifyAdmin } from '../utils/verifyToken.js'
 import { createUploadMiddleware } from "../middlewares/uploadImage.js";
+import { handleUploadErrors } from "../middlewares/handleUploadErrors.js"
 const uploadCCCD = createUploadMiddleware('uploads/cccd');
 
 const router = express.Router();
 
 // Get all document customer
-router.post("/cccd/:id", uploadCCCD.array("picture", 50), addCustomer);
+router.post("/scancccd/:id", verifyAdmin, uploadCCCD.array("images", 50), handleUploadErrors, scanCCCDAndaddCustomer);
 router.post("/", verifyAdmin, addDocument);
 router.get("/", verifyAdmin, getAllDocuments);
 router.get("/:id", verifyAdmin, getSingleDocument);
