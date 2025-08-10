@@ -1,0 +1,434 @@
+[
+  {
+    "id": 731,
+    "matinh": 3,
+    "ma": "0731",
+    "loai": "phường",
+    "tenhc": "An Sinh",
+    "maxa": 1914
+  },
+  {
+    "id": 732,
+    "matinh": 3,
+    "ma": "0732",
+    "loai": "xã",
+    "tenhc": "Ba Chẽ",
+    "maxa": 1896
+  },
+  {
+    "id": 733,
+    "matinh": 3,
+    "ma": "0733",
+    "loai": "phường",
+    "tenhc": "Bãi Cháy",
+    "maxa": 1883
+  },
+  {
+    "id": 734,
+    "matinh": 3,
+    "ma": "0734",
+    "loai": "phường",
+    "tenhc": "Bình Khê",
+    "maxa": 1874
+  },
+  {
+    "id": 735,
+    "matinh": 3,
+    "ma": "0735",
+    "loai": "xã",
+    "tenhc": "Bình Liêu",
+    "maxa": 1889
+  },
+  {
+    "id": 736,
+    "matinh": 3,
+    "ma": "0736",
+    "loai": "xã",
+    "tenhc": "Cái Chiên",
+    "maxa": 3315
+  },
+  {
+    "id": 737,
+    "matinh": 3,
+    "ma": "0737",
+    "loai": "phường",
+    "tenhc": "Cẩm Phả",
+    "maxa": 1887
+  },
+  {
+    "id": 738,
+    "matinh": 3,
+    "ma": "0738",
+    "loai": "phường",
+    "tenhc": "Cao Xanh",
+    "maxa": 1894
+  },
+  {
+    "id": 739,
+    "matinh": 3,
+    "ma": "0739",
+    "loai": "đặc khu",
+    "tenhc": "Cô Tô",
+    "maxa": 3308
+  },
+  {
+    "id": 740,
+    "matinh": 3,
+    "ma": "0740",
+    "loai": "phường",
+    "tenhc": "Cửa Ông",
+    "maxa": 1888
+  },
+  {
+    "id": 741,
+    "matinh": 3,
+    "ma": "0741",
+    "loai": "xã",
+    "tenhc": "Đầm Hà",
+    "maxa": 1906
+  },
+  {
+    "id": 742,
+    "matinh": 3,
+    "ma": "0742",
+    "loai": "xã",
+    "tenhc": "Điền Xá",
+    "maxa": 1890
+  },
+  {
+    "id": 743,
+    "matinh": 3,
+    "ma": "0743",
+    "loai": "phường",
+    "tenhc": "Đông Mai",
+    "maxa": 1893
+  },
+  {
+    "id": 744,
+    "matinh": 3,
+    "ma": "0744",
+    "loai": "xã",
+    "tenhc": "Đông Ngũ",
+    "maxa": 1910
+  },
+  {
+    "id": 745,
+    "matinh": 3,
+    "ma": "0745",
+    "loai": "phường",
+    "tenhc": "Đông Triều",
+    "maxa": 1915
+  },
+  {
+    "id": 746,
+    "matinh": 3,
+    "ma": "0746",
+    "loai": "xã",
+    "tenhc": "Đường Hoa",
+    "maxa": 1909
+  },
+  {
+    "id": 747,
+    "matinh": 3,
+    "ma": "0747",
+    "loai": "phường",
+    "tenhc": "Hà An",
+    "maxa": 1879
+  },
+  {
+    "id": 748,
+    "matinh": 3,
+    "ma": "0748",
+    "loai": "phường",
+    "tenhc": "Hà Lầm",
+    "maxa": 1884
+  },
+  {
+    "id": 749,
+    "matinh": 3,
+    "ma": "0749",
+    "loai": "phường",
+    "tenhc": "Hạ Long",
+    "maxa": 3313
+  },
+  {
+    "id": 750,
+    "matinh": 3,
+    "ma": "0750",
+    "loai": "phường",
+    "tenhc": "Hà Tu",
+    "maxa": 3299
+  },
+  {
+    "id": 751,
+    "matinh": 3,
+    "ma": "0751",
+    "loai": "xã",
+    "tenhc": "Hải Hòa",
+    "maxa": 1913
+  },
+  {
+    "id": 752,
+    "matinh": 3,
+    "ma": "0752",
+    "loai": "xã",
+    "tenhc": "Hải Lạng",
+    "maxa": 1899
+  },
+  {
+    "id": 753,
+    "matinh": 3,
+    "ma": "0753",
+    "loai": "xã",
+    "tenhc": "Hải Ninh",
+    "maxa": 1902
+  },
+  {
+    "id": 754,
+    "matinh": 3,
+    "ma": "0754",
+    "loai": "xã",
+    "tenhc": "Hải Sơn",
+    "maxa": 1901
+  },
+  {
+    "id": 755,
+    "matinh": 3,
+    "ma": "0755",
+    "loai": "phường",
+    "tenhc": "Hiệp Hòa",
+    "maxa": 1892
+  },
+  {
+    "id": 756,
+    "matinh": 3,
+    "ma": "0756",
+    "loai": "phường",
+    "tenhc": "Hoàng Quế",
+    "maxa": 1875
+  },
+  {
+    "id": 757,
+    "matinh": 3,
+    "ma": "0757",
+    "loai": "phường",
+    "tenhc": "Hoành Bồ",
+    "maxa": 1880
+  },
+  {
+    "id": 758,
+    "matinh": 3,
+    "ma": "0758",
+    "loai": "xã",
+    "tenhc": "Hoành Mô",
+    "maxa": 1907
+  },
+  {
+    "id": 759,
+    "matinh": 3,
+    "ma": "0759",
+    "loai": "phường",
+    "tenhc": "Hồng Gai",
+    "maxa": 3309
+  },
+  {
+    "id": 760,
+    "matinh": 3,
+    "ma": "0760",
+    "loai": "xã",
+    "tenhc": "Kỳ Thượng",
+    "maxa": 1897
+  },
+  {
+    "id": 761,
+    "matinh": 3,
+    "ma": "0761",
+    "loai": "phường",
+    "tenhc": "Liên Hòa",
+    "maxa": 1895
+  },
+  {
+    "id": 762,
+    "matinh": 3,
+    "ma": "0762",
+    "loai": "xã",
+    "tenhc": "Lục Hồn",
+    "maxa": 1908
+  },
+  {
+    "id": 763,
+    "matinh": 3,
+    "ma": "0763",
+    "loai": "xã",
+    "tenhc": "Lương Minh",
+    "maxa": 1876
+  },
+  {
+    "id": 764,
+    "matinh": 3,
+    "ma": "0764",
+    "loai": "phường",
+    "tenhc": "Mạo Khê",
+    "maxa": 1916
+  },
+  {
+    "id": 765,
+    "matinh": 3,
+    "ma": "0765",
+    "loai": "phường",
+    "tenhc": "Móng Cái 1",
+    "maxa": 1918
+  },
+  {
+    "id": 766,
+    "matinh": 3,
+    "ma": "0766",
+    "loai": "phường",
+    "tenhc": "Móng Cái 2",
+    "maxa": 1912
+  },
+  {
+    "id": 767,
+    "matinh": 3,
+    "ma": "0767",
+    "loai": "phường",
+    "tenhc": "Móng Cái 3",
+    "maxa": 1904
+  },
+  {
+    "id": 768,
+    "matinh": 3,
+    "ma": "0768",
+    "loai": "phường",
+    "tenhc": "Mông Dương",
+    "maxa": 1886
+  },
+  {
+    "id": 769,
+    "matinh": 3,
+    "ma": "0769",
+    "loai": "phường",
+    "tenhc": "Phong Cốc",
+    "maxa": 1891
+  },
+  {
+    "id": 770,
+    "matinh": 3,
+    "ma": "0770",
+    "loai": "xã",
+    "tenhc": "Quảng Đức",
+    "maxa": 1911
+  },
+  {
+    "id": 771,
+    "matinh": 3,
+    "ma": "0771",
+    "loai": "xã",
+    "tenhc": "Quảng Hà",
+    "maxa": 1903
+  },
+  {
+    "id": 772,
+    "matinh": 3,
+    "ma": "0772",
+    "loai": "phường",
+    "tenhc": "Quang Hanh",
+    "maxa": 1885
+  },
+  {
+    "id": 773,
+    "matinh": 3,
+    "ma": "0773",
+    "loai": "xã",
+    "tenhc": "Quảng La",
+    "maxa": 1877
+  },
+  {
+    "id": 774,
+    "matinh": 3,
+    "ma": "0774",
+    "loai": "xã",
+    "tenhc": "Quảng Tân",
+    "maxa": 1905
+  },
+  {
+    "id": 775,
+    "matinh": 3,
+    "ma": "0775",
+    "loai": "phường",
+    "tenhc": "Quảng Yên",
+    "maxa": 1900
+  },
+  {
+    "id": 776,
+    "matinh": 3,
+    "ma": "0776",
+    "loai": "xã",
+    "tenhc": "Thống Nhất",
+    "maxa": 1881
+  },
+  {
+    "id": 777,
+    "matinh": 3,
+    "ma": "0777",
+    "loai": "xã",
+    "tenhc": "Tiên Yên",
+    "maxa": 1898
+  },
+  {
+    "id": 778,
+    "matinh": 3,
+    "ma": "0778",
+    "loai": "phường",
+    "tenhc": "Tuần Châu",
+    "maxa": 1917
+  },
+  {
+    "id": 779,
+    "matinh": 3,
+    "ma": "0779",
+    "loai": "phường",
+    "tenhc": "Uông Bí",
+    "maxa": 1872
+  },
+  {
+    "id": 780,
+    "matinh": 3,
+    "ma": "0780",
+    "loai": "đặc khu",
+    "tenhc": "Vân Đồn",
+    "maxa": 3314
+  },
+  {
+    "id": 781,
+    "matinh": 3,
+    "ma": "0781",
+    "loai": "phường",
+    "tenhc": "Vàng Danh",
+    "maxa": 1882
+  },
+  {
+    "id": 782,
+    "matinh": 3,
+    "ma": "0782",
+    "loai": "phường",
+    "tenhc": "Việt Hưng",
+    "maxa": 1878
+  },
+  {
+    "id": 783,
+    "matinh": 3,
+    "ma": "0783",
+    "loai": "xã",
+    "tenhc": "Vĩnh Thực",
+    "maxa": 3316
+  },
+  {
+    "id": 784,
+    "matinh": 3,
+    "ma": "0784",
+    "loai": "phường",
+    "tenhc": "Yên Tử",
+    "maxa": 1873
+  }
+]

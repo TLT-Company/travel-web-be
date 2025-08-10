@@ -60,8 +60,10 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
       let province = '';
       let commune = '';
       let village = '';
+      let district = '';
       if (parts.length >= 4) {
         province = parts[parts.length - 1];
+        district = parts[parts.length - 2];
         commune = parts[parts.length - 3];
         village = parts[parts.length - 4];
       } else {
@@ -69,7 +71,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
         continue;
       }
 
-      const provinceAfterMerge = findAfterMerge(province)
+      const provinceAfterMerge = findProvinesAfterMerge(province, district, commune);
 
       // find customer by card_id
       let customer = await Customer.findOne({ where: { card_id: items[0] } });
@@ -100,8 +102,8 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           day_of_birth: parseDateDDMMYYYY(items[3]),
           card_created_at: parseDateDDMMYYYY(items[6]),
           gender: items[4],
-          province: cleanLocationName(provinceAfterMerge),
-          commune: commune,
+          province: provinceAfterMerge ? cleanLocationName(provinceAfterMerge.newProvince) : null,
+          commune: provinceAfterMerge ? cleanLocationName(provinceAfterMerge.newWard) : null,
           village: village,
           address: items[5]
         });
@@ -121,8 +123,8 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           day_of_birth: parseDateDDMMYYYY(items[3]),
           card_created_at: parseDateDDMMYYYY(items[6]),
           gender: items[4],
-          province: cleanLocationName(provinceAfterMerge),
-          commune: commune,
+          province: provinceAfterMerge ? cleanLocationName(provinceAfterMerge.newProvince) : null,
+          commune: provinceAfterMerge ? cleanLocationName(provinceAfterMerge.newWard) : null,
           village: village,
           address: items[5]
         });
@@ -156,28 +158,19 @@ const parseDateDDMMYYYY = (str) => {
 // Đọc file JSON
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const tinhFilePath = path.join(__dirname, "..", "data", "tinh_rutgon.json");
-const data = JSON.parse(fs.readFileSync(tinhFilePath, 'utf8'));
-
-const findAfterMerge = (provinceName) => {
-
-  let result = data.find(item =>
-    item.truocsapnhap.toLowerCase().includes(provinceName.toLowerCase())
+const proviesFilePath = path.join(__dirname, "..", "data", "tinh_xa_rutgon.json");
+const dataProvines = JSON.parse(fs.readFileSync(proviesFilePath, 'utf8'));
+const findProvinesAfterMerge = (provine, district, commune) => {
+  console.log(dataProvines.length)
+  let result = dataProvines.find(item =>
+    item.oldProvince.toLowerCase().includes(provine.toLowerCase())
+    && item.oldDistrict.toLowerCase().includes(district.toLowerCase())
+    && item.oldWard.toLowerCase().includes(commune.toLowerCase())
   );
 
-  if (!result) {
-    result = data.find(item =>
-      item.tentinh.toLowerCase().includes(provinceName.toLowerCase())
-    );
-  }
+  return result;
 
-  if (!result) {
-    return provinceName;
-  }
-
-  return result.tentinh;
 }
-
 const cleanLocationName = (name) => {
   return name.replace(/^(Thủ đô |tỉnh |Tỉnh |thành phố |Thành phố |Quận |Huyện |Thị xã |Phường |Xã |Thị trấn )/, '').trim();
 }

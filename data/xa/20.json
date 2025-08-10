@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1832,
+    "matinh": 20,
+    "ma": "1832",
+    "loai": "xã",
+    "tenhc": "A Lưới 1",
+    "maxa": 1729
+  },
+  {
+    "id": 1833,
+    "matinh": 20,
+    "ma": "1833",
+    "loai": "xã",
+    "tenhc": "A Lưới 2",
+    "maxa": 1728
+  },
+  {
+    "id": 1834,
+    "matinh": 20,
+    "ma": "1834",
+    "loai": "xã",
+    "tenhc": "A Lưới 3",
+    "maxa": 1731
+  },
+  {
+    "id": 1835,
+    "matinh": 20,
+    "ma": "1835",
+    "loai": "xã",
+    "tenhc": "A Lưới 4",
+    "maxa": 1732
+  },
+  {
+    "id": 1836,
+    "matinh": 20,
+    "ma": "1836",
+    "loai": "xã",
+    "tenhc": "A Lưới 5",
+    "maxa": 1730
+  },
+  {
+    "id": 1837,
+    "matinh": 20,
+    "ma": "1837",
+    "loai": "phường",
+    "tenhc": "An Cựu",
+    "maxa": 1706
+  },
+  {
+    "id": 1838,
+    "matinh": 20,
+    "ma": "1838",
+    "loai": "xã",
+    "tenhc": "Bình Điền",
+    "maxa": 1726
+  },
+  {
+    "id": 1839,
+    "matinh": 20,
+    "ma": "1839",
+    "loai": "xã",
+    "tenhc": "Chân Mây - Lăng Cô",
+    "maxa": 1734
+  },
+  {
+    "id": 1840,
+    "matinh": 20,
+    "ma": "1840",
+    "loai": "xã",
+    "tenhc": "Đan Điền",
+    "maxa": 1713
+  },
+  {
+    "id": 1841,
+    "matinh": 20,
+    "ma": "1841",
+    "loai": "phường",
+    "tenhc": "Dương Nỗ",
+    "maxa": 1717
+  },
+  {
+    "id": 1842,
+    "matinh": 20,
+    "ma": "1842",
+    "loai": "phường",
+    "tenhc": "Hóa Châu",
+    "maxa": 1714
+  },
+  {
+    "id": 1843,
+    "matinh": 20,
+    "ma": "1843",
+    "loai": "xã",
+    "tenhc": "Hưng Lộc",
+    "maxa": 1737
+  },
+  {
+    "id": 1844,
+    "matinh": 20,
+    "ma": "1844",
+    "loai": "phường",
+    "tenhc": "Hương An",
+    "maxa": 1707
+  },
+  {
+    "id": 1845,
+    "matinh": 20,
+    "ma": "1845",
+    "loai": "phường",
+    "tenhc": "Hương Thủy",
+    "maxa": 1723
+  },
+  {
+    "id": 1846,
+    "matinh": 20,
+    "ma": "1846",
+    "loai": "phường",
+    "tenhc": "Hương Trà",
+    "maxa": 1725
+  },
+  {
+    "id": 1847,
+    "matinh": 20,
+    "ma": "1847",
+    "loai": "xã",
+    "tenhc": "Khe Tre",
+    "maxa": 1738
+  },
+  {
+    "id": 1848,
+    "matinh": 20,
+    "ma": "1848",
+    "loai": "phường",
+    "tenhc": "Kim Long",
+    "maxa": 1727
+  },
+  {
+    "id": 1849,
+    "matinh": 20,
+    "ma": "1849",
+    "loai": "phường",
+    "tenhc": "Kim Trà",
+    "maxa": 1724
+  },
+  {
+    "id": 1850,
+    "matinh": 20,
+    "ma": "1850",
+    "loai": "xã",
+    "tenhc": "Lộc An",
+    "maxa": 1736
+  },
+  {
+    "id": 1851,
+    "matinh": 20,
+    "ma": "1851",
+    "loai": "xã",
+    "tenhc": "Long Quảng",
+    "maxa": 1740
+  },
+  {
+    "id": 1852,
+    "matinh": 20,
+    "ma": "1852",
+    "loai": "phường",
+    "tenhc": "Mỹ Thượng",
+    "maxa": 1718
+  },
+  {
+    "id": 1853,
+    "matinh": 20,
+    "ma": "1853",
+    "loai": "xã",
+    "tenhc": "Nam Đông",
+    "maxa": 1739
+  },
+  {
+    "id": 1854,
+    "matinh": 20,
+    "ma": "1854",
+    "loai": "phường",
+    "tenhc": "Phong Điền",
+    "maxa": 1712
+  },
+  {
+    "id": 1855,
+    "matinh": 20,
+    "ma": "1855",
+    "loai": "phường",
+    "tenhc": "Phong Dinh",
+    "maxa": 1711
+  },
+  {
+    "id": 1856,
+    "matinh": 20,
+    "ma": "1856",
+    "loai": "phường",
+    "tenhc": "Phong Phú",
+    "maxa": 1710
+  },
+  {
+    "id": 1857,
+    "matinh": 20,
+    "ma": "1857",
+    "loai": "phường",
+    "tenhc": "Phong Quảng",
+    "maxa": 1751
+  },
+  {
+    "id": 1858,
+    "matinh": 20,
+    "ma": "1858",
+    "loai": "phường",
+    "tenhc": "Phong Thái",
+    "maxa": 1741
+  },
+  {
+    "id": 1859,
+    "matinh": 20,
+    "ma": "1859",
+    "loai": "phường",
+    "tenhc": "Phú Bài",
+    "maxa": 1722
+  },
+  {
+    "id": 1860,
+    "matinh": 20,
+    "ma": "1860",
+    "loai": "xã",
+    "tenhc": "Phú Hồ",
+    "maxa": 1720
+  },
+  {
+    "id": 1861,
+    "matinh": 20,
+    "ma": "1861",
+    "loai": "xã",
+    "tenhc": "Phú Lộc",
+    "maxa": 1733
+  },
+  {
+    "id": 1862,
+    "matinh": 20,
+    "ma": "1862",
+    "loai": "xã",
+    "tenhc": "Phú Vang",
+    "maxa": 1721
+  },
+  {
+    "id": 1863,
+    "matinh": 20,
+    "ma": "1863",
+    "loai": "xã",
+    "tenhc": "Phú Vinh",
+    "maxa": 1719
+  },
+  {
+    "id": 1864,
+    "matinh": 20,
+    "ma": "1864",
+    "loai": "phường",
+    "tenhc": "Phú Xuân",
+    "maxa": 1703
+  },
+  {
+    "id": 1865,
+    "matinh": 20,
+    "ma": "1865",
+    "loai": "xã",
+    "tenhc": "Quảng Điền",
+    "maxa": 1715
+  },
+  {
+    "id": 1866,
+    "matinh": 20,
+    "ma": "1866",
+    "loai": "phường",
+    "tenhc": "Thanh Thủy",
+    "maxa": 1709
+  },
+  {
+    "id": 1867,
+    "matinh": 20,
+    "ma": "1867",
+    "loai": "phường",
+    "tenhc": "Thuận An",
+    "maxa": 1716
+  },
+  {
+    "id": 1868,
+    "matinh": 20,
+    "ma": "1868",
+    "loai": "phường",
+    "tenhc": "Thuận Hóa",
+    "maxa": 1705
+  },
+  {
+    "id": 1869,
+    "matinh": 20,
+    "ma": "1869",
+    "loai": "phường",
+    "tenhc": "Thủy Xuân",
+    "maxa": 1708
+  },
+  {
+    "id": 1870,
+    "matinh": 20,
+    "ma": "1870",
+    "loai": "xã",
+    "tenhc": "Vinh Lộc",
+    "maxa": 1735
+  },
+  {
+    "id": 1871,
+    "matinh": 20,
+    "ma": "1871",
+    "loai": "phường",
+    "tenhc": "Vỹ Dạ",
+    "maxa": 1704
+  }
+]

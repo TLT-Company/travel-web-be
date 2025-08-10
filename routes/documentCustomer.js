@@ -12,7 +12,7 @@ import {
 import { verifyAdmin } from '../utils/verifyToken.js'
 import { createUploadMiddleware } from "../middlewares/uploadImage.js";
 import { handleUploadErrors } from "../middlewares/handleUploadErrors.js"
-const uploadCCCD = createUploadMiddleware('uploads/cccd');
+const uploadCCCD = createUploadMiddleware('uploads/cccd/customers');
 
 const router = express.Router();
 
