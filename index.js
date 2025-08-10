@@ -12,6 +12,7 @@ import documentExportRoute from "./routes/documentExport.js";
 import documentCustomerRoute from "./routes/documentCustomer.js";
 import taskRoute from "./routes/tasks.js";
 import uploadRoute from './routes/upload.js'
+import provinceRoute from './routes/province.js'
 import { sequelize } from "./config/database.js";
 import "./models/index.js";
 import path from 'path';
@@ -57,6 +58,7 @@ app.use("/api/v1/tasks", taskRoute);
 app.use("/api/v1/bookings", bookingRoute);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/v1/uploads", uploadRoute);
+app.use("/api/v1/provinces", provinceRoute);
 
 app.listen(port, () => {
   connect();
