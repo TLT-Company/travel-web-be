@@ -5,17 +5,21 @@ export async function up(queryInterface, Sequelize) {
   const tableDefinition = await queryInterface.describeTable(table);
 
   if (!tableDefinition.role) {
-    await queryInterface.addColumn(table, "slug_name", {
-      type: Sequelize.STRING,
-      allowNull: false,
-      defaultValue: "",
-    });
+    if (!tableDefinition.slug_name) {
+      await queryInterface.addColumn(table, "slug_name", {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "",
+      });
+    }
 
-    await queryInterface.addColumn(table, "slug_location", {
-      type: Sequelize.STRING,
-      allowNull: false,
-      defaultValue: "",
-    });
+    if (!tableDefinition.slug_location) {
+      await queryInterface.addColumn(table, "slug_location", {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "",
+      });
+    }
   }
 }
 

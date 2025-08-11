@@ -56,21 +56,6 @@ const Customer = sequelize.define(
       allowNull: true,
       comment: "Thôn/Xóm",
     },
-    province: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      comment: "Tỉnh/Thành phố",
-    },
-    district: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      comment: "Quận/Huyện",
-    },
-    commune: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-      comment: "Xã/Phường",
-    },
     place_of_birth: {
       type: DataTypes.STRING(100),
       allowNull: true,
@@ -121,6 +106,10 @@ const Customer = sequelize.define(
         isIn: [["pending", "verified", "rejected"]],
       },
       comment: "pending | verified | rejected",
+    },
+    address_mapping_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   {
