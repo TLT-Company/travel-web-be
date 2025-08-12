@@ -2,6 +2,7 @@ import DocumentExportHistory from "../models/DocumentExportHistory.js";
 import Customer from "../models/Customer.js";
 import DocumentCustomer from "../models/DocumentCustomer.js";
 import Document from "../models/Document.js";
+import AddressMapping from "../models/AddressMapping.js";
 import ExcelJS from "exceljs";
 import fs from "fs";
 import archiver from "archiver";
@@ -11,6 +12,21 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const CSV_HEADERS = [
+  "document_number",
+  "full_name",
+  "gender",
+  "day_of_birth",
+  "address",
+  "village",
+  "place_of_birth",
+  "phone_number",
+  "id_card_number",
+  "card_created_at",
+  "province_new",
+  "commune_new"
+];
 
 // Get all document export histories
 export const getAllDocumentExportHistories = async (req, res) => {
@@ -645,5 +661,162 @@ export const downloadFileById = async (req, res) => {
         message: "Failed to download file",
       });
     }
+  }
+};
+
+const getAllCustomers = async () => {
+  return await Customer.findAll({
+    include: [
+      {
+        model: DocumentCustomer,
+        as: "documentCustomers",
+        include: [
+          {
+            model: Document,
+            as: "document",
+            attributes: ["document_number"],
+          },
+        ],
+      },
+      {
+        model: AddressMapping,
+        as: "address_mapping",
+        attributes: ["province_new", "commune_new"],
+      }
+    ],
+    order: [["created_at", "DESC"]],
+    raw: false,
+  });
+};
+
+const generateCustomerCSV = (customers) => {
+  let csvContent = "\uFEFF";
+  csvContent += CSV_HEADERS.join(",") + "\n";
+
+  customers.forEach((customer) => {
+    const row = buildCustomerRow(customer);
+    csvContent += row.join(",") + "\n";
+  });
+
+  return csvContent;
+};
+
+const buildCustomerRow = (customer) => {
+  const documentNumber = extractDocumentNumber(customer);
+  const addressData = extractAddressData(customer);
+  const formattedDates = formatCustomerDates(customer);
+
+  return [
+    `"${documentNumber}"`,
+    `"${customer.full_name || ""}"`,
+    `"${customer.gender || ""}"`,
+    `"${formattedDates.dayOfBirth}"`,
+    `"${customer.address || ""}"`,
+    `"${customer.village || ""}"`,
+    `"${customer.place_of_birth || ""}"`,
+    `"${customer.phone_number || ""}"`,
+    `"${customer.id_card_number || ""}"`,
+    `"${formattedDates.cardCreatedAt}"`,
+    `"${addressData.provinceNew}"`,
+    `"${addressData.communeNew}"`
+  ];
+};
+
+const extractDocumentNumber = (customer) => {
+  return customer.documentCustomers && customer.documentCustomers.length > 0
+    ? customer.documentCustomers[0].document.document_number
+    : "";
+};
+
+const extractAddressData = (customer) => {
+  return {
+    provinceNew: customer.address_mapping ? customer.address_mapping.province_new : "",
+    communeNew: customer.address_mapping ? customer.address_mapping.commune_new : ""
+  };
+};
+
+const formatCustomerDates = (customer) => {
+  return {
+    dayOfBirth: customer.day_of_birth ? moment(customer.day_of_birth).format("DD/MM/YYYY") : "",
+    cardCreatedAt: customer.card_created_at ? moment(customer.card_created_at).format("DD/MM/YYYY") : ""
+  };
+};
+
+const generateFileName = (prefix, extension = "csv") => {
+  const timestamp = moment().format("YYYYMMDD_HHmmss");
+  return `${prefix}_${timestamp}.${extension}`;
+};
+
+const writeCSVFile = (filePath, csvContent) => {
+  createExportDirectory(filePath);
+  fs.writeFileSync(filePath, csvContent, "utf8");
+};
+
+const createExportDirectory = (filePath) => {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+};
+
+const updateExportHistory = async (history, filePath, status = "success") => {
+  history.file_path = filePath;
+  history.status = status;
+  await history.save();
+};
+
+const handleExportError = async (exportHistory, error) => {
+  if (exportHistory) {
+    await updateExportHistory(exportHistory, null, "failed");
+  }
+  console.error("Export error:", error);
+  throw error;
+};
+
+export const exportAllCustomersToCSV = async (req, res) => {
+  let exportHistory = null;
+
+  try {
+    const customers = await getAllCustomers();
+
+    if (customers.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Không có dữ liệu khách hàng để export",
+      });
+    }
+
+    const csvContent = generateCustomerCSV(customers);
+    const fileName = generateFileName("customers");
+    const filePath = `./public/export/customer_csv/${fileName}`;
+
+    // Create export history
+    exportHistory = await DocumentExportHistory.create({
+      kind: "customer_list_csv",
+      file_name: fileName,
+      status: "processing",
+    });
+
+    // Write CSV file
+    writeCSVFile(filePath, csvContent);
+
+    // Update export history
+    await updateExportHistory(exportHistory, filePath);
+
+    res.status(200).json({
+      success: true,
+      message: "Export CSV thành công!",
+      data: {
+        export_id: exportHistory.id,
+        file_name: fileName,
+        record_count: customers.length,
+      },
+    });
+  } catch (error) {
+    await handleExportError(exportHistory, error);
+    res.status(500).json({
+      success: false,
+      message: "Lỗi khi export CSV",
+    });
   }
 };
