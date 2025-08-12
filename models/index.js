@@ -11,6 +11,7 @@ import Document from "./Document.js";
 import DocumentCustomer from "./DocumentCustomer.js";
 import Permission from "./Permission.js";
 import AdminPermission from "./AdminPermission.js";
+import AddressMapping from "./AddressMapping.js"
 
 // User relationships
 User.hasOne(Customer, { foreignKey: "user_id", as: "customer" });
@@ -93,6 +94,17 @@ Permission.belongsToMany(Admin, {
   as: "admins",
 });
 
+// AddressMapping relationships
+AddressMapping.hasMany(Customer, {
+  foreignKey: "address_mapping_id",
+  as: "customers",
+});
+
+Customer.belongsTo(AddressMapping, {
+  foreignKey: "address_mapping_id",
+  as: "address_mapping",
+});
+
 export {
   User,
   Admin,
@@ -107,4 +119,5 @@ export {
   DocumentCustomer,
   Permission,
   AdminPermission,
+  AddressMapping,
 };
