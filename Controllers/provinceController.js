@@ -25,9 +25,7 @@ export const getAllCommunesOfProvinces = async (req, res) => {
     return res.status(400).json({ error: "Thiếu hoặc sai định dạng 'id'" });
   }
 
-  console.log(dataDir)
   const filePath = path.join(dataDir, `${id}.json`);
-  console.log(filePath)
 
   try {
     const fileContent = await readFile(filePath, "utf-8");

@@ -11,6 +11,7 @@ import dotenv from "dotenv";
 dotenv.config()
 LicenseManager.initLicense(process.env.LICENS_DYNAMSOFT);
 
+// scan CCCD
 export const scanCCCDAndaddCustomer = async (req, res) => {
   try {
     const document_id = Number(req.params.id);
@@ -60,9 +61,8 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
       const province = parts[parts.length - 1];
       const district = parts[parts.length - 2];
       const commune = parts[parts.length - 3];
-      const  village = parts[parts.length - 4];
+      const village = parts[parts.length - 4];
 
-      // const provinceAfterMerge = findProvinesAfterMerge(province, district, commune);
       await sequelize.transaction(async (t) => {
         const [record] = await AddressMapping.findOrCreate({
           where: { 
@@ -162,6 +162,7 @@ const parseDateDDMMYYYY = (str) => {
   return new Date(year, month - 1, day);
 }
 
+// add document
 export const addDocument = async (req, res) => {
   try {
     const document_number = req.body.document_number.trim();
@@ -281,7 +282,7 @@ export const getSingleDocument = async (req, res) => {
           }
         ],
         where: whereCondition,
-        order: [['created_at', 'DESC']],
+        order: [['updated_at', 'DESC']],
         // raw: true,
       });
 
@@ -533,6 +534,7 @@ export const updateCustomer = async (req, res) => {
    }
 }
 
+// delete customer from document
 export const deleteCustomer = async (req, res) => {
    try {
     const {id, customer_id} = req.params;
