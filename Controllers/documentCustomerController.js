@@ -101,7 +101,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
 
           // If the customer exists in the document but has been soft-deleted -> restore it
           if (exists && exists.deleted_at) {
-            await exists.restore();
+            await exists.restore({ transaction: t });
           }
 
           // update customer
@@ -407,7 +407,7 @@ export const addCustomerToDocument = async (req, res) => {
 
           // If the customer exists in the document but has been soft-deleted -> restore it
           if (exists && exists.deleted_at) {
-            await exists.restore();
+            await exists.restore();{ transaction: t }
           }
 
           // update customer
