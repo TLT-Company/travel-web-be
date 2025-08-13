@@ -1,0 +1,770 @@
+[
+  {
+    "id": 1968,
+    "matinh": 22,
+    "ma": "1968",
+    "loai": "xã",
+    "tenhc": "An Phú",
+    "maxa": 1809
+  },
+  {
+    "id": 1969,
+    "matinh": 22,
+    "ma": "1969",
+    "loai": "xã",
+    "tenhc": "Ba Dinh",
+    "maxa": 1794
+  },
+  {
+    "id": 1970,
+    "matinh": 22,
+    "ma": "1970",
+    "loai": "xã",
+    "tenhc": "Ba Động",
+    "maxa": 1793
+  },
+  {
+    "id": 1971,
+    "matinh": 22,
+    "ma": "1971",
+    "loai": "xã",
+    "tenhc": "Ba Gia",
+    "maxa": 1763
+  },
+  {
+    "id": 1972,
+    "matinh": 22,
+    "ma": "1972",
+    "loai": "xã",
+    "tenhc": "Ba Tô",
+    "maxa": 1798
+  },
+  {
+    "id": 1973,
+    "matinh": 22,
+    "ma": "1973",
+    "loai": "xã",
+    "tenhc": "Ba Tơ",
+    "maxa": 1791
+  },
+  {
+    "id": 1974,
+    "matinh": 22,
+    "ma": "1974",
+    "loai": "xã",
+    "tenhc": "Ba Vì",
+    "maxa": 1796
+  },
+  {
+    "id": 1975,
+    "matinh": 22,
+    "ma": "1975",
+    "loai": "xã",
+    "tenhc": "Ba Vinh",
+    "maxa": 1792
+  },
+  {
+    "id": 1976,
+    "matinh": 22,
+    "ma": "1976",
+    "loai": "xã",
+    "tenhc": "Ba Xa",
+    "maxa": 1800
+  },
+  {
+    "id": 1977,
+    "matinh": 22,
+    "ma": "1977",
+    "loai": "xã",
+    "tenhc": "Bình Chương",
+    "maxa": 1769
+  },
+  {
+    "id": 1978,
+    "matinh": 22,
+    "ma": "1978",
+    "loai": "xã",
+    "tenhc": "Bình Minh",
+    "maxa": 1768
+  },
+  {
+    "id": 1979,
+    "matinh": 22,
+    "ma": "1979",
+    "loai": "xã",
+    "tenhc": "Bình Sơn",
+    "maxa": 1753
+  },
+  {
+    "id": 1980,
+    "matinh": 22,
+    "ma": "1980",
+    "loai": "xã",
+    "tenhc": "Bờ Y",
+    "maxa": 453
+  },
+  {
+    "id": 1981,
+    "matinh": 22,
+    "ma": "1981",
+    "loai": "xã",
+    "tenhc": "Cà Đam",
+    "maxa": 1774
+  },
+  {
+    "id": 1982,
+    "matinh": 22,
+    "ma": "1982",
+    "loai": "phường",
+    "tenhc": "Cẩm Thành",
+    "maxa": 1795
+  },
+  {
+    "id": 1983,
+    "matinh": 22,
+    "ma": "1983",
+    "loai": "phường",
+    "tenhc": "Đăk Bla",
+    "maxa": 554
+  },
+  {
+    "id": 1984,
+    "matinh": 22,
+    "ma": "1984",
+    "loai": "phường",
+    "tenhc": "Đăk Cấm",
+    "maxa": 1747
+  },
+  {
+    "id": 1985,
+    "matinh": 22,
+    "ma": "1985",
+    "loai": "xã",
+    "tenhc": "Đăk Hà",
+    "maxa": 559
+  },
+  {
+    "id": 1986,
+    "matinh": 22,
+    "ma": "1986",
+    "loai": "xã",
+    "tenhc": "Đăk Kôi",
+    "maxa": 1745
+  },
+  {
+    "id": 1987,
+    "matinh": 22,
+    "ma": "1987",
+    "loai": "xã",
+    "tenhc": "Đăk Long",
+    "maxa": 444
+  },
+  {
+    "id": 1988,
+    "matinh": 22,
+    "ma": "1988",
+    "loai": "xã",
+    "tenhc": "Đăk Mar",
+    "maxa": 558
+  },
+  {
+    "id": 1989,
+    "matinh": 22,
+    "ma": "1989",
+    "loai": "xã",
+    "tenhc": "Đăk Môn",
+    "maxa": 445
+  },
+  {
+    "id": 1990,
+    "matinh": 22,
+    "ma": "1990",
+    "loai": "xã",
+    "tenhc": "Đăk Pék",
+    "maxa": 562
+  },
+  {
+    "id": 1991,
+    "matinh": 22,
+    "ma": "1991",
+    "loai": "xã",
+    "tenhc": "Đăk Plô",
+    "maxa": 561
+  },
+  {
+    "id": 1992,
+    "matinh": 22,
+    "ma": "1992",
+    "loai": "xã",
+    "tenhc": "Đăk Pxi",
+    "maxa": 451
+  },
+  {
+    "id": 1993,
+    "matinh": 22,
+    "ma": "1993",
+    "loai": "xã",
+    "tenhc": "Đăk Rơ Wa",
+    "maxa": 557
+  },
+  {
+    "id": 1994,
+    "matinh": 22,
+    "ma": "1994",
+    "loai": "xã",
+    "tenhc": "Đăk Rve",
+    "maxa": 1748
+  },
+  {
+    "id": 1995,
+    "matinh": 22,
+    "ma": "1995",
+    "loai": "xã",
+    "tenhc": "Đăk Sao",
+    "maxa": 447
+  },
+  {
+    "id": 1996,
+    "matinh": 22,
+    "ma": "1996",
+    "loai": "xã",
+    "tenhc": "Đăk Tô",
+    "maxa": 455
+  },
+  {
+    "id": 1997,
+    "matinh": 22,
+    "ma": "1997",
+    "loai": "xã",
+    "tenhc": "Đăk Tờ Kan",
+    "maxa": 448
+  },
+  {
+    "id": 1998,
+    "matinh": 22,
+    "ma": "1998",
+    "loai": "xã",
+    "tenhc": "Đăk Ui",
+    "maxa": 452
+  },
+  {
+    "id": 1999,
+    "matinh": 22,
+    "ma": "1999",
+    "loai": "xã",
+    "tenhc": "Đặng Thùy Trâm",
+    "maxa": 1797
+  },
+  {
+    "id": 2000,
+    "matinh": 22,
+    "ma": "2000",
+    "loai": "xã",
+    "tenhc": "Đình Cương",
+    "maxa": 1779
+  },
+  {
+    "id": 2001,
+    "matinh": 22,
+    "ma": "2001",
+    "loai": "xã",
+    "tenhc": "Đông Sơn",
+    "maxa": 1810
+  },
+  {
+    "id": 2002,
+    "matinh": 22,
+    "ma": "2002",
+    "loai": "xã",
+    "tenhc": "Đông Trà Bồng",
+    "maxa": 1767
+  },
+  {
+    "id": 2003,
+    "matinh": 22,
+    "ma": "2003",
+    "loai": "xã",
+    "tenhc": "Dục Nông",
+    "maxa": 446
+  },
+  {
+    "id": 2004,
+    "matinh": 22,
+    "ma": "2004",
+    "loai": "phường",
+    "tenhc": "Đức Phổ",
+    "maxa": 1813
+  },
+  {
+    "id": 2005,
+    "matinh": 22,
+    "ma": "2005",
+    "loai": "xã",
+    "tenhc": "Ia Chim",
+    "maxa": 556
+  },
+  {
+    "id": 2006,
+    "matinh": 22,
+    "ma": "2006",
+    "loai": "xã",
+    "tenhc": "Ia Đal",
+    "maxa": 474
+  },
+  {
+    "id": 2007,
+    "matinh": 22,
+    "ma": "2007",
+    "loai": "xã",
+    "tenhc": "Ia Tơi",
+    "maxa": 488
+  },
+  {
+    "id": 2008,
+    "matinh": 22,
+    "ma": "2008",
+    "loai": "xã",
+    "tenhc": "Khánh Cường",
+    "maxa": 1790
+  },
+  {
+    "id": 2009,
+    "matinh": 22,
+    "ma": "2009",
+    "loai": "xã",
+    "tenhc": "Kon Braih",
+    "maxa": 1749
+  },
+  {
+    "id": 2010,
+    "matinh": 22,
+    "ma": "2010",
+    "loai": "xã",
+    "tenhc": "Kon Đào",
+    "maxa": 450
+  },
+  {
+    "id": 2011,
+    "matinh": 22,
+    "ma": "2011",
+    "loai": "xã",
+    "tenhc": "Kon Plông",
+    "maxa": 1743
+  },
+  {
+    "id": 2012,
+    "matinh": 22,
+    "ma": "2012",
+    "loai": "phường",
+    "tenhc": "Kon Tum",
+    "maxa": 1746
+  },
+  {
+    "id": 2013,
+    "matinh": 22,
+    "ma": "2013",
+    "loai": "xã",
+    "tenhc": "Lân Phong",
+    "maxa": 1787
+  },
+  {
+    "id": 2014,
+    "matinh": 22,
+    "ma": "2014",
+    "loai": "xã",
+    "tenhc": "Long Phụng",
+    "maxa": 1777
+  },
+  {
+    "id": 2015,
+    "matinh": 22,
+    "ma": "2015",
+    "loai": "đặc khu",
+    "tenhc": "Lý Sơn",
+    "maxa": 3310
+  },
+  {
+    "id": 2016,
+    "matinh": 22,
+    "ma": "2016",
+    "loai": "xã",
+    "tenhc": "Măng Bút",
+    "maxa": 1742
+  },
+  {
+    "id": 2017,
+    "matinh": 22,
+    "ma": "2017",
+    "loai": "xã",
+    "tenhc": "Măng Đen",
+    "maxa": 1744
+  },
+  {
+    "id": 2018,
+    "matinh": 22,
+    "ma": "2018",
+    "loai": "xã",
+    "tenhc": "Măng Ri",
+    "maxa": 3176
+  },
+  {
+    "id": 2019,
+    "matinh": 22,
+    "ma": "2019",
+    "loai": "xã",
+    "tenhc": "Minh Long",
+    "maxa": 1785
+  },
+  {
+    "id": 2020,
+    "matinh": 22,
+    "ma": "2020",
+    "loai": "xã",
+    "tenhc": "Mỏ Cày",
+    "maxa": 1778
+  },
+  {
+    "id": 2021,
+    "matinh": 22,
+    "ma": "2021",
+    "loai": "xã",
+    "tenhc": "Mộ Đức",
+    "maxa": 1786
+  },
+  {
+    "id": 2022,
+    "matinh": 22,
+    "ma": "2022",
+    "loai": "xã",
+    "tenhc": "Mô Rai",
+    "maxa": 487
+  },
+  {
+    "id": 2023,
+    "matinh": 22,
+    "ma": "2023",
+    "loai": "xã",
+    "tenhc": "Nghĩa Giang",
+    "maxa": 1759
+  },
+  {
+    "id": 2024,
+    "matinh": 22,
+    "ma": "2024",
+    "loai": "xã",
+    "tenhc": "Nghĩa Hành",
+    "maxa": 1781
+  },
+  {
+    "id": 2025,
+    "matinh": 22,
+    "ma": "2025",
+    "loai": "phường",
+    "tenhc": "Nghĩa Lộ",
+    "maxa": 1808
+  },
+  {
+    "id": 2026,
+    "matinh": 22,
+    "ma": "2026",
+    "loai": "xã",
+    "tenhc": "Ngọc Linh",
+    "maxa": 560
+  },
+  {
+    "id": 2027,
+    "matinh": 22,
+    "ma": "2027",
+    "loai": "xã",
+    "tenhc": "Ngọk Bay",
+    "maxa": 555
+  },
+  {
+    "id": 2028,
+    "matinh": 22,
+    "ma": "2028",
+    "loai": "xã",
+    "tenhc": "Ngọk Réo",
+    "maxa": 1750
+  },
+  {
+    "id": 2029,
+    "matinh": 22,
+    "ma": "2029",
+    "loai": "xã",
+    "tenhc": "Ngọk Tụ",
+    "maxa": 449
+  },
+  {
+    "id": 2030,
+    "matinh": 22,
+    "ma": "2030",
+    "loai": "xã",
+    "tenhc": "Nguyễn Nghiêm",
+    "maxa": 1789
+  },
+  {
+    "id": 2031,
+    "matinh": 22,
+    "ma": "2031",
+    "loai": "xã",
+    "tenhc": "Phước Giang",
+    "maxa": 1761
+  },
+  {
+    "id": 2032,
+    "matinh": 22,
+    "ma": "2032",
+    "loai": "xã",
+    "tenhc": "Rờ Kơi",
+    "maxa": 473
+  },
+  {
+    "id": 2033,
+    "matinh": 22,
+    "ma": "2033",
+    "loai": "xã",
+    "tenhc": "Sa Bình",
+    "maxa": 489
+  },
+  {
+    "id": 2034,
+    "matinh": 22,
+    "ma": "2034",
+    "loai": "phường",
+    "tenhc": "Sa Huỳnh",
+    "maxa": 1799
+  },
+  {
+    "id": 2035,
+    "matinh": 22,
+    "ma": "2035",
+    "loai": "xã",
+    "tenhc": "Sa Loong",
+    "maxa": 454
+  },
+  {
+    "id": 2036,
+    "matinh": 22,
+    "ma": "2036",
+    "loai": "xã",
+    "tenhc": "Sa Thầy",
+    "maxa": 472
+  },
+  {
+    "id": 2037,
+    "matinh": 22,
+    "ma": "2037",
+    "loai": "xã",
+    "tenhc": "Sơn Hà",
+    "maxa": 1755
+  },
+  {
+    "id": 2038,
+    "matinh": 22,
+    "ma": "2038",
+    "loai": "xã",
+    "tenhc": "Sơn Hạ",
+    "maxa": 1773
+  },
+  {
+    "id": 2039,
+    "matinh": 22,
+    "ma": "2039",
+    "loai": "xã",
+    "tenhc": "Sơn Kỳ",
+    "maxa": 1783
+  },
+  {
+    "id": 2040,
+    "matinh": 22,
+    "ma": "2040",
+    "loai": "xã",
+    "tenhc": "Sơn Linh",
+    "maxa": 1756
+  },
+  {
+    "id": 2041,
+    "matinh": 22,
+    "ma": "2041",
+    "loai": "xã",
+    "tenhc": "Sơn Mai",
+    "maxa": 1760
+  },
+  {
+    "id": 2042,
+    "matinh": 22,
+    "ma": "2042",
+    "loai": "xã",
+    "tenhc": "Sơn Tây",
+    "maxa": 1758
+  },
+  {
+    "id": 2043,
+    "matinh": 22,
+    "ma": "2043",
+    "loai": "xã",
+    "tenhc": "Sơn Tây Hạ",
+    "maxa": 1784
+  },
+  {
+    "id": 2044,
+    "matinh": 22,
+    "ma": "2044",
+    "loai": "xã",
+    "tenhc": "Sơn Tây Thượng",
+    "maxa": 1770
+  },
+  {
+    "id": 2045,
+    "matinh": 22,
+    "ma": "2045",
+    "loai": "xã",
+    "tenhc": "Sơn Thủy",
+    "maxa": 1754
+  },
+  {
+    "id": 2046,
+    "matinh": 22,
+    "ma": "2046",
+    "loai": "xã",
+    "tenhc": "Sơn Tịnh",
+    "maxa": 1764
+  },
+  {
+    "id": 2047,
+    "matinh": 22,
+    "ma": "2047",
+    "loai": "xã",
+    "tenhc": "Tây Trà",
+    "maxa": 1772
+  },
+  {
+    "id": 2048,
+    "matinh": 22,
+    "ma": "2048",
+    "loai": "xã",
+    "tenhc": "Tây Trà Bồng",
+    "maxa": 1775
+  },
+  {
+    "id": 2049,
+    "matinh": 22,
+    "ma": "2049",
+    "loai": "xã",
+    "tenhc": "Thanh Bồng",
+    "maxa": 1771
+  },
+  {
+    "id": 2050,
+    "matinh": 22,
+    "ma": "2050",
+    "loai": "xã",
+    "tenhc": "Thiện Tín",
+    "maxa": 1776
+  },
+  {
+    "id": 2051,
+    "matinh": 22,
+    "ma": "2051",
+    "loai": "xã",
+    "tenhc": "Thọ Phong",
+    "maxa": 1765
+  },
+  {
+    "id": 2052,
+    "matinh": 22,
+    "ma": "2052",
+    "loai": "xã",
+    "tenhc": "Tịnh Khê",
+    "maxa": 1811
+  },
+  {
+    "id": 2053,
+    "matinh": 22,
+    "ma": "2053",
+    "loai": "xã",
+    "tenhc": "Trà Bồng",
+    "maxa": 1766
+  },
+  {
+    "id": 2054,
+    "matinh": 22,
+    "ma": "2054",
+    "loai": "phường",
+    "tenhc": "Trà Câu",
+    "maxa": 1788
+  },
+  {
+    "id": 2055,
+    "matinh": 22,
+    "ma": "2055",
+    "loai": "xã",
+    "tenhc": "Trà Giang",
+    "maxa": 1757
+  },
+  {
+    "id": 2056,
+    "matinh": 22,
+    "ma": "2056",
+    "loai": "xã",
+    "tenhc": "Trường Giang",
+    "maxa": 1762
+  },
+  {
+    "id": 2057,
+    "matinh": 22,
+    "ma": "2057",
+    "loai": "phường",
+    "tenhc": "Trương Quang Trọng",
+    "maxa": 1812
+  },
+  {
+    "id": 2058,
+    "matinh": 22,
+    "ma": "2058",
+    "loai": "xã",
+    "tenhc": "Tu Mơ Rông",
+    "maxa": 3177
+  },
+  {
+    "id": 2059,
+    "matinh": 22,
+    "ma": "2059",
+    "loai": "xã",
+    "tenhc": "Tư Nghĩa",
+    "maxa": 1782
+  },
+  {
+    "id": 2060,
+    "matinh": 22,
+    "ma": "2060",
+    "loai": "xã",
+    "tenhc": "Vạn Tường",
+    "maxa": 1752
+  },
+  {
+    "id": 2061,
+    "matinh": 22,
+    "ma": "2061",
+    "loai": "xã",
+    "tenhc": "Vệ Giang",
+    "maxa": 1780
+  },
+  {
+    "id": 2062,
+    "matinh": 22,
+    "ma": "2062",
+    "loai": "xã",
+    "tenhc": "Xốp",
+    "maxa": 563
+  },
+  {
+    "id": 2063,
+    "matinh": 22,
+    "ma": "2063",
+    "loai": "xã",
+    "tenhc": "Ya Ly",
+    "maxa": 490
+  }
+]

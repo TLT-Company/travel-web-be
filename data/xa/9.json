@@ -1,0 +1,794 @@
+[
+  {
+    "id": 311,
+    "matinh": 9,
+    "ma": "0311",
+    "loai": "xã",
+    "tenhc": "A Mú Sung",
+    "maxa": 988
+  },
+  {
+    "id": 312,
+    "matinh": 9,
+    "ma": "0312",
+    "loai": "phường",
+    "tenhc": "Âu Lâu",
+    "maxa": 858
+  },
+  {
+    "id": 313,
+    "matinh": 9,
+    "ma": "0313",
+    "loai": "xã",
+    "tenhc": "Bắc Hà",
+    "maxa": 942
+  },
+  {
+    "id": 314,
+    "matinh": 9,
+    "ma": "0314",
+    "loai": "xã",
+    "tenhc": "Bản Hồ",
+    "maxa": 1013
+  },
+  {
+    "id": 315,
+    "matinh": 9,
+    "ma": "0315",
+    "loai": "xã",
+    "tenhc": "Bản Lầu",
+    "maxa": 939
+  },
+  {
+    "id": 316,
+    "matinh": 9,
+    "ma": "0316",
+    "loai": "xã",
+    "tenhc": "Bản Liền",
+    "maxa": 945
+  },
+  {
+    "id": 317,
+    "matinh": 9,
+    "ma": "0317",
+    "loai": "xã",
+    "tenhc": "Bản Xèo",
+    "maxa": 1004
+  },
+  {
+    "id": 318,
+    "matinh": 9,
+    "ma": "0318",
+    "loai": "xã",
+    "tenhc": "Bảo Ái",
+    "maxa": 915
+  },
+  {
+    "id": 319,
+    "matinh": 9,
+    "ma": "0319",
+    "loai": "xã",
+    "tenhc": "Bảo Hà",
+    "maxa": 965
+  },
+  {
+    "id": 320,
+    "matinh": 9,
+    "ma": "0320",
+    "loai": "xã",
+    "tenhc": "Bảo Nhai",
+    "maxa": 946
+  },
+  {
+    "id": 321,
+    "matinh": 9,
+    "ma": "0321",
+    "loai": "xã",
+    "tenhc": "Bảo Thắng",
+    "maxa": 953
+  },
+  {
+    "id": 322,
+    "matinh": 9,
+    "ma": "0322",
+    "loai": "xã",
+    "tenhc": "Bảo Yên",
+    "maxa": 962
+  },
+  {
+    "id": 323,
+    "matinh": 9,
+    "ma": "0323",
+    "loai": "xã",
+    "tenhc": "Bát Xát",
+    "maxa": 987
+  },
+  {
+    "id": 324,
+    "matinh": 9,
+    "ma": "0324",
+    "loai": "phường",
+    "tenhc": "Cam Đường",
+    "maxa": 918
+  },
+  {
+    "id": 325,
+    "matinh": 9,
+    "ma": "0325",
+    "loai": "xã",
+    "tenhc": "Cảm Nhân",
+    "maxa": 914
+  },
+  {
+    "id": 326,
+    "matinh": 9,
+    "ma": "0326",
+    "loai": "xã",
+    "tenhc": "Cao Sơn",
+    "maxa": 937
+  },
+  {
+    "id": 327,
+    "matinh": 9,
+    "ma": "0327",
+    "loai": "xã",
+    "tenhc": "Cát Thịnh",
+    "maxa": 907
+  },
+  {
+    "id": 328,
+    "matinh": 9,
+    "ma": "0328",
+    "loai": "phường",
+    "tenhc": "Cầu Thia",
+    "maxa": 723
+  },
+  {
+    "id": 329,
+    "matinh": 9,
+    "ma": "0329",
+    "loai": "xã",
+    "tenhc": "Chấn Thịnh",
+    "maxa": 908
+  },
+  {
+    "id": 330,
+    "matinh": 9,
+    "ma": "0330",
+    "loai": "xã",
+    "tenhc": "Châu Quế",
+    "maxa": 813
+  },
+  {
+    "id": 331,
+    "matinh": 9,
+    "ma": "0331",
+    "loai": "xã",
+    "tenhc": "Chế Tạo",
+    "maxa": 853
+  },
+  {
+    "id": 332,
+    "matinh": 9,
+    "ma": "0332",
+    "loai": "xã",
+    "tenhc": "Chiềng Ken",
+    "maxa": 972
+  },
+  {
+    "id": 333,
+    "matinh": 9,
+    "ma": "0333",
+    "loai": "xã",
+    "tenhc": "Cốc Lầu",
+    "maxa": 950
+  },
+  {
+    "id": 334,
+    "matinh": 9,
+    "ma": "0334",
+    "loai": "xã",
+    "tenhc": "Cốc San",
+    "maxa": 1006
+  },
+  {
+    "id": 335,
+    "matinh": 9,
+    "ma": "0335",
+    "loai": "xã",
+    "tenhc": "Dền Sáng",
+    "maxa": 1003
+  },
+  {
+    "id": 336,
+    "matinh": 9,
+    "ma": "0336",
+    "loai": "xã",
+    "tenhc": "Đông Cuông",
+    "maxa": 814
+  },
+  {
+    "id": 337,
+    "matinh": 9,
+    "ma": "0337",
+    "loai": "xã",
+    "tenhc": "Dương Quỳ",
+    "maxa": 984
+  },
+  {
+    "id": 338,
+    "matinh": 9,
+    "ma": "0338",
+    "loai": "xã",
+    "tenhc": "Gia Hội",
+    "maxa": 904
+  },
+  {
+    "id": 339,
+    "matinh": 9,
+    "ma": "0339",
+    "loai": "xã",
+    "tenhc": "Gia Phú",
+    "maxa": 957
+  },
+  {
+    "id": 340,
+    "matinh": 9,
+    "ma": "0340",
+    "loai": "xã",
+    "tenhc": "Hạnh Phúc",
+    "maxa": 878
+  },
+  {
+    "id": 341,
+    "matinh": 9,
+    "ma": "0341",
+    "loai": "xã",
+    "tenhc": "Hợp Thành",
+    "maxa": 934
+  },
+  {
+    "id": 342,
+    "matinh": 9,
+    "ma": "0342",
+    "loai": "xã",
+    "tenhc": "Hưng Khánh",
+    "maxa": 860
+  },
+  {
+    "id": 343,
+    "matinh": 9,
+    "ma": "0343",
+    "loai": "xã",
+    "tenhc": "Khánh Hòa",
+    "maxa": 728
+  },
+  {
+    "id": 344,
+    "matinh": 9,
+    "ma": "0344",
+    "loai": "xã",
+    "tenhc": "Khánh Yên",
+    "maxa": 983
+  },
+  {
+    "id": 345,
+    "matinh": 9,
+    "ma": "0345",
+    "loai": "xã",
+    "tenhc": "Khao Mang",
+    "maxa": 851
+  },
+  {
+    "id": 346,
+    "matinh": 9,
+    "ma": "0346",
+    "loai": "xã",
+    "tenhc": "Lâm Giang",
+    "maxa": 812
+  },
+  {
+    "id": 347,
+    "matinh": 9,
+    "ma": "0347",
+    "loai": "xã",
+    "tenhc": "Lâm Thượng",
+    "maxa": 725
+  },
+  {
+    "id": 348,
+    "matinh": 9,
+    "ma": "0348",
+    "loai": "phường",
+    "tenhc": "Lào Cai",
+    "maxa": 986
+  },
+  {
+    "id": 349,
+    "matinh": 9,
+    "ma": "0349",
+    "loai": "xã",
+    "tenhc": "Lao Chải",
+    "maxa": 852
+  },
+  {
+    "id": 350,
+    "matinh": 9,
+    "ma": "0350",
+    "loai": "xã",
+    "tenhc": "Liên Sơn",
+    "maxa": 900
+  },
+  {
+    "id": 351,
+    "matinh": 9,
+    "ma": "0351",
+    "loai": "xã",
+    "tenhc": "Lục Yên",
+    "maxa": 724
+  },
+  {
+    "id": 352,
+    "matinh": 9,
+    "ma": "0352",
+    "loai": "xã",
+    "tenhc": "Lùng Phình",
+    "maxa": 943
+  },
+  {
+    "id": 353,
+    "matinh": 9,
+    "ma": "0353",
+    "loai": "xã",
+    "tenhc": "Lương Thịnh",
+    "maxa": 857
+  },
+  {
+    "id": 354,
+    "matinh": 9,
+    "ma": "0354",
+    "loai": "xã",
+    "tenhc": "Mậu A",
+    "maxa": 767
+  },
+  {
+    "id": 355,
+    "matinh": 9,
+    "ma": "0355",
+    "loai": "xã",
+    "tenhc": "Minh Lương",
+    "maxa": 985
+  },
+  {
+    "id": 356,
+    "matinh": 9,
+    "ma": "0356",
+    "loai": "xã",
+    "tenhc": "Mỏ Vàng",
+    "maxa": 848
+  },
+  {
+    "id": 357,
+    "matinh": 9,
+    "ma": "0357",
+    "loai": "xã",
+    "tenhc": "Mù Cang Chải",
+    "maxa": 849
+  },
+  {
+    "id": 358,
+    "matinh": 9,
+    "ma": "0358",
+    "loai": "xã",
+    "tenhc": "Mường Bo",
+    "maxa": 967
+  },
+  {
+    "id": 359,
+    "matinh": 9,
+    "ma": "0359",
+    "loai": "xã",
+    "tenhc": "Mường Hum",
+    "maxa": 1005
+  },
+  {
+    "id": 360,
+    "matinh": 9,
+    "ma": "0360",
+    "loai": "xã",
+    "tenhc": "Mường Khương",
+    "maxa": 936
+  },
+  {
+    "id": 361,
+    "matinh": 9,
+    "ma": "0361",
+    "loai": "xã",
+    "tenhc": "Mường Lai",
+    "maxa": 726
+  },
+  {
+    "id": 362,
+    "matinh": 9,
+    "ma": "0362",
+    "loai": "xã",
+    "tenhc": "Nậm Chày",
+    "maxa": 970
+  },
+  {
+    "id": 363,
+    "matinh": 9,
+    "ma": "0363",
+    "loai": "xã",
+    "tenhc": "Nậm Có",
+    "maxa": 850
+  },
+  {
+    "id": 364,
+    "matinh": 9,
+    "ma": "0364",
+    "loai": "phường",
+    "tenhc": "Nam Cường",
+    "maxa": 721
+  },
+  {
+    "id": 365,
+    "matinh": 9,
+    "ma": "0365",
+    "loai": "xã",
+    "tenhc": "Nậm Xé",
+    "maxa": 971
+  },
+  {
+    "id": 366,
+    "matinh": 9,
+    "ma": "0366",
+    "loai": "xã",
+    "tenhc": "Nghĩa Đô",
+    "maxa": 959
+  },
+  {
+    "id": 367,
+    "matinh": 9,
+    "ma": "0367",
+    "loai": "phường",
+    "tenhc": "Nghĩa Lộ",
+    "maxa": 917
+  },
+  {
+    "id": 368,
+    "matinh": 9,
+    "ma": "0368",
+    "loai": "xã",
+    "tenhc": "Nghĩa Tâm",
+    "maxa": 911
+  },
+  {
+    "id": 369,
+    "matinh": 9,
+    "ma": "0369",
+    "loai": "xã",
+    "tenhc": "Ngũ Chỉ Sơn",
+    "maxa": 1008
+  },
+  {
+    "id": 370,
+    "matinh": 9,
+    "ma": "0370",
+    "loai": "xã",
+    "tenhc": "Pha Long",
+    "maxa": 935
+  },
+  {
+    "id": 371,
+    "matinh": 9,
+    "ma": "0371",
+    "loai": "xã",
+    "tenhc": "Phình Hồ",
+    "maxa": 879
+  },
+  {
+    "id": 372,
+    "matinh": 9,
+    "ma": "0372",
+    "loai": "xã",
+    "tenhc": "Phong Dụ Hạ",
+    "maxa": 815
+  },
+  {
+    "id": 373,
+    "matinh": 9,
+    "ma": "0373",
+    "loai": "xã",
+    "tenhc": "Phong Dụ Thượng",
+    "maxa": 817
+  },
+  {
+    "id": 374,
+    "matinh": 9,
+    "ma": "0374",
+    "loai": "xã",
+    "tenhc": "Phong Hải",
+    "maxa": 951
+  },
+  {
+    "id": 375,
+    "matinh": 9,
+    "ma": "0375",
+    "loai": "xã",
+    "tenhc": "Phúc Khánh",
+    "maxa": 966
+  },
+  {
+    "id": 376,
+    "matinh": 9,
+    "ma": "0376",
+    "loai": "xã",
+    "tenhc": "Phúc Lợi",
+    "maxa": 766
+  },
+  {
+    "id": 377,
+    "matinh": 9,
+    "ma": "0377",
+    "loai": "xã",
+    "tenhc": "Púng Luông",
+    "maxa": 854
+  },
+  {
+    "id": 378,
+    "matinh": 9,
+    "ma": "0378",
+    "loai": "xã",
+    "tenhc": "Quy Mông",
+    "maxa": 856
+  },
+  {
+    "id": 379,
+    "matinh": 9,
+    "ma": "0379",
+    "loai": "phường",
+    "tenhc": "Sa Pa",
+    "maxa": 1007
+  },
+  {
+    "id": 380,
+    "matinh": 9,
+    "ma": "0380",
+    "loai": "xã",
+    "tenhc": "Si Ma Cai",
+    "maxa": 940
+  },
+  {
+    "id": 381,
+    "matinh": 9,
+    "ma": "0381",
+    "loai": "xã",
+    "tenhc": "Sín Chéng",
+    "maxa": 941
+  },
+  {
+    "id": 382,
+    "matinh": 9,
+    "ma": "0382",
+    "loai": "xã",
+    "tenhc": "Sơn Lương",
+    "maxa": 905
+  },
+  {
+    "id": 383,
+    "matinh": 9,
+    "ma": "0383",
+    "loai": "xã",
+    "tenhc": "Tả Củ Tỷ",
+    "maxa": 944
+  },
+  {
+    "id": 384,
+    "matinh": 9,
+    "ma": "0384",
+    "loai": "xã",
+    "tenhc": "Tả Phìn",
+    "maxa": 1009
+  },
+  {
+    "id": 385,
+    "matinh": 9,
+    "ma": "0385",
+    "loai": "xã",
+    "tenhc": "Tả Van",
+    "maxa": 1010
+  },
+  {
+    "id": 386,
+    "matinh": 9,
+    "ma": "0386",
+    "loai": "xã",
+    "tenhc": "Tà Xi Láng",
+    "maxa": 899
+  },
+  {
+    "id": 387,
+    "matinh": 9,
+    "ma": "0387",
+    "loai": "xã",
+    "tenhc": "Tân Hợp",
+    "maxa": 816
+  },
+  {
+    "id": 388,
+    "matinh": 9,
+    "ma": "0388",
+    "loai": "xã",
+    "tenhc": "Tân Lĩnh",
+    "maxa": 727
+  },
+  {
+    "id": 389,
+    "matinh": 9,
+    "ma": "0389",
+    "loai": "xã",
+    "tenhc": "Tằng Loỏng",
+    "maxa": 954
+  },
+  {
+    "id": 390,
+    "matinh": 9,
+    "ma": "0390",
+    "loai": "xã",
+    "tenhc": "Thác Bà",
+    "maxa": 913
+  },
+  {
+    "id": 391,
+    "matinh": 9,
+    "ma": "0391",
+    "loai": "xã",
+    "tenhc": "Thượng Bằng La",
+    "maxa": 910
+  },
+  {
+    "id": 392,
+    "matinh": 9,
+    "ma": "0392",
+    "loai": "xã",
+    "tenhc": "Thượng Hà",
+    "maxa": 961
+  },
+  {
+    "id": 393,
+    "matinh": 9,
+    "ma": "0393",
+    "loai": "xã",
+    "tenhc": "Trạm Tấu",
+    "maxa": 898
+  },
+  {
+    "id": 394,
+    "matinh": 9,
+    "ma": "0394",
+    "loai": "xã",
+    "tenhc": "Trấn Yên",
+    "maxa": 855
+  },
+  {
+    "id": 395,
+    "matinh": 9,
+    "ma": "0395",
+    "loai": "xã",
+    "tenhc": "Trịnh Tường",
+    "maxa": 1001
+  },
+  {
+    "id": 396,
+    "matinh": 9,
+    "ma": "0396",
+    "loai": "phường",
+    "tenhc": "Trung Tâm",
+    "maxa": 722
+  },
+  {
+    "id": 397,
+    "matinh": 9,
+    "ma": "0397",
+    "loai": "xã",
+    "tenhc": "Tú Lệ",
+    "maxa": 901
+  },
+  {
+    "id": 398,
+    "matinh": 9,
+    "ma": "0398",
+    "loai": "xã",
+    "tenhc": "Văn Bàn",
+    "maxa": 968
+  },
+  {
+    "id": 399,
+    "matinh": 9,
+    "ma": "0399",
+    "loai": "xã",
+    "tenhc": "Văn Chấn",
+    "maxa": 906
+  },
+  {
+    "id": 400,
+    "matinh": 9,
+    "ma": "0400",
+    "loai": "phường",
+    "tenhc": "Văn Phú",
+    "maxa": 859
+  },
+  {
+    "id": 401,
+    "matinh": 9,
+    "ma": "0401",
+    "loai": "xã",
+    "tenhc": "Việt Hồng",
+    "maxa": 877
+  },
+  {
+    "id": 402,
+    "matinh": 9,
+    "ma": "0402",
+    "loai": "xã",
+    "tenhc": "Võ Lao",
+    "maxa": 969
+  },
+  {
+    "id": 403,
+    "matinh": 9,
+    "ma": "0403",
+    "loai": "xã",
+    "tenhc": "Xuân Ái",
+    "maxa": 833
+  },
+  {
+    "id": 404,
+    "matinh": 9,
+    "ma": "0404",
+    "loai": "xã",
+    "tenhc": "Xuân Hòa",
+    "maxa": 960
+  },
+  {
+    "id": 405,
+    "matinh": 9,
+    "ma": "0405",
+    "loai": "xã",
+    "tenhc": "Xuân Quang",
+    "maxa": 958
+  },
+  {
+    "id": 406,
+    "matinh": 9,
+    "ma": "0406",
+    "loai": "xã",
+    "tenhc": "Y Tý",
+    "maxa": 1002
+  },
+  {
+    "id": 407,
+    "matinh": 9,
+    "ma": "0407",
+    "loai": "phường",
+    "tenhc": "Yên Bái",
+    "maxa": 720
+  },
+  {
+    "id": 408,
+    "matinh": 9,
+    "ma": "0408",
+    "loai": "xã",
+    "tenhc": "Yên Bình",
+    "maxa": 912
+  },
+  {
+    "id": 409,
+    "matinh": 9,
+    "ma": "0409",
+    "loai": "xã",
+    "tenhc": "Yên Thành",
+    "maxa": 916
+  }
+]

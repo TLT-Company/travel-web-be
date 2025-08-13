@@ -1,0 +1,754 @@
+[
+  {
+    "id": 1873,
+    "matinh": 21,
+    "ma": "1873",
+    "loai": "phường",
+    "tenhc": "An Hải",
+    "maxa": 1963
+  },
+  {
+    "id": 1874,
+    "matinh": 21,
+    "ma": "1874",
+    "loai": "phường",
+    "tenhc": "An Khê",
+    "maxa": 1945
+  },
+  {
+    "id": 1875,
+    "matinh": 21,
+    "ma": "1875",
+    "loai": "phường",
+    "tenhc": "An Thắng",
+    "maxa": 1982
+  },
+  {
+    "id": 1876,
+    "matinh": 21,
+    "ma": "1876",
+    "loai": "xã",
+    "tenhc": "Avương",
+    "maxa": 1976
+  },
+  {
+    "id": 1877,
+    "matinh": 21,
+    "ma": "1877",
+    "loai": "xã",
+    "tenhc": "Bà Nà",
+    "maxa": 1967
+  },
+  {
+    "id": 1878,
+    "matinh": 21,
+    "ma": "1878",
+    "loai": "phường",
+    "tenhc": "Bàn Thạch",
+    "maxa": 1935
+  },
+  {
+    "id": 1879,
+    "matinh": 21,
+    "ma": "1879",
+    "loai": "xã",
+    "tenhc": "Bến Giằng",
+    "maxa": 1993
+  },
+  {
+    "id": 1880,
+    "matinh": 21,
+    "ma": "1880",
+    "loai": "xã",
+    "tenhc": "Bến Hiên",
+    "maxa": 1926
+  },
+  {
+    "id": 1881,
+    "matinh": 21,
+    "ma": "1881",
+    "loai": "phường",
+    "tenhc": "Cẩm Lệ",
+    "maxa": 1921
+  },
+  {
+    "id": 1882,
+    "matinh": 21,
+    "ma": "1882",
+    "loai": "xã",
+    "tenhc": "Chiên Đàn",
+    "maxa": 1937
+  },
+  {
+    "id": 1883,
+    "matinh": 21,
+    "ma": "1883",
+    "loai": "xã",
+    "tenhc": "Đắc Pring",
+    "maxa": 1974
+  },
+  {
+    "id": 1884,
+    "matinh": 21,
+    "ma": "1884",
+    "loai": "xã",
+    "tenhc": "Đại Lộc",
+    "maxa": 1984
+  },
+  {
+    "id": 1885,
+    "matinh": 21,
+    "ma": "1885",
+    "loai": "phường",
+    "tenhc": "Điện Bàn",
+    "maxa": 1991
+  },
+  {
+    "id": 1886,
+    "matinh": 21,
+    "ma": "1886",
+    "loai": "phường",
+    "tenhc": "Điện Bàn Bắc",
+    "maxa": 1989
+  },
+  {
+    "id": 1887,
+    "matinh": 21,
+    "ma": "1887",
+    "loai": "phường",
+    "tenhc": "Điện Bàn Đông",
+    "maxa": 1992
+  },
+  {
+    "id": 1888,
+    "matinh": 21,
+    "ma": "1888",
+    "loai": "xã",
+    "tenhc": "Điện Bàn Tây",
+    "maxa": 1983
+  },
+  {
+    "id": 1889,
+    "matinh": 21,
+    "ma": "1889",
+    "loai": "xã",
+    "tenhc": "Đồng Dương",
+    "maxa": 1951
+  },
+  {
+    "id": 1890,
+    "matinh": 21,
+    "ma": "1890",
+    "loai": "xã",
+    "tenhc": "Đông Giang",
+    "maxa": 1977
+  },
+  {
+    "id": 1891,
+    "matinh": 21,
+    "ma": "1891",
+    "loai": "xã",
+    "tenhc": "Đức Phú",
+    "maxa": 1959
+  },
+  {
+    "id": 1892,
+    "matinh": 21,
+    "ma": "1892",
+    "loai": "xã",
+    "tenhc": "Duy Nghĩa",
+    "maxa": 1930
+  },
+  {
+    "id": 1893,
+    "matinh": 21,
+    "ma": "1893",
+    "loai": "xã",
+    "tenhc": "Duy Xuyên",
+    "maxa": 1980
+  },
+  {
+    "id": 1894,
+    "matinh": 21,
+    "ma": "1894",
+    "loai": "xã",
+    "tenhc": "Gò Nổi",
+    "maxa": 1981
+  },
+  {
+    "id": 1895,
+    "matinh": 21,
+    "ma": "1895",
+    "loai": "xã",
+    "tenhc": "Hà Nha",
+    "maxa": 1925
+  },
+  {
+    "id": 1896,
+    "matinh": 21,
+    "ma": "1896",
+    "loai": "phường",
+    "tenhc": "Hải Châu",
+    "maxa": 1949
+  },
+  {
+    "id": 1897,
+    "matinh": 21,
+    "ma": "1897",
+    "loai": "phường",
+    "tenhc": "Hải Vân",
+    "maxa": 1966
+  },
+  {
+    "id": 1898,
+    "matinh": 21,
+    "ma": "1898",
+    "loai": "xã",
+    "tenhc": "Hiệp Đức",
+    "maxa": 1948
+  },
+  {
+    "id": 1899,
+    "matinh": 21,
+    "ma": "1899",
+    "loai": "phường",
+    "tenhc": "Hòa Cường",
+    "maxa": 1942
+  },
+  {
+    "id": 1900,
+    "matinh": 21,
+    "ma": "1900",
+    "loai": "phường",
+    "tenhc": "Hòa Khánh",
+    "maxa": 1946
+  },
+  {
+    "id": 1901,
+    "matinh": 21,
+    "ma": "1901",
+    "loai": "xã",
+    "tenhc": "Hòa Tiến",
+    "maxa": 1968
+  },
+  {
+    "id": 1902,
+    "matinh": 21,
+    "ma": "1902",
+    "loai": "xã",
+    "tenhc": "Hòa Vang",
+    "maxa": 1919
+  },
+  {
+    "id": 1903,
+    "matinh": 21,
+    "ma": "1903",
+    "loai": "phường",
+    "tenhc": "Hòa Xuân",
+    "maxa": 1922
+  },
+  {
+    "id": 1904,
+    "matinh": 21,
+    "ma": "1904",
+    "loai": "đặc khu",
+    "tenhc": "Hoàng Sa",
+    "maxa": 3322
+  },
+  {
+    "id": 1905,
+    "matinh": 21,
+    "ma": "1905",
+    "loai": "phường",
+    "tenhc": "Hội An",
+    "maxa": 1978
+  },
+  {
+    "id": 1906,
+    "matinh": 21,
+    "ma": "1906",
+    "loai": "phường",
+    "tenhc": "Hội An Đông",
+    "maxa": 1990
+  },
+  {
+    "id": 1907,
+    "matinh": 21,
+    "ma": "1907",
+    "loai": "phường",
+    "tenhc": "Hội An Tây",
+    "maxa": 1988
+  },
+  {
+    "id": 1908,
+    "matinh": 21,
+    "ma": "1908",
+    "loai": "xã",
+    "tenhc": "Hùng Sơn",
+    "maxa": 1971
+  },
+  {
+    "id": 1909,
+    "matinh": 21,
+    "ma": "1909",
+    "loai": "phường",
+    "tenhc": "Hương Trà",
+    "maxa": 2002
+  },
+  {
+    "id": 1910,
+    "matinh": 21,
+    "ma": "1910",
+    "loai": "xã",
+    "tenhc": "Khâm Đức",
+    "maxa": 1995
+  },
+  {
+    "id": 1911,
+    "matinh": 21,
+    "ma": "1911",
+    "loai": "xã",
+    "tenhc": "La Dêê",
+    "maxa": 1972
+  },
+  {
+    "id": 1912,
+    "matinh": 21,
+    "ma": "1912",
+    "loai": "xã",
+    "tenhc": "La Êê",
+    "maxa": 1970
+  },
+  {
+    "id": 1913,
+    "matinh": 21,
+    "ma": "1913",
+    "loai": "xã",
+    "tenhc": "Lãnh Ngọc",
+    "maxa": 1961
+  },
+  {
+    "id": 1914,
+    "matinh": 21,
+    "ma": "1914",
+    "loai": "phường",
+    "tenhc": "Liên Chiểu",
+    "maxa": 1965
+  },
+  {
+    "id": 1915,
+    "matinh": 21,
+    "ma": "1915",
+    "loai": "xã",
+    "tenhc": "Nam Giang",
+    "maxa": 1973
+  },
+  {
+    "id": 1916,
+    "matinh": 21,
+    "ma": "1916",
+    "loai": "xã",
+    "tenhc": "Nam Phước",
+    "maxa": 1933
+  },
+  {
+    "id": 1917,
+    "matinh": 21,
+    "ma": "1917",
+    "loai": "xã",
+    "tenhc": "Nam Trà My",
+    "maxa": 1939
+  },
+  {
+    "id": 1918,
+    "matinh": 21,
+    "ma": "1918",
+    "loai": "phường",
+    "tenhc": "Ngũ Hành Sơn",
+    "maxa": 1920
+  },
+  {
+    "id": 1919,
+    "matinh": 21,
+    "ma": "1919",
+    "loai": "xã",
+    "tenhc": "Nông Sơn",
+    "maxa": 1986
+  },
+  {
+    "id": 1920,
+    "matinh": 21,
+    "ma": "1920",
+    "loai": "xã",
+    "tenhc": "Núi Thành",
+    "maxa": 1998
+  },
+  {
+    "id": 1921,
+    "matinh": 21,
+    "ma": "1921",
+    "loai": "xã",
+    "tenhc": "Phú Ninh",
+    "maxa": 1956
+  },
+  {
+    "id": 1922,
+    "matinh": 21,
+    "ma": "1922",
+    "loai": "xã",
+    "tenhc": "Phú Thuận",
+    "maxa": 1987
+  },
+  {
+    "id": 1923,
+    "matinh": 21,
+    "ma": "1923",
+    "loai": "xã",
+    "tenhc": "Phước Chánh",
+    "maxa": 2009
+  },
+  {
+    "id": 1924,
+    "matinh": 21,
+    "ma": "1924",
+    "loai": "xã",
+    "tenhc": "Phước Hiệp",
+    "maxa": 1943
+  },
+  {
+    "id": 1925,
+    "matinh": 21,
+    "ma": "1925",
+    "loai": "xã",
+    "tenhc": "Phước Năng",
+    "maxa": 2008
+  },
+  {
+    "id": 1926,
+    "matinh": 21,
+    "ma": "1926",
+    "loai": "xã",
+    "tenhc": "Phước Thành",
+    "maxa": 2007
+  },
+  {
+    "id": 1927,
+    "matinh": 21,
+    "ma": "1927",
+    "loai": "xã",
+    "tenhc": "Phước Trà",
+    "maxa": 1944
+  },
+  {
+    "id": 1928,
+    "matinh": 21,
+    "ma": "1928",
+    "loai": "phường",
+    "tenhc": "Quảng Phú",
+    "maxa": 1936
+  },
+  {
+    "id": 1929,
+    "matinh": 21,
+    "ma": "1929",
+    "loai": "xã",
+    "tenhc": "Quế Phước",
+    "maxa": 1994
+  },
+  {
+    "id": 1930,
+    "matinh": 21,
+    "ma": "1930",
+    "loai": "xã",
+    "tenhc": "Quế Sơn",
+    "maxa": 1950
+  },
+  {
+    "id": 1931,
+    "matinh": 21,
+    "ma": "1931",
+    "loai": "xã",
+    "tenhc": "Quế Sơn Trung",
+    "maxa": 1931
+  },
+  {
+    "id": 1932,
+    "matinh": 21,
+    "ma": "1932",
+    "loai": "xã",
+    "tenhc": "Sơn Cẩm Hà",
+    "maxa": 1952
+  },
+  {
+    "id": 1933,
+    "matinh": 21,
+    "ma": "1933",
+    "loai": "phường",
+    "tenhc": "Sơn Trà",
+    "maxa": 1964
+  },
+  {
+    "id": 1934,
+    "matinh": 21,
+    "ma": "1934",
+    "loai": "xã",
+    "tenhc": "Sông Kôn",
+    "maxa": 1975
+  },
+  {
+    "id": 1935,
+    "matinh": 21,
+    "ma": "1935",
+    "loai": "xã",
+    "tenhc": "Sông Vàng",
+    "maxa": 1923
+  },
+  {
+    "id": 1936,
+    "matinh": 21,
+    "ma": "1936",
+    "loai": "xã",
+    "tenhc": "Tam Anh",
+    "maxa": 2000
+  },
+  {
+    "id": 1937,
+    "matinh": 21,
+    "ma": "1937",
+    "loai": "xã",
+    "tenhc": "Tam Hải",
+    "maxa": 1999
+  },
+  {
+    "id": 1938,
+    "matinh": 21,
+    "ma": "1938",
+    "loai": "phường",
+    "tenhc": "Tam Kỳ",
+    "maxa": 1997
+  },
+  {
+    "id": 1939,
+    "matinh": 21,
+    "ma": "1939",
+    "loai": "xã",
+    "tenhc": "Tam Mỹ",
+    "maxa": 1958
+  },
+  {
+    "id": 1940,
+    "matinh": 21,
+    "ma": "1940",
+    "loai": "xã",
+    "tenhc": "Tam Xuân",
+    "maxa": 2001
+  },
+  {
+    "id": 1941,
+    "matinh": 21,
+    "ma": "1941",
+    "loai": "xã",
+    "tenhc": "Tân Hiệp",
+    "maxa": 3323
+  },
+  {
+    "id": 1942,
+    "matinh": 21,
+    "ma": "1942",
+    "loai": "xã",
+    "tenhc": "Tây Giang",
+    "maxa": 1969
+  },
+  {
+    "id": 1943,
+    "matinh": 21,
+    "ma": "1943",
+    "loai": "xã",
+    "tenhc": "Tây Hồ",
+    "maxa": 1954
+  },
+  {
+    "id": 1944,
+    "matinh": 21,
+    "ma": "1944",
+    "loai": "xã",
+    "tenhc": "Thăng An",
+    "maxa": 1929
+  },
+  {
+    "id": 1945,
+    "matinh": 21,
+    "ma": "1945",
+    "loai": "xã",
+    "tenhc": "Thăng Bình",
+    "maxa": 1928
+  },
+  {
+    "id": 1946,
+    "matinh": 21,
+    "ma": "1946",
+    "loai": "xã",
+    "tenhc": "Thăng Điền",
+    "maxa": 1934
+  },
+  {
+    "id": 1947,
+    "matinh": 21,
+    "ma": "1947",
+    "loai": "xã",
+    "tenhc": "Thăng Phú",
+    "maxa": 1955
+  },
+  {
+    "id": 1948,
+    "matinh": 21,
+    "ma": "1948",
+    "loai": "xã",
+    "tenhc": "Thăng Trường",
+    "maxa": 2003
+  },
+  {
+    "id": 1949,
+    "matinh": 21,
+    "ma": "1949",
+    "loai": "xã",
+    "tenhc": "Thạnh Bình",
+    "maxa": 1962
+  },
+  {
+    "id": 1950,
+    "matinh": 21,
+    "ma": "1950",
+    "loai": "phường",
+    "tenhc": "Thanh Khê",
+    "maxa": 1947
+  },
+  {
+    "id": 1951,
+    "matinh": 21,
+    "ma": "1951",
+    "loai": "xã",
+    "tenhc": "Thạnh Mỹ",
+    "maxa": 1927
+  },
+  {
+    "id": 1952,
+    "matinh": 21,
+    "ma": "1952",
+    "loai": "xã",
+    "tenhc": "Thu Bồn",
+    "maxa": 1979
+  },
+  {
+    "id": 1953,
+    "matinh": 21,
+    "ma": "1953",
+    "loai": "xã",
+    "tenhc": "Thượng Đức",
+    "maxa": 1924
+  },
+  {
+    "id": 1954,
+    "matinh": 21,
+    "ma": "1954",
+    "loai": "xã",
+    "tenhc": "Tiên Phước",
+    "maxa": 1953
+  },
+  {
+    "id": 1955,
+    "matinh": 21,
+    "ma": "1955",
+    "loai": "xã",
+    "tenhc": "Trà Đốc",
+    "maxa": 1996
+  },
+  {
+    "id": 1956,
+    "matinh": 21,
+    "ma": "1956",
+    "loai": "xã",
+    "tenhc": "Trà Giáp",
+    "maxa": 2004
+  },
+  {
+    "id": 1957,
+    "matinh": 21,
+    "ma": "1957",
+    "loai": "xã",
+    "tenhc": "Trà Leng",
+    "maxa": 2006
+  },
+  {
+    "id": 1958,
+    "matinh": 21,
+    "ma": "1958",
+    "loai": "xã",
+    "tenhc": "Trà Liên",
+    "maxa": 1957
+  },
+  {
+    "id": 1959,
+    "matinh": 21,
+    "ma": "1959",
+    "loai": "xã",
+    "tenhc": "Trà Linh",
+    "maxa": 1941
+  },
+  {
+    "id": 1960,
+    "matinh": 21,
+    "ma": "1960",
+    "loai": "xã",
+    "tenhc": "Trà My",
+    "maxa": 1960
+  },
+  {
+    "id": 1961,
+    "matinh": 21,
+    "ma": "1961",
+    "loai": "xã",
+    "tenhc": "Trà Tân",
+    "maxa": 2005
+  },
+  {
+    "id": 1962,
+    "matinh": 21,
+    "ma": "1962",
+    "loai": "xã",
+    "tenhc": "Trà Tập",
+    "maxa": 1940
+  },
+  {
+    "id": 1963,
+    "matinh": 21,
+    "ma": "1963",
+    "loai": "xã",
+    "tenhc": "Trà Vân",
+    "maxa": 1938
+  },
+  {
+    "id": 1964,
+    "matinh": 21,
+    "ma": "1964",
+    "loai": "xã",
+    "tenhc": "Việt An",
+    "maxa": 2010
+  },
+  {
+    "id": 1965,
+    "matinh": 21,
+    "ma": "1965",
+    "loai": "xã",
+    "tenhc": "Vu Gia",
+    "maxa": 1985
+  },
+  {
+    "id": 1966,
+    "matinh": 21,
+    "ma": "1966",
+    "loai": "xã",
+    "tenhc": "Xuân Phú",
+    "maxa": 1932
+  }
+]

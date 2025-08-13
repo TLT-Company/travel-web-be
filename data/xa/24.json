@@ -1,0 +1,1082 @@
+[
+  {
+    "id": 2131,
+    "matinh": 24,
+    "ma": "2131",
+    "loai": "xã",
+    "tenhc": "Al Bá",
+    "maxa": 2973
+  },
+  {
+    "id": 2132,
+    "matinh": 24,
+    "ma": "2132",
+    "loai": "phường",
+    "tenhc": "An Bình",
+    "maxa": 3056
+  },
+  {
+    "id": 2133,
+    "matinh": 24,
+    "ma": "2133",
+    "loai": "xã",
+    "tenhc": "Ân Hảo",
+    "maxa": 3000
+  },
+  {
+    "id": 2134,
+    "matinh": 24,
+    "ma": "2134",
+    "loai": "xã",
+    "tenhc": "An Hòa",
+    "maxa": 2992
+  },
+  {
+    "id": 2135,
+    "matinh": 24,
+    "ma": "2135",
+    "loai": "phường",
+    "tenhc": "An Khê",
+    "maxa": 3057
+  },
+  {
+    "id": 2136,
+    "matinh": 24,
+    "ma": "2136",
+    "loai": "xã",
+    "tenhc": "An Lão",
+    "maxa": 2989
+  },
+  {
+    "id": 2137,
+    "matinh": 24,
+    "ma": "2137",
+    "loai": "xã",
+    "tenhc": "An Lương",
+    "maxa": 3010
+  },
+  {
+    "id": 2138,
+    "matinh": 24,
+    "ma": "2138",
+    "loai": "phường",
+    "tenhc": "An Nhơn",
+    "maxa": 3032
+  },
+  {
+    "id": 2139,
+    "matinh": 24,
+    "ma": "2139",
+    "loai": "phường",
+    "tenhc": "An Nhơn Bắc",
+    "maxa": 3033
+  },
+  {
+    "id": 2140,
+    "matinh": 24,
+    "ma": "2140",
+    "loai": "phường",
+    "tenhc": "An Nhơn Đông",
+    "maxa": 3034
+  },
+  {
+    "id": 2141,
+    "matinh": 24,
+    "ma": "2141",
+    "loai": "phường",
+    "tenhc": "An Nhơn Nam",
+    "maxa": 3044
+  },
+  {
+    "id": 2142,
+    "matinh": 24,
+    "ma": "2142",
+    "loai": "xã",
+    "tenhc": "An Nhơn Tây",
+    "maxa": 3045
+  },
+  {
+    "id": 2143,
+    "matinh": 24,
+    "ma": "2143",
+    "loai": "phường",
+    "tenhc": "An Phú",
+    "maxa": 3066
+  },
+  {
+    "id": 2144,
+    "matinh": 24,
+    "ma": "2144",
+    "loai": "xã",
+    "tenhc": "An Toàn",
+    "maxa": 2991
+  },
+  {
+    "id": 2145,
+    "matinh": 24,
+    "ma": "2145",
+    "loai": "xã",
+    "tenhc": "Ân Tường",
+    "maxa": 3004
+  },
+  {
+    "id": 2146,
+    "matinh": 24,
+    "ma": "2146",
+    "loai": "xã",
+    "tenhc": "An Vinh",
+    "maxa": 2990
+  },
+  {
+    "id": 2147,
+    "matinh": 24,
+    "ma": "2147",
+    "loai": "xã",
+    "tenhc": "Ayun",
+    "maxa": 3048
+  },
+  {
+    "id": 2148,
+    "matinh": 24,
+    "ma": "2148",
+    "loai": "phường",
+    "tenhc": "Ayun Pa",
+    "maxa": 2980
+  },
+  {
+    "id": 2149,
+    "matinh": 24,
+    "ma": "2149",
+    "loai": "xã",
+    "tenhc": "Bàu Cạn",
+    "maxa": 2962
+  },
+  {
+    "id": 2150,
+    "matinh": 24,
+    "ma": "2150",
+    "loai": "xã",
+    "tenhc": "Biển Hồ",
+    "maxa": 3065
+  },
+  {
+    "id": 2151,
+    "matinh": 24,
+    "ma": "2151",
+    "loai": "xã",
+    "tenhc": "Bình An",
+    "maxa": 3017
+  },
+  {
+    "id": 2152,
+    "matinh": 24,
+    "ma": "2152",
+    "loai": "phường",
+    "tenhc": "Bình Định",
+    "maxa": 3031
+  },
+  {
+    "id": 2153,
+    "matinh": 24,
+    "ma": "2153",
+    "loai": "xã",
+    "tenhc": "Bình Dương",
+    "maxa": 3006
+  },
+  {
+    "id": 2154,
+    "matinh": 24,
+    "ma": "2154",
+    "loai": "xã",
+    "tenhc": "Bình Hiệp",
+    "maxa": 3015
+  },
+  {
+    "id": 2155,
+    "matinh": 24,
+    "ma": "2155",
+    "loai": "xã",
+    "tenhc": "Bình Khê",
+    "maxa": 3016
+  },
+  {
+    "id": 2156,
+    "matinh": 24,
+    "ma": "2156",
+    "loai": "xã",
+    "tenhc": "Bình Phú",
+    "maxa": 3018
+  },
+  {
+    "id": 2157,
+    "matinh": 24,
+    "ma": "2157",
+    "loai": "xã",
+    "tenhc": "Bờ Ngoong",
+    "maxa": 2975
+  },
+  {
+    "id": 2158,
+    "matinh": 24,
+    "ma": "2158",
+    "loai": "phường",
+    "tenhc": "Bồng Sơn",
+    "maxa": 2994
+  },
+  {
+    "id": 2159,
+    "matinh": 24,
+    "ma": "2159",
+    "loai": "xã",
+    "tenhc": "Canh Liên",
+    "maxa": 3041
+  },
+  {
+    "id": 2160,
+    "matinh": 24,
+    "ma": "2160",
+    "loai": "xã",
+    "tenhc": "Canh Vinh",
+    "maxa": 3042
+  },
+  {
+    "id": 2161,
+    "matinh": 24,
+    "ma": "2161",
+    "loai": "xã",
+    "tenhc": "Cát Tiến",
+    "maxa": 3025
+  },
+  {
+    "id": 2162,
+    "matinh": 24,
+    "ma": "2162",
+    "loai": "xã",
+    "tenhc": "Chơ Long",
+    "maxa": 3046
+  },
+  {
+    "id": 2163,
+    "matinh": 24,
+    "ma": "2163",
+    "loai": "xã",
+    "tenhc": "Chư A Thai",
+    "maxa": 2979
+  },
+  {
+    "id": 2164,
+    "matinh": 24,
+    "ma": "2164",
+    "loai": "xã",
+    "tenhc": "Chư Krey",
+    "maxa": 3053
+  },
+  {
+    "id": 2165,
+    "matinh": 24,
+    "ma": "2165",
+    "loai": "xã",
+    "tenhc": "Chư Păh",
+    "maxa": 2970
+  },
+  {
+    "id": 2166,
+    "matinh": 24,
+    "ma": "2166",
+    "loai": "xã",
+    "tenhc": "Chư Prông",
+    "maxa": 2947
+  },
+  {
+    "id": 2167,
+    "matinh": 24,
+    "ma": "2167",
+    "loai": "xã",
+    "tenhc": "Chư Pưh",
+    "maxa": 2972
+  },
+  {
+    "id": 2168,
+    "matinh": 24,
+    "ma": "2168",
+    "loai": "xã",
+    "tenhc": "Chư Sê",
+    "maxa": 2971
+  },
+  {
+    "id": 2169,
+    "matinh": 24,
+    "ma": "2169",
+    "loai": "xã",
+    "tenhc": "Cửu An",
+    "maxa": 3058
+  },
+  {
+    "id": 2170,
+    "matinh": 24,
+    "ma": "2170",
+    "loai": "xã",
+    "tenhc": "Đak Đoa",
+    "maxa": 3072
+  },
+  {
+    "id": 2171,
+    "matinh": 24,
+    "ma": "2171",
+    "loai": "xã",
+    "tenhc": "Đak Pơ",
+    "maxa": 3055
+  },
+  {
+    "id": 2172,
+    "matinh": 24,
+    "ma": "2172",
+    "loai": "xã",
+    "tenhc": "Đak Rong",
+    "maxa": 70
+  },
+  {
+    "id": 2173,
+    "matinh": 24,
+    "ma": "2173",
+    "loai": "xã",
+    "tenhc": "Đak Sơmei",
+    "maxa": 3073
+  },
+  {
+    "id": 2174,
+    "matinh": 24,
+    "ma": "2174",
+    "loai": "xã",
+    "tenhc": "Đăk Song",
+    "maxa": 3059
+  },
+  {
+    "id": 2175,
+    "matinh": 24,
+    "ma": "2175",
+    "loai": "xã",
+    "tenhc": "Đề Gi",
+    "maxa": 3021
+  },
+  {
+    "id": 2176,
+    "matinh": 24,
+    "ma": "2176",
+    "loai": "phường",
+    "tenhc": "Diên Hồng",
+    "maxa": 3062
+  },
+  {
+    "id": 2177,
+    "matinh": 24,
+    "ma": "2177",
+    "loai": "xã",
+    "tenhc": "Đức Cơ",
+    "maxa": 2957
+  },
+  {
+    "id": 2178,
+    "matinh": 24,
+    "ma": "2178",
+    "loai": "xã",
+    "tenhc": "Gào",
+    "maxa": 2969
+  },
+  {
+    "id": 2179,
+    "matinh": 24,
+    "ma": "2179",
+    "loai": "xã",
+    "tenhc": "Hòa Hội",
+    "maxa": 3022
+  },
+  {
+    "id": 2180,
+    "matinh": 24,
+    "ma": "2180",
+    "loai": "xã",
+    "tenhc": "Hoài Ân",
+    "maxa": 3002
+  },
+  {
+    "id": 2181,
+    "matinh": 24,
+    "ma": "2181",
+    "loai": "phường",
+    "tenhc": "Hoài Nhơn",
+    "maxa": 2997
+  },
+  {
+    "id": 2182,
+    "matinh": 24,
+    "ma": "2182",
+    "loai": "phường",
+    "tenhc": "Hoài Nhơn Bắc",
+    "maxa": 2995
+  },
+  {
+    "id": 2183,
+    "matinh": 24,
+    "ma": "2183",
+    "loai": "phường",
+    "tenhc": "Hoài Nhơn Đông",
+    "maxa": 2998
+  },
+  {
+    "id": 2184,
+    "matinh": 24,
+    "ma": "2184",
+    "loai": "phường",
+    "tenhc": "Hoài Nhơn Nam",
+    "maxa": 2999
+  },
+  {
+    "id": 2185,
+    "matinh": 24,
+    "ma": "2185",
+    "loai": "phường",
+    "tenhc": "Hoài Nhơn Tây",
+    "maxa": 2996
+  },
+  {
+    "id": 2186,
+    "matinh": 24,
+    "ma": "2186",
+    "loai": "phường",
+    "tenhc": "Hội Phú",
+    "maxa": 3063
+  },
+  {
+    "id": 2187,
+    "matinh": 24,
+    "ma": "2187",
+    "loai": "xã",
+    "tenhc": "Hội Sơn",
+    "maxa": 3020
+  },
+  {
+    "id": 2188,
+    "matinh": 24,
+    "ma": "2188",
+    "loai": "xã",
+    "tenhc": "Hra",
+    "maxa": 3049
+  },
+  {
+    "id": 2189,
+    "matinh": 24,
+    "ma": "2189",
+    "loai": "xã",
+    "tenhc": "Ia Băng",
+    "maxa": 3076
+  },
+  {
+    "id": 2190,
+    "matinh": 24,
+    "ma": "2190",
+    "loai": "xã",
+    "tenhc": "Ia Boòng",
+    "maxa": 2949
+  },
+  {
+    "id": 2191,
+    "matinh": 24,
+    "ma": "2191",
+    "loai": "xã",
+    "tenhc": "Ia Chia",
+    "maxa": 2956
+  },
+  {
+    "id": 2192,
+    "matinh": 24,
+    "ma": "2192",
+    "loai": "xã",
+    "tenhc": "Ia Dơk",
+    "maxa": 2958
+  },
+  {
+    "id": 2193,
+    "matinh": 24,
+    "ma": "2193",
+    "loai": "xã",
+    "tenhc": "Ia Dom",
+    "maxa": 2960
+  },
+  {
+    "id": 2194,
+    "matinh": 24,
+    "ma": "2194",
+    "loai": "xã",
+    "tenhc": "Ia Dreh",
+    "maxa": 2987
+  },
+  {
+    "id": 2195,
+    "matinh": 24,
+    "ma": "2195",
+    "loai": "xã",
+    "tenhc": "Ia Grai",
+    "maxa": 2953
+  },
+  {
+    "id": 2196,
+    "matinh": 24,
+    "ma": "2196",
+    "loai": "xã",
+    "tenhc": "Ia Hiao",
+    "maxa": 2981
+  },
+  {
+    "id": 2197,
+    "matinh": 24,
+    "ma": "2197",
+    "loai": "xã",
+    "tenhc": "Ia Hrú",
+    "maxa": 2974
+  },
+  {
+    "id": 2198,
+    "matinh": 24,
+    "ma": "2198",
+    "loai": "xã",
+    "tenhc": "Ia Hrung",
+    "maxa": 2961
+  },
+  {
+    "id": 2199,
+    "matinh": 24,
+    "ma": "2199",
+    "loai": "xã",
+    "tenhc": "Ia Khươl",
+    "maxa": 3077
+  },
+  {
+    "id": 2200,
+    "matinh": 24,
+    "ma": "2200",
+    "loai": "xã",
+    "tenhc": "Ia Ko",
+    "maxa": 2952
+  },
+  {
+    "id": 2201,
+    "matinh": 24,
+    "ma": "2201",
+    "loai": "xã",
+    "tenhc": "Ia Krái",
+    "maxa": 2954
+  },
+  {
+    "id": 2202,
+    "matinh": 24,
+    "ma": "2202",
+    "loai": "xã",
+    "tenhc": "Ia Krêl",
+    "maxa": 2959
+  },
+  {
+    "id": 2203,
+    "matinh": 24,
+    "ma": "2203",
+    "loai": "xã",
+    "tenhc": "Ia Lâu",
+    "maxa": 2963
+  },
+  {
+    "id": 2204,
+    "matinh": 24,
+    "ma": "2204",
+    "loai": "xã",
+    "tenhc": "Ia Le",
+    "maxa": 2965
+  },
+  {
+    "id": 2205,
+    "matinh": 24,
+    "ma": "2205",
+    "loai": "xã",
+    "tenhc": "Ia Ly",
+    "maxa": 2966
+  },
+  {
+    "id": 2206,
+    "matinh": 24,
+    "ma": "2206",
+    "loai": "xã",
+    "tenhc": "Ia Mơ",
+    "maxa": 2964
+  },
+  {
+    "id": 2207,
+    "matinh": 24,
+    "ma": "2207",
+    "loai": "xã",
+    "tenhc": "Ia Nan",
+    "maxa": 2946
+  },
+  {
+    "id": 2208,
+    "matinh": 24,
+    "ma": "2208",
+    "loai": "xã",
+    "tenhc": "Ia O",
+    "maxa": 2955
+  },
+  {
+    "id": 2209,
+    "matinh": 24,
+    "ma": "2209",
+    "loai": "xã",
+    "tenhc": "Ia Pa",
+    "maxa": 2977
+  },
+  {
+    "id": 2210,
+    "matinh": 24,
+    "ma": "2210",
+    "loai": "xã",
+    "tenhc": "Ia Phí",
+    "maxa": 2967
+  },
+  {
+    "id": 2211,
+    "matinh": 24,
+    "ma": "2211",
+    "loai": "xã",
+    "tenhc": "Ia Pia",
+    "maxa": 2951
+  },
+  {
+    "id": 2212,
+    "matinh": 24,
+    "ma": "2212",
+    "loai": "xã",
+    "tenhc": "Ia Pnôn",
+    "maxa": 2945
+  },
+  {
+    "id": 2213,
+    "matinh": 24,
+    "ma": "2213",
+    "loai": "xã",
+    "tenhc": "Ia Púch",
+    "maxa": 2950
+  },
+  {
+    "id": 2214,
+    "matinh": 24,
+    "ma": "2214",
+    "loai": "xã",
+    "tenhc": "Ia Rbol",
+    "maxa": 2982
+  },
+  {
+    "id": 2215,
+    "matinh": 24,
+    "ma": "2215",
+    "loai": "xã",
+    "tenhc": "Ia Rsai",
+    "maxa": 2984
+  },
+  {
+    "id": 2216,
+    "matinh": 24,
+    "ma": "2216",
+    "loai": "xã",
+    "tenhc": "Ia Sao",
+    "maxa": 2983
+  },
+  {
+    "id": 2217,
+    "matinh": 24,
+    "ma": "2217",
+    "loai": "xã",
+    "tenhc": "Ia Tôr",
+    "maxa": 2948
+  },
+  {
+    "id": 2218,
+    "matinh": 24,
+    "ma": "2218",
+    "loai": "xã",
+    "tenhc": "Ia Tul",
+    "maxa": 2985
+  },
+  {
+    "id": 2219,
+    "matinh": 24,
+    "ma": "2219",
+    "loai": "xã",
+    "tenhc": "Kbang",
+    "maxa": 3067
+  },
+  {
+    "id": 2220,
+    "matinh": 24,
+    "ma": "2220",
+    "loai": "xã",
+    "tenhc": "KDang",
+    "maxa": 3075
+  },
+  {
+    "id": 2221,
+    "matinh": 24,
+    "ma": "2221",
+    "loai": "xã",
+    "tenhc": "Kim Sơn",
+    "maxa": 3003
+  },
+  {
+    "id": 2222,
+    "matinh": 24,
+    "ma": "2222",
+    "loai": "xã",
+    "tenhc": "Kon Chiêng",
+    "maxa": 3051
+  },
+  {
+    "id": 2223,
+    "matinh": 24,
+    "ma": "2223",
+    "loai": "xã",
+    "tenhc": "Kon Gang",
+    "maxa": 3074
+  },
+  {
+    "id": 2224,
+    "matinh": 24,
+    "ma": "2224",
+    "loai": "xã",
+    "tenhc": "Kông Bơ La",
+    "maxa": 3071
+  },
+  {
+    "id": 2225,
+    "matinh": 24,
+    "ma": "2225",
+    "loai": "xã",
+    "tenhc": "Kông Chro",
+    "maxa": 3052
+  },
+  {
+    "id": 2226,
+    "matinh": 24,
+    "ma": "2226",
+    "loai": "xã",
+    "tenhc": "Krong",
+    "maxa": 3069
+  },
+  {
+    "id": 2227,
+    "matinh": 24,
+    "ma": "2227",
+    "loai": "xã",
+    "tenhc": "Lơ Pang",
+    "maxa": 3050
+  },
+  {
+    "id": 2228,
+    "matinh": 24,
+    "ma": "2228",
+    "loai": "xã",
+    "tenhc": "Mang Yang",
+    "maxa": 3047
+  },
+  {
+    "id": 2229,
+    "matinh": 24,
+    "ma": "2229",
+    "loai": "xã",
+    "tenhc": "Ngô Mây",
+    "maxa": 3023
+  },
+  {
+    "id": 2230,
+    "matinh": 24,
+    "ma": "2230",
+    "loai": "xã",
+    "tenhc": "Nhơn Châu",
+    "maxa": 3298
+  },
+  {
+    "id": 2231,
+    "matinh": 24,
+    "ma": "2231",
+    "loai": "xã",
+    "tenhc": "Phù Cát",
+    "maxa": 3019
+  },
+  {
+    "id": 2232,
+    "matinh": 24,
+    "ma": "2232",
+    "loai": "xã",
+    "tenhc": "Phù Mỹ",
+    "maxa": 3027
+  },
+  {
+    "id": 2233,
+    "matinh": 24,
+    "ma": "2233",
+    "loai": "xã",
+    "tenhc": "Phù Mỹ Bắc",
+    "maxa": 3007
+  },
+  {
+    "id": 2234,
+    "matinh": 24,
+    "ma": "2234",
+    "loai": "xã",
+    "tenhc": "Phù Mỹ Đông",
+    "maxa": 3009
+  },
+  {
+    "id": 2235,
+    "matinh": 24,
+    "ma": "2235",
+    "loai": "xã",
+    "tenhc": "Phù Mỹ Nam",
+    "maxa": 3005
+  },
+  {
+    "id": 2236,
+    "matinh": 24,
+    "ma": "2236",
+    "loai": "xã",
+    "tenhc": "Phù Mỹ Tây",
+    "maxa": 3008
+  },
+  {
+    "id": 2237,
+    "matinh": 24,
+    "ma": "2237",
+    "loai": "xã",
+    "tenhc": "Phú Thiện",
+    "maxa": 2978
+  },
+  {
+    "id": 2238,
+    "matinh": 24,
+    "ma": "2238",
+    "loai": "xã",
+    "tenhc": "Phú Túc",
+    "maxa": 2986
+  },
+  {
+    "id": 2239,
+    "matinh": 24,
+    "ma": "2239",
+    "loai": "phường",
+    "tenhc": "Pleiku",
+    "maxa": 2968
+  },
+  {
+    "id": 2240,
+    "matinh": 24,
+    "ma": "2240",
+    "loai": "xã",
+    "tenhc": "Pờ Tó",
+    "maxa": 2976
+  },
+  {
+    "id": 2241,
+    "matinh": 24,
+    "ma": "2241",
+    "loai": "phường",
+    "tenhc": "Quy Nhơn",
+    "maxa": 3029
+  },
+  {
+    "id": 2242,
+    "matinh": 24,
+    "ma": "2242",
+    "loai": "phường",
+    "tenhc": "Quy Nhơn Bắc",
+    "maxa": 3028
+  },
+  {
+    "id": 2243,
+    "matinh": 24,
+    "ma": "2243",
+    "loai": "phường",
+    "tenhc": "Quy Nhơn Đông",
+    "maxa": 3030
+  },
+  {
+    "id": 2244,
+    "matinh": 24,
+    "ma": "2244",
+    "loai": "phường",
+    "tenhc": "Quy Nhơn Nam",
+    "maxa": 3043
+  },
+  {
+    "id": 2245,
+    "matinh": 24,
+    "ma": "2245",
+    "loai": "phường",
+    "tenhc": "Quy Nhơn Tây",
+    "maxa": 3039
+  },
+  {
+    "id": 2246,
+    "matinh": 24,
+    "ma": "2246",
+    "loai": "xã",
+    "tenhc": "Sơn Lang",
+    "maxa": 3068
+  },
+  {
+    "id": 2247,
+    "matinh": 24,
+    "ma": "2247",
+    "loai": "xã",
+    "tenhc": "SRó",
+    "maxa": 3061
+  },
+  {
+    "id": 2248,
+    "matinh": 24,
+    "ma": "2248",
+    "loai": "phường",
+    "tenhc": "Tam Quan",
+    "maxa": 2993
+  },
+  {
+    "id": 2249,
+    "matinh": 24,
+    "ma": "2249",
+    "loai": "xã",
+    "tenhc": "Tây Sơn",
+    "maxa": 3014
+  },
+  {
+    "id": 2250,
+    "matinh": 24,
+    "ma": "2250",
+    "loai": "phường",
+    "tenhc": "Thống Nhất",
+    "maxa": 3064
+  },
+  {
+    "id": 2251,
+    "matinh": 24,
+    "ma": "2251",
+    "loai": "xã",
+    "tenhc": "Tơ Tung",
+    "maxa": 3070
+  },
+  {
+    "id": 2252,
+    "matinh": 24,
+    "ma": "2252",
+    "loai": "xã",
+    "tenhc": "Tuy Phước",
+    "maxa": 3035
+  },
+  {
+    "id": 2253,
+    "matinh": 24,
+    "ma": "2253",
+    "loai": "xã",
+    "tenhc": "Tuy Phước Bắc",
+    "maxa": 3037
+  },
+  {
+    "id": 2254,
+    "matinh": 24,
+    "ma": "2254",
+    "loai": "xã",
+    "tenhc": "Tuy Phước Đông",
+    "maxa": 3036
+  },
+  {
+    "id": 2255,
+    "matinh": 24,
+    "ma": "2255",
+    "loai": "xã",
+    "tenhc": "Tuy Phước Tây",
+    "maxa": 3038
+  },
+  {
+    "id": 2256,
+    "matinh": 24,
+    "ma": "2256",
+    "loai": "xã",
+    "tenhc": "Uar",
+    "maxa": 2988
+  },
+  {
+    "id": 2257,
+    "matinh": 24,
+    "ma": "2257",
+    "loai": "xã",
+    "tenhc": "Vân Canh",
+    "maxa": 3040
+  },
+  {
+    "id": 2258,
+    "matinh": 24,
+    "ma": "2258",
+    "loai": "xã",
+    "tenhc": "Vạn Đức",
+    "maxa": 3001
+  },
+  {
+    "id": 2259,
+    "matinh": 24,
+    "ma": "2259",
+    "loai": "xã",
+    "tenhc": "Vĩnh Quang",
+    "maxa": 3026
+  },
+  {
+    "id": 2260,
+    "matinh": 24,
+    "ma": "2260",
+    "loai": "xã",
+    "tenhc": "Vĩnh Sơn",
+    "maxa": 3012
+  },
+  {
+    "id": 2261,
+    "matinh": 24,
+    "ma": "2261",
+    "loai": "xã",
+    "tenhc": "Vĩnh Thạnh",
+    "maxa": 3011
+  },
+  {
+    "id": 2262,
+    "matinh": 24,
+    "ma": "2262",
+    "loai": "xã",
+    "tenhc": "Vĩnh Thịnh",
+    "maxa": 3013
+  },
+  {
+    "id": 2263,
+    "matinh": 24,
+    "ma": "2263",
+    "loai": "xã",
+    "tenhc": "Xuân An",
+    "maxa": 3024
+  },
+  {
+    "id": 2264,
+    "matinh": 24,
+    "ma": "2264",
+    "loai": "xã",
+    "tenhc": "Ya Hội",
+    "maxa": 3060
+  },
+  {
+    "id": 2265,
+    "matinh": 24,
+    "ma": "2265",
+    "loai": "xã",
+    "tenhc": "Ya Ma",
+    "maxa": 3054
+  }
+]

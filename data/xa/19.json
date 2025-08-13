@@ -1,0 +1,626 @@
+[
+  {
+    "id": 1753,
+    "matinh": 19,
+    "ma": "1753",
+    "loai": "xã",
+    "tenhc": "A Dơi",
+    "maxa": 596
+  },
+  {
+    "id": 1754,
+    "matinh": 19,
+    "ma": "1754",
+    "loai": "xã",
+    "tenhc": "Ái Tử",
+    "maxa": 569
+  },
+  {
+    "id": 1755,
+    "matinh": 19,
+    "ma": "1755",
+    "loai": "phường",
+    "tenhc": "Ba Đồn",
+    "maxa": 615
+  },
+  {
+    "id": 1756,
+    "matinh": 19,
+    "ma": "1756",
+    "loai": "xã",
+    "tenhc": "Ba Lòng",
+    "maxa": 579
+  },
+  {
+    "id": 1757,
+    "matinh": 19,
+    "ma": "1757",
+    "loai": "phường",
+    "tenhc": "Bắc Gianh",
+    "maxa": 620
+  },
+  {
+    "id": 1758,
+    "matinh": 19,
+    "ma": "1758",
+    "loai": "xã",
+    "tenhc": "Bắc Trạch",
+    "maxa": 625
+  },
+  {
+    "id": 1759,
+    "matinh": 19,
+    "ma": "1759",
+    "loai": "xã",
+    "tenhc": "Bến Hải",
+    "maxa": 585
+  },
+  {
+    "id": 1760,
+    "matinh": 19,
+    "ma": "1760",
+    "loai": "xã",
+    "tenhc": "Bến Quan",
+    "maxa": 566
+  },
+  {
+    "id": 1761,
+    "matinh": 19,
+    "ma": "1761",
+    "loai": "xã",
+    "tenhc": "Bố Trạch",
+    "maxa": 626
+  },
+  {
+    "id": 1762,
+    "matinh": 19,
+    "ma": "1762",
+    "loai": "xã",
+    "tenhc": "Cam Hồng",
+    "maxa": 636
+  },
+  {
+    "id": 1763,
+    "matinh": 19,
+    "ma": "1763",
+    "loai": "xã",
+    "tenhc": "Cam Lộ",
+    "maxa": 571
+  },
+  {
+    "id": 1764,
+    "matinh": 19,
+    "ma": "1764",
+    "loai": "đặc khu",
+    "tenhc": "Cồn Cỏ",
+    "maxa": 3324
+  },
+  {
+    "id": 1765,
+    "matinh": 19,
+    "ma": "1765",
+    "loai": "xã",
+    "tenhc": "Cồn Tiên",
+    "maxa": 576
+  },
+  {
+    "id": 1766,
+    "matinh": 19,
+    "ma": "1766",
+    "loai": "xã",
+    "tenhc": "Cửa Tùng",
+    "maxa": 586
+  },
+  {
+    "id": 1767,
+    "matinh": 19,
+    "ma": "1767",
+    "loai": "xã",
+    "tenhc": "Cửa Việt",
+    "maxa": 598
+  },
+  {
+    "id": 1768,
+    "matinh": 19,
+    "ma": "1768",
+    "loai": "xã",
+    "tenhc": "Đakrông",
+    "maxa": 578
+  },
+  {
+    "id": 1769,
+    "matinh": 19,
+    "ma": "1769",
+    "loai": "xã",
+    "tenhc": "Dân Hóa",
+    "maxa": 604
+  },
+  {
+    "id": 1770,
+    "matinh": 19,
+    "ma": "1770",
+    "loai": "xã",
+    "tenhc": "Diên Sanh",
+    "maxa": 582
+  },
+  {
+    "id": 1771,
+    "matinh": 19,
+    "ma": "1771",
+    "loai": "phường",
+    "tenhc": "Đông Hà",
+    "maxa": 572
+  },
+  {
+    "id": 1772,
+    "matinh": 19,
+    "ma": "1772",
+    "loai": "phường",
+    "tenhc": "Đồng Hới",
+    "maxa": 600
+  },
+  {
+    "id": 1773,
+    "matinh": 19,
+    "ma": "1773",
+    "loai": "xã",
+    "tenhc": "Đồng Lê",
+    "maxa": 608
+  },
+  {
+    "id": 1774,
+    "matinh": 19,
+    "ma": "1774",
+    "loai": "phường",
+    "tenhc": "Đồng Sơn",
+    "maxa": 602
+  },
+  {
+    "id": 1775,
+    "matinh": 19,
+    "ma": "1775",
+    "loai": "phường",
+    "tenhc": "Đồng Thuận",
+    "maxa": 601
+  },
+  {
+    "id": 1776,
+    "matinh": 19,
+    "ma": "1776",
+    "loai": "xã",
+    "tenhc": "Đông Trạch",
+    "maxa": 628
+  },
+  {
+    "id": 1777,
+    "matinh": 19,
+    "ma": "1777",
+    "loai": "xã",
+    "tenhc": "Gio Linh",
+    "maxa": 570
+  },
+  {
+    "id": 1778,
+    "matinh": 19,
+    "ma": "1778",
+    "loai": "xã",
+    "tenhc": "Hải Lăng",
+    "maxa": 580
+  },
+  {
+    "id": 1779,
+    "matinh": 19,
+    "ma": "1779",
+    "loai": "xã",
+    "tenhc": "Hiếu Giang",
+    "maxa": 599
+  },
+  {
+    "id": 1780,
+    "matinh": 19,
+    "ma": "1780",
+    "loai": "xã",
+    "tenhc": "Hòa Trạch",
+    "maxa": 617
+  },
+  {
+    "id": 1781,
+    "matinh": 19,
+    "ma": "1781",
+    "loai": "xã",
+    "tenhc": "Hoàn Lão",
+    "maxa": 623
+  },
+  {
+    "id": 1782,
+    "matinh": 19,
+    "ma": "1782",
+    "loai": "xã",
+    "tenhc": "Hướng Hiệp",
+    "maxa": 575
+  },
+  {
+    "id": 1783,
+    "matinh": 19,
+    "ma": "1783",
+    "loai": "xã",
+    "tenhc": "Hướng Lập",
+    "maxa": 577
+  },
+  {
+    "id": 1784,
+    "matinh": 19,
+    "ma": "1784",
+    "loai": "xã",
+    "tenhc": "Hướng Phùng",
+    "maxa": 594
+  },
+  {
+    "id": 1785,
+    "matinh": 19,
+    "ma": "1785",
+    "loai": "xã",
+    "tenhc": "Khe Sanh",
+    "maxa": 587
+  },
+  {
+    "id": 1786,
+    "matinh": 19,
+    "ma": "1786",
+    "loai": "xã",
+    "tenhc": "Kim Điền",
+    "maxa": 606
+  },
+  {
+    "id": 1787,
+    "matinh": 19,
+    "ma": "1787",
+    "loai": "xã",
+    "tenhc": "Kim Ngân",
+    "maxa": 637
+  },
+  {
+    "id": 1788,
+    "matinh": 19,
+    "ma": "1788",
+    "loai": "xã",
+    "tenhc": "Kim Phú",
+    "maxa": 607
+  },
+  {
+    "id": 1789,
+    "matinh": 19,
+    "ma": "1789",
+    "loai": "xã",
+    "tenhc": "La Lay",
+    "maxa": 568
+  },
+  {
+    "id": 1790,
+    "matinh": 19,
+    "ma": "1790",
+    "loai": "xã",
+    "tenhc": "Lao Bảo",
+    "maxa": 595
+  },
+  {
+    "id": 1791,
+    "matinh": 19,
+    "ma": "1791",
+    "loai": "xã",
+    "tenhc": "Lệ Ninh",
+    "maxa": 634
+  },
+  {
+    "id": 1792,
+    "matinh": 19,
+    "ma": "1792",
+    "loai": "xã",
+    "tenhc": "Lệ Thủy",
+    "maxa": 635
+  },
+  {
+    "id": 1793,
+    "matinh": 19,
+    "ma": "1793",
+    "loai": "xã",
+    "tenhc": "Lìa",
+    "maxa": 597
+  },
+  {
+    "id": 1794,
+    "matinh": 19,
+    "ma": "1794",
+    "loai": "xã",
+    "tenhc": "Minh Hóa",
+    "maxa": 603
+  },
+  {
+    "id": 1795,
+    "matinh": 19,
+    "ma": "1795",
+    "loai": "xã",
+    "tenhc": "Mỹ Thủy",
+    "maxa": 584
+  },
+  {
+    "id": 1796,
+    "matinh": 19,
+    "ma": "1796",
+    "loai": "xã",
+    "tenhc": "Nam Ba Đồn",
+    "maxa": 621
+  },
+  {
+    "id": 1797,
+    "matinh": 19,
+    "ma": "1797",
+    "loai": "xã",
+    "tenhc": "Nam Cửa Việt",
+    "maxa": 588
+  },
+  {
+    "id": 1798,
+    "matinh": 19,
+    "ma": "1798",
+    "loai": "phường",
+    "tenhc": "Nam Đông Hà",
+    "maxa": 573
+  },
+  {
+    "id": 1799,
+    "matinh": 19,
+    "ma": "1799",
+    "loai": "xã",
+    "tenhc": "Nam Gianh",
+    "maxa": 622
+  },
+  {
+    "id": 1800,
+    "matinh": 19,
+    "ma": "1800",
+    "loai": "xã",
+    "tenhc": "Nam Hải Lăng",
+    "maxa": 581
+  },
+  {
+    "id": 1801,
+    "matinh": 19,
+    "ma": "1801",
+    "loai": "xã",
+    "tenhc": "Nam Trạch",
+    "maxa": 624
+  },
+  {
+    "id": 1802,
+    "matinh": 19,
+    "ma": "1802",
+    "loai": "xã",
+    "tenhc": "Ninh Châu",
+    "maxa": 632
+  },
+  {
+    "id": 1803,
+    "matinh": 19,
+    "ma": "1803",
+    "loai": "xã",
+    "tenhc": "Phong Nha",
+    "maxa": 629
+  },
+  {
+    "id": 1804,
+    "matinh": 19,
+    "ma": "1804",
+    "loai": "xã",
+    "tenhc": "Phú Trạch",
+    "maxa": 616
+  },
+  {
+    "id": 1805,
+    "matinh": 19,
+    "ma": "1805",
+    "loai": "xã",
+    "tenhc": "Quảng Ninh",
+    "maxa": 630
+  },
+  {
+    "id": 1806,
+    "matinh": 19,
+    "ma": "1806",
+    "loai": "xã",
+    "tenhc": "Quảng Trạch",
+    "maxa": 619
+  },
+  {
+    "id": 1807,
+    "matinh": 19,
+    "ma": "1807",
+    "loai": "phường",
+    "tenhc": "Quảng Trị",
+    "maxa": 590
+  },
+  {
+    "id": 1808,
+    "matinh": 19,
+    "ma": "1808",
+    "loai": "xã",
+    "tenhc": "Sen Ngư",
+    "maxa": 640
+  },
+  {
+    "id": 1809,
+    "matinh": 19,
+    "ma": "1809",
+    "loai": "xã",
+    "tenhc": "Tà Rụt",
+    "maxa": 592
+  },
+  {
+    "id": 1810,
+    "matinh": 19,
+    "ma": "1810",
+    "loai": "xã",
+    "tenhc": "Tân Gianh",
+    "maxa": 613
+  },
+  {
+    "id": 1811,
+    "matinh": 19,
+    "ma": "1811",
+    "loai": "xã",
+    "tenhc": "Tân Lập",
+    "maxa": 593
+  },
+  {
+    "id": 1812,
+    "matinh": 19,
+    "ma": "1812",
+    "loai": "xã",
+    "tenhc": "Tân Mỹ",
+    "maxa": 638
+  },
+  {
+    "id": 1813,
+    "matinh": 19,
+    "ma": "1813",
+    "loai": "xã",
+    "tenhc": "Tân Thành",
+    "maxa": 605
+  },
+  {
+    "id": 1814,
+    "matinh": 19,
+    "ma": "1814",
+    "loai": "xã",
+    "tenhc": "Thượng Trạch",
+    "maxa": 627
+  },
+  {
+    "id": 1815,
+    "matinh": 19,
+    "ma": "1815",
+    "loai": "xã",
+    "tenhc": "Triệu Bình",
+    "maxa": 574
+  },
+  {
+    "id": 1816,
+    "matinh": 19,
+    "ma": "1816",
+    "loai": "xã",
+    "tenhc": "Triệu Cơ",
+    "maxa": 589
+  },
+  {
+    "id": 1817,
+    "matinh": 19,
+    "ma": "1817",
+    "loai": "xã",
+    "tenhc": "Triệu Phong",
+    "maxa": 591
+  },
+  {
+    "id": 1818,
+    "matinh": 19,
+    "ma": "1818",
+    "loai": "xã",
+    "tenhc": "Trung Thuần",
+    "maxa": 618
+  },
+  {
+    "id": 1819,
+    "matinh": 19,
+    "ma": "1819",
+    "loai": "xã",
+    "tenhc": "Trường Ninh",
+    "maxa": 633
+  },
+  {
+    "id": 1820,
+    "matinh": 19,
+    "ma": "1820",
+    "loai": "xã",
+    "tenhc": "Trường Phú",
+    "maxa": 639
+  },
+  {
+    "id": 1821,
+    "matinh": 19,
+    "ma": "1821",
+    "loai": "xã",
+    "tenhc": "Trường Sơn",
+    "maxa": 631
+  },
+  {
+    "id": 1822,
+    "matinh": 19,
+    "ma": "1822",
+    "loai": "xã",
+    "tenhc": "Tuyên Bình",
+    "maxa": 612
+  },
+  {
+    "id": 1823,
+    "matinh": 19,
+    "ma": "1823",
+    "loai": "xã",
+    "tenhc": "Tuyên Hóa",
+    "maxa": 614
+  },
+  {
+    "id": 1824,
+    "matinh": 19,
+    "ma": "1824",
+    "loai": "xã",
+    "tenhc": "Tuyên Lâm",
+    "maxa": 610
+  },
+  {
+    "id": 1825,
+    "matinh": 19,
+    "ma": "1825",
+    "loai": "xã",
+    "tenhc": "Tuyên Phú",
+    "maxa": 611
+  },
+  {
+    "id": 1826,
+    "matinh": 19,
+    "ma": "1826",
+    "loai": "xã",
+    "tenhc": "Tuyên Sơn",
+    "maxa": 609
+  },
+  {
+    "id": 1827,
+    "matinh": 19,
+    "ma": "1827",
+    "loai": "xã",
+    "tenhc": "Vĩnh Định",
+    "maxa": 583
+  },
+  {
+    "id": 1828,
+    "matinh": 19,
+    "ma": "1828",
+    "loai": "xã",
+    "tenhc": "Vĩnh Hoàng",
+    "maxa": 565
+  },
+  {
+    "id": 1829,
+    "matinh": 19,
+    "ma": "1829",
+    "loai": "xã",
+    "tenhc": "Vĩnh Linh",
+    "maxa": 564
+  },
+  {
+    "id": 1830,
+    "matinh": 19,
+    "ma": "1830",
+    "loai": "xã",
+    "tenhc": "Vĩnh Thủy",
+    "maxa": 567
+  }
+]

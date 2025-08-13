@@ -18,24 +18,22 @@ export const getAllProvinces = async (req, res) => {
   }
 };
 
-// export const getAllCommunesOfProvinces = async (req, res) => {
-//   const id = req.params.id;
+export const getAllCommunesOfProvinces = async (req, res) => {
+  const id = req.params.id;
 
-//   if (!id || isNaN(id)) {
-//     return res.status(400).json({ error: "Thiếu hoặc sai định dạng 'id'" });
-//   }
+  if (!id || isNaN(id)) {
+    return res.status(400).json({ error: "Thiếu hoặc sai định dạng 'id'" });
+  }
 
-//   console.log(dataDir)
-//   const filePath = path.join(dataDir, `${id}.json`);
-//   console.log(filePath)
+  const filePath = path.join(dataDir, `${id}.json`);
 
-//   try {
-//     const fileContent = await readFile(filePath, "utf-8");
-//     const data = JSON.parse(fileContent);
-//     res.json({ data });
-//   } catch (err) {
-//     console.log(err)
-//     res.status(404).json({ error: `Không tồn tại mã tỉnh ${id}` });
-//   }
+  try {
+    const fileContent = await readFile(filePath, "utf-8");
+    const data = JSON.parse(fileContent);
+    res.json(data);
+  } catch (err) {
+    console.log(err)
+    res.status(404).json({ error: `Không tồn tại mã tỉnh ${id}` });
+  }
 
-// };
+};

@@ -1,0 +1,1346 @@
+[
+  {
+    "id": 2688,
+    "matinh": 29,
+    "ma": "2688",
+    "loai": "phường",
+    "tenhc": "An Đông",
+    "maxa": 173
+  },
+  {
+    "id": 2689,
+    "matinh": 29,
+    "ma": "2689",
+    "loai": "phường",
+    "tenhc": "An Hội Đông",
+    "maxa": 74
+  },
+  {
+    "id": 2690,
+    "matinh": 29,
+    "ma": "2690",
+    "loai": "phường",
+    "tenhc": "An Hội Tây",
+    "maxa": 77
+  },
+  {
+    "id": 2691,
+    "matinh": 29,
+    "ma": "2691",
+    "loai": "phường",
+    "tenhc": "An Khánh",
+    "maxa": 131
+  },
+  {
+    "id": 2692,
+    "matinh": 29,
+    "ma": "2692",
+    "loai": "phường",
+    "tenhc": "An Lạc",
+    "maxa": 224
+  },
+  {
+    "id": 2693,
+    "matinh": 29,
+    "ma": "2693",
+    "loai": "xã",
+    "tenhc": "An Long",
+    "maxa": 20
+  },
+  {
+    "id": 2694,
+    "matinh": 29,
+    "ma": "2694",
+    "loai": "phường",
+    "tenhc": "An Nhơn",
+    "maxa": 76
+  },
+  {
+    "id": 2695,
+    "matinh": 29,
+    "ma": "2695",
+    "loai": "xã",
+    "tenhc": "An Nhơn Tây",
+    "maxa": 187
+  },
+  {
+    "id": 2696,
+    "matinh": 29,
+    "ma": "2696",
+    "loai": "phường",
+    "tenhc": "An Phú",
+    "maxa": 35
+  },
+  {
+    "id": 2697,
+    "matinh": 29,
+    "ma": "2697",
+    "loai": "phường",
+    "tenhc": "An Phú Đông",
+    "maxa": 217
+  },
+  {
+    "id": 2698,
+    "matinh": 29,
+    "ma": "2698",
+    "loai": "xã",
+    "tenhc": "An Thới Đông",
+    "maxa": 215
+  },
+  {
+    "id": 2699,
+    "matinh": 29,
+    "ma": "2699",
+    "loai": "xã",
+    "tenhc": "Bà Điểm",
+    "maxa": 201
+  },
+  {
+    "id": 2700,
+    "matinh": 29,
+    "ma": "2700",
+    "loai": "phường",
+    "tenhc": "Bà Rịa",
+    "maxa": 2222
+  },
+  {
+    "id": 2701,
+    "matinh": 29,
+    "ma": "2701",
+    "loai": "xã",
+    "tenhc": "Bắc Tân Uyên",
+    "maxa": 24
+  },
+  {
+    "id": 2702,
+    "matinh": 29,
+    "ma": "2702",
+    "loai": "phường",
+    "tenhc": "Bàn Cờ",
+    "maxa": 141
+  },
+  {
+    "id": 2703,
+    "matinh": 29,
+    "ma": "2703",
+    "loai": "xã",
+    "tenhc": "Bàu Bàng",
+    "maxa": 12
+  },
+  {
+    "id": 2704,
+    "matinh": 29,
+    "ma": "2704",
+    "loai": "xã",
+    "tenhc": "Bàu Lâm",
+    "maxa": 2233
+  },
+  {
+    "id": 2705,
+    "matinh": 29,
+    "ma": "2705",
+    "loai": "phường",
+    "tenhc": "Bảy Hiền",
+    "maxa": 112
+  },
+  {
+    "id": 2706,
+    "matinh": 29,
+    "ma": "2706",
+    "loai": "phường",
+    "tenhc": "Bến Cát",
+    "maxa": 10
+  },
+  {
+    "id": 2707,
+    "matinh": 29,
+    "ma": "2707",
+    "loai": "phường",
+    "tenhc": "Bến Thành",
+    "maxa": 41
+  },
+  {
+    "id": 2708,
+    "matinh": 29,
+    "ma": "2708",
+    "loai": "xã",
+    "tenhc": "Bình Chánh",
+    "maxa": 208
+  },
+  {
+    "id": 2709,
+    "matinh": 29,
+    "ma": "2709",
+    "loai": "xã",
+    "tenhc": "Bình Châu",
+    "maxa": 2236
+  },
+  {
+    "id": 2710,
+    "matinh": 29,
+    "ma": "2710",
+    "loai": "phường",
+    "tenhc": "Bình Cơ",
+    "maxa": 25
+  },
+  {
+    "id": 2711,
+    "matinh": 29,
+    "ma": "2711",
+    "loai": "phường",
+    "tenhc": "Bình Đông",
+    "maxa": 211
+  },
+  {
+    "id": 2712,
+    "matinh": 29,
+    "ma": "2712",
+    "loai": "phường",
+    "tenhc": "Bình Dương",
+    "maxa": 4
+  },
+  {
+    "id": 2713,
+    "matinh": 29,
+    "ma": "2713",
+    "loai": "xã",
+    "tenhc": "Bình Giã",
+    "maxa": 2228
+  },
+  {
+    "id": 2714,
+    "matinh": 29,
+    "ma": "2714",
+    "loai": "phường",
+    "tenhc": "Bình Hòa",
+    "maxa": 36
+  },
+  {
+    "id": 2715,
+    "matinh": 29,
+    "ma": "2715",
+    "loai": "xã",
+    "tenhc": "Bình Hưng",
+    "maxa": 206
+  },
+  {
+    "id": 2716,
+    "matinh": 29,
+    "ma": "2716",
+    "loai": "phường",
+    "tenhc": "Bình Hưng Hòa",
+    "maxa": 212
+  },
+  {
+    "id": 2717,
+    "matinh": 29,
+    "ma": "2717",
+    "loai": "xã",
+    "tenhc": "Bình Khánh",
+    "maxa": 214
+  },
+  {
+    "id": 2718,
+    "matinh": 29,
+    "ma": "2718",
+    "loai": "xã",
+    "tenhc": "Bình Lợi",
+    "maxa": 205
+  },
+  {
+    "id": 2719,
+    "matinh": 29,
+    "ma": "2719",
+    "loai": "phường",
+    "tenhc": "Bình Lợi Trung",
+    "maxa": 92
+  },
+  {
+    "id": 2720,
+    "matinh": 29,
+    "ma": "2720",
+    "loai": "xã",
+    "tenhc": "Bình Mỹ",
+    "maxa": 195
+  },
+  {
+    "id": 2721,
+    "matinh": 29,
+    "ma": "2721",
+    "loai": "phường",
+    "tenhc": "Bình Phú",
+    "maxa": 188
+  },
+  {
+    "id": 2722,
+    "matinh": 29,
+    "ma": "2722",
+    "loai": "phường",
+    "tenhc": "Bình Quới",
+    "maxa": 96
+  },
+  {
+    "id": 2723,
+    "matinh": 29,
+    "ma": "2723",
+    "loai": "phường",
+    "tenhc": "Bình Tân",
+    "maxa": 223
+  },
+  {
+    "id": 2724,
+    "matinh": 29,
+    "ma": "2724",
+    "loai": "phường",
+    "tenhc": "Bình Tây",
+    "maxa": 179
+  },
+  {
+    "id": 2725,
+    "matinh": 29,
+    "ma": "2725",
+    "loai": "phường",
+    "tenhc": "Bình Thạnh",
+    "maxa": 93
+  },
+  {
+    "id": 2726,
+    "matinh": 29,
+    "ma": "2726",
+    "loai": "phường",
+    "tenhc": "Bình Thới",
+    "maxa": 147
+  },
+  {
+    "id": 2727,
+    "matinh": 29,
+    "ma": "2727",
+    "loai": "phường",
+    "tenhc": "Bình Tiên",
+    "maxa": 189
+  },
+  {
+    "id": 2728,
+    "matinh": 29,
+    "ma": "2728",
+    "loai": "phường",
+    "tenhc": "Bình Trị Đông",
+    "maxa": 222
+  },
+  {
+    "id": 2729,
+    "matinh": 29,
+    "ma": "2729",
+    "loai": "phường",
+    "tenhc": "Bình Trưng",
+    "maxa": 132
+  },
+  {
+    "id": 2730,
+    "matinh": 29,
+    "ma": "2730",
+    "loai": "xã",
+    "tenhc": "Cần Giờ",
+    "maxa": 213
+  },
+  {
+    "id": 2731,
+    "matinh": 29,
+    "ma": "2731",
+    "loai": "phường",
+    "tenhc": "Cát Lái",
+    "maxa": 133
+  },
+  {
+    "id": 2732,
+    "matinh": 29,
+    "ma": "2732",
+    "loai": "phường",
+    "tenhc": "Cầu Kiệu",
+    "maxa": 129
+  },
+  {
+    "id": 2733,
+    "matinh": 29,
+    "ma": "2733",
+    "loai": "phường",
+    "tenhc": "Cầu Ông Lãnh",
+    "maxa": 42
+  },
+  {
+    "id": 2734,
+    "matinh": 29,
+    "ma": "2734",
+    "loai": "phường",
+    "tenhc": "Chánh Hiệp",
+    "maxa": 3
+  },
+  {
+    "id": 2735,
+    "matinh": 29,
+    "ma": "2735",
+    "loai": "phường",
+    "tenhc": "Chánh Hưng",
+    "maxa": 198
+  },
+  {
+    "id": 2736,
+    "matinh": 29,
+    "ma": "2736",
+    "loai": "phường",
+    "tenhc": "Chánh Phú Hòa",
+    "maxa": 14
+  },
+  {
+    "id": 2737,
+    "matinh": 29,
+    "ma": "2737",
+    "loai": "xã",
+    "tenhc": "Châu Đức",
+    "maxa": 2229
+  },
+  {
+    "id": 2738,
+    "matinh": 29,
+    "ma": "2738",
+    "loai": "xã",
+    "tenhc": "Châu Pha",
+    "maxa": 2244
+  },
+  {
+    "id": 2739,
+    "matinh": 29,
+    "ma": "2739",
+    "loai": "phường",
+    "tenhc": "Chợ Lớn",
+    "maxa": 178
+  },
+  {
+    "id": 2740,
+    "matinh": 29,
+    "ma": "2740",
+    "loai": "phường",
+    "tenhc": "Chợ Quán",
+    "maxa": 172
+  },
+  {
+    "id": 2741,
+    "matinh": 29,
+    "ma": "2741",
+    "loai": "đặc khu",
+    "tenhc": "Côn Đảo",
+    "maxa": 3312
+  },
+  {
+    "id": 2742,
+    "matinh": 29,
+    "ma": "2742",
+    "loai": "xã",
+    "tenhc": "Củ Chi",
+    "maxa": 193
+  },
+  {
+    "id": 2743,
+    "matinh": 29,
+    "ma": "2743",
+    "loai": "xã",
+    "tenhc": "Đất Đỏ",
+    "maxa": 2238
+  },
+  {
+    "id": 2744,
+    "matinh": 29,
+    "ma": "2744",
+    "loai": "xã",
+    "tenhc": "Dầu Tiếng",
+    "maxa": 5
+  },
+  {
+    "id": 2745,
+    "matinh": 29,
+    "ma": "2745",
+    "loai": "phường",
+    "tenhc": "Dĩ An",
+    "maxa": 29
+  },
+  {
+    "id": 2746,
+    "matinh": 29,
+    "ma": "2746",
+    "loai": "phường",
+    "tenhc": "Diên Hồng",
+    "maxa": 46
+  },
+  {
+    "id": 2747,
+    "matinh": 29,
+    "ma": "2747",
+    "loai": "phường",
+    "tenhc": "Đông Hòa",
+    "maxa": 31
+  },
+  {
+    "id": 2748,
+    "matinh": 29,
+    "ma": "2748",
+    "loai": "phường",
+    "tenhc": "Đông Hưng Thuận",
+    "maxa": 48
+  },
+  {
+    "id": 2749,
+    "matinh": 29,
+    "ma": "2749",
+    "loai": "xã",
+    "tenhc": "Đông Thạnh",
+    "maxa": 197
+  },
+  {
+    "id": 2750,
+    "matinh": 29,
+    "ma": "2750",
+    "loai": "phường",
+    "tenhc": "Đức Nhuận",
+    "maxa": 128
+  },
+  {
+    "id": 2751,
+    "matinh": 29,
+    "ma": "2751",
+    "loai": "phường",
+    "tenhc": "Gia Định",
+    "maxa": 95
+  },
+  {
+    "id": 2752,
+    "matinh": 29,
+    "ma": "2752",
+    "loai": "phường",
+    "tenhc": "Gò Vấp",
+    "maxa": 75
+  },
+  {
+    "id": 2753,
+    "matinh": 29,
+    "ma": "2753",
+    "loai": "phường",
+    "tenhc": "Hạnh Thông",
+    "maxa": 80
+  },
+  {
+    "id": 2754,
+    "matinh": 29,
+    "ma": "2754",
+    "loai": "phường",
+    "tenhc": "Hiệp Bình",
+    "maxa": 44
+  },
+  {
+    "id": 2755,
+    "matinh": 29,
+    "ma": "2755",
+    "loai": "xã",
+    "tenhc": "Hiệp Phước",
+    "maxa": 210
+  },
+  {
+    "id": 2756,
+    "matinh": 29,
+    "ma": "2756",
+    "loai": "xã",
+    "tenhc": "Hồ Tràm",
+    "maxa": 2231
+  },
+  {
+    "id": 2757,
+    "matinh": 29,
+    "ma": "2757",
+    "loai": "phường",
+    "tenhc": "Hòa Bình",
+    "maxa": 97
+  },
+  {
+    "id": 2758,
+    "matinh": 29,
+    "ma": "2758",
+    "loai": "xã",
+    "tenhc": "Hòa Hiệp",
+    "maxa": 2235
+  },
+  {
+    "id": 2759,
+    "matinh": 29,
+    "ma": "2759",
+    "loai": "xã",
+    "tenhc": "Hòa Hội",
+    "maxa": 2234
+  },
+  {
+    "id": 2760,
+    "matinh": 29,
+    "ma": "2760",
+    "loai": "phường",
+    "tenhc": "Hòa Hưng",
+    "maxa": 134
+  },
+  {
+    "id": 2761,
+    "matinh": 29,
+    "ma": "2761",
+    "loai": "phường",
+    "tenhc": "Hòa Lợi",
+    "maxa": 16
+  },
+  {
+    "id": 2762,
+    "matinh": 29,
+    "ma": "2762",
+    "loai": "xã",
+    "tenhc": "Hóc Môn",
+    "maxa": 196
+  },
+  {
+    "id": 2763,
+    "matinh": 29,
+    "ma": "2763",
+    "loai": "xã",
+    "tenhc": "Hưng Long",
+    "maxa": 207
+  },
+  {
+    "id": 2764,
+    "matinh": 29,
+    "ma": "2764",
+    "loai": "phường",
+    "tenhc": "Khánh Hội",
+    "maxa": 165
+  },
+  {
+    "id": 2765,
+    "matinh": 29,
+    "ma": "2765",
+    "loai": "xã",
+    "tenhc": "Kim Long",
+    "maxa": 2225
+  },
+  {
+    "id": 2766,
+    "matinh": 29,
+    "ma": "2766",
+    "loai": "phường",
+    "tenhc": "Lái Thiêu",
+    "maxa": 33
+  },
+  {
+    "id": 2767,
+    "matinh": 29,
+    "ma": "2767",
+    "loai": "phường",
+    "tenhc": "Linh Xuân",
+    "maxa": 49
+  },
+  {
+    "id": 2768,
+    "matinh": 29,
+    "ma": "2768",
+    "loai": "phường",
+    "tenhc": "Long Bình",
+    "maxa": 65
+  },
+  {
+    "id": 2769,
+    "matinh": 29,
+    "ma": "2769",
+    "loai": "xã",
+    "tenhc": "Long Điền",
+    "maxa": 2237
+  },
+  {
+    "id": 2770,
+    "matinh": 29,
+    "ma": "2770",
+    "loai": "xã",
+    "tenhc": "Long Hải",
+    "maxa": 2265
+  },
+  {
+    "id": 2771,
+    "matinh": 29,
+    "ma": "2771",
+    "loai": "xã",
+    "tenhc": "Long Hòa",
+    "maxa": 7
+  },
+  {
+    "id": 2772,
+    "matinh": 29,
+    "ma": "2772",
+    "loai": "phường",
+    "tenhc": "Long Hương",
+    "maxa": 2224
+  },
+  {
+    "id": 2773,
+    "matinh": 29,
+    "ma": "2773",
+    "loai": "phường",
+    "tenhc": "Long Nguyên",
+    "maxa": 13
+  },
+  {
+    "id": 2774,
+    "matinh": 29,
+    "ma": "2774",
+    "loai": "phường",
+    "tenhc": "Long Phước",
+    "maxa": 72
+  },
+  {
+    "id": 2775,
+    "matinh": 29,
+    "ma": "2775",
+    "loai": "xã",
+    "tenhc": "Long Sơn",
+    "maxa": 2245
+  },
+  {
+    "id": 2776,
+    "matinh": 29,
+    "ma": "2776",
+    "loai": "phường",
+    "tenhc": "Long Trường",
+    "maxa": 73
+  },
+  {
+    "id": 2777,
+    "matinh": 29,
+    "ma": "2777",
+    "loai": "phường",
+    "tenhc": "Minh Phụng",
+    "maxa": 148
+  },
+  {
+    "id": 2778,
+    "matinh": 29,
+    "ma": "2778",
+    "loai": "xã",
+    "tenhc": "Minh Thạnh",
+    "maxa": 6
+  },
+  {
+    "id": 2779,
+    "matinh": 29,
+    "ma": "2779",
+    "loai": "xã",
+    "tenhc": "Ngãi Giao",
+    "maxa": 2226
+  },
+  {
+    "id": 2780,
+    "matinh": 29,
+    "ma": "2780",
+    "loai": "xã",
+    "tenhc": "Nghĩa Thành",
+    "maxa": 2230
+  },
+  {
+    "id": 2781,
+    "matinh": 29,
+    "ma": "2781",
+    "loai": "xã",
+    "tenhc": "Nhà Bè",
+    "maxa": 209
+  },
+  {
+    "id": 2782,
+    "matinh": 29,
+    "ma": "2782",
+    "loai": "phường",
+    "tenhc": "Nhiêu Lộc",
+    "maxa": 135
+  },
+  {
+    "id": 2783,
+    "matinh": 29,
+    "ma": "2783",
+    "loai": "xã",
+    "tenhc": "Nhuận Đức",
+    "maxa": 190
+  },
+  {
+    "id": 2784,
+    "matinh": 29,
+    "ma": "2784",
+    "loai": "phường",
+    "tenhc": "Phú An",
+    "maxa": 17
+  },
+  {
+    "id": 2785,
+    "matinh": 29,
+    "ma": "2785",
+    "loai": "phường",
+    "tenhc": "Phú Định",
+    "maxa": 199
+  },
+  {
+    "id": 2786,
+    "matinh": 29,
+    "ma": "2786",
+    "loai": "xã",
+    "tenhc": "Phú Giáo",
+    "maxa": 18
+  },
+  {
+    "id": 2787,
+    "matinh": 29,
+    "ma": "2787",
+    "loai": "xã",
+    "tenhc": "Phú Hòa Đông",
+    "maxa": 191
+  },
+  {
+    "id": 2788,
+    "matinh": 29,
+    "ma": "2788",
+    "loai": "phường",
+    "tenhc": "Phú Lâm",
+    "maxa": 185
+  },
+  {
+    "id": 2789,
+    "matinh": 29,
+    "ma": "2789",
+    "loai": "phường",
+    "tenhc": "Phú Lợi",
+    "maxa": 1
+  },
+  {
+    "id": 2790,
+    "matinh": 29,
+    "ma": "2790",
+    "loai": "phường",
+    "tenhc": "Phú Mỹ",
+    "maxa": 2240
+  },
+  {
+    "id": 2791,
+    "matinh": 29,
+    "ma": "2791",
+    "loai": "phường",
+    "tenhc": "Phú Nhuận",
+    "maxa": 130
+  },
+  {
+    "id": 2792,
+    "matinh": 29,
+    "ma": "2792",
+    "loai": "phường",
+    "tenhc": "Phú Thạnh",
+    "maxa": 124
+  },
+  {
+    "id": 2793,
+    "matinh": 29,
+    "ma": "2793",
+    "loai": "phường",
+    "tenhc": "Phú Thọ",
+    "maxa": 62
+  },
+  {
+    "id": 2794,
+    "matinh": 29,
+    "ma": "2794",
+    "loai": "phường",
+    "tenhc": "Phú Thọ Hòa",
+    "maxa": 123
+  },
+  {
+    "id": 2795,
+    "matinh": 29,
+    "ma": "2795",
+    "loai": "phường",
+    "tenhc": "Phú Thuận",
+    "maxa": 268
+  },
+  {
+    "id": 2796,
+    "matinh": 29,
+    "ma": "2796",
+    "loai": "xã",
+    "tenhc": "Phước Hải",
+    "maxa": 2239
+  },
+  {
+    "id": 2797,
+    "matinh": 29,
+    "ma": "2797",
+    "loai": "xã",
+    "tenhc": "Phước Hòa",
+    "maxa": 21
+  },
+  {
+    "id": 2798,
+    "matinh": 29,
+    "ma": "2798",
+    "loai": "phường",
+    "tenhc": "Phước Long",
+    "maxa": 71
+  },
+  {
+    "id": 2799,
+    "matinh": 29,
+    "ma": "2799",
+    "loai": "phường",
+    "tenhc": "Phước Thắng",
+    "maxa": 2221
+  },
+  {
+    "id": 2800,
+    "matinh": 29,
+    "ma": "2800",
+    "loai": "xã",
+    "tenhc": "Phước Thành",
+    "maxa": 19
+  },
+  {
+    "id": 2801,
+    "matinh": 29,
+    "ma": "2801",
+    "loai": "phường",
+    "tenhc": "Rạch Dừa",
+    "maxa": 2220
+  },
+  {
+    "id": 2802,
+    "matinh": 29,
+    "ma": "2802",
+    "loai": "phường",
+    "tenhc": "Sài Gòn",
+    "maxa": 38
+  },
+  {
+    "id": 2803,
+    "matinh": 29,
+    "ma": "2803",
+    "loai": "phường",
+    "tenhc": "Tam Bình",
+    "maxa": 50
+  },
+  {
+    "id": 2804,
+    "matinh": 29,
+    "ma": "2804",
+    "loai": "phường",
+    "tenhc": "Tam Long",
+    "maxa": 2223
+  },
+  {
+    "id": 2805,
+    "matinh": 29,
+    "ma": "2805",
+    "loai": "phường",
+    "tenhc": "Tam Thắng",
+    "maxa": 2219
+  },
+  {
+    "id": 2806,
+    "matinh": 29,
+    "ma": "2806",
+    "loai": "xã",
+    "tenhc": "Tân An Hội",
+    "maxa": 192
+  },
+  {
+    "id": 2807,
+    "matinh": 29,
+    "ma": "2807",
+    "loai": "phường",
+    "tenhc": "Tân Bình",
+    "maxa": 113
+  },
+  {
+    "id": 2808,
+    "matinh": 29,
+    "ma": "2808",
+    "loai": "phường",
+    "tenhc": "Tân Định",
+    "maxa": 37
+  },
+  {
+    "id": 2809,
+    "matinh": 29,
+    "ma": "2809",
+    "loai": "phường",
+    "tenhc": "Tân Đông Hiệp",
+    "maxa": 30
+  },
+  {
+    "id": 2810,
+    "matinh": 29,
+    "ma": "2810",
+    "loai": "phường",
+    "tenhc": "Tân Hải",
+    "maxa": 2241
+  },
+  {
+    "id": 2811,
+    "matinh": 29,
+    "ma": "2811",
+    "loai": "phường",
+    "tenhc": "Tân Hiệp",
+    "maxa": 27
+  },
+  {
+    "id": 2812,
+    "matinh": 29,
+    "ma": "2812",
+    "loai": "phường",
+    "tenhc": "Tân Hòa",
+    "maxa": 114
+  },
+  {
+    "id": 2813,
+    "matinh": 29,
+    "ma": "2813",
+    "loai": "phường",
+    "tenhc": "Tân Hưng",
+    "maxa": 267
+  },
+  {
+    "id": 2814,
+    "matinh": 29,
+    "ma": "2814",
+    "loai": "phường",
+    "tenhc": "Tân Khánh",
+    "maxa": 23
+  },
+  {
+    "id": 2815,
+    "matinh": 29,
+    "ma": "2815",
+    "loai": "phường",
+    "tenhc": "Tân Mỹ",
+    "maxa": 186
+  },
+  {
+    "id": 2816,
+    "matinh": 29,
+    "ma": "2816",
+    "loai": "xã",
+    "tenhc": "Tân Nhựt",
+    "maxa": 202
+  },
+  {
+    "id": 2817,
+    "matinh": 29,
+    "ma": "2817",
+    "loai": "phường",
+    "tenhc": "Tân Phú",
+    "maxa": 127
+  },
+  {
+    "id": 2818,
+    "matinh": 29,
+    "ma": "2818",
+    "loai": "phường",
+    "tenhc": "Tân Phước",
+    "maxa": 2242
+  },
+  {
+    "id": 2819,
+    "matinh": 29,
+    "ma": "2819",
+    "loai": "phường",
+    "tenhc": "Tân Sơn",
+    "maxa": 115
+  },
+  {
+    "id": 2820,
+    "matinh": 29,
+    "ma": "2820",
+    "loai": "phường",
+    "tenhc": "Tân Sơn Hòa",
+    "maxa": 98
+  },
+  {
+    "id": 2821,
+    "matinh": 29,
+    "ma": "2821",
+    "loai": "phường",
+    "tenhc": "Tân Sơn Nhất",
+    "maxa": 101
+  },
+  {
+    "id": 2822,
+    "matinh": 29,
+    "ma": "2822",
+    "loai": "phường",
+    "tenhc": "Tân Sơn Nhì",
+    "maxa": 116
+  },
+  {
+    "id": 2823,
+    "matinh": 29,
+    "ma": "2823",
+    "loai": "phường",
+    "tenhc": "Tân Tạo",
+    "maxa": 244
+  },
+  {
+    "id": 2824,
+    "matinh": 29,
+    "ma": "2824",
+    "loai": "phường",
+    "tenhc": "Tân Thành",
+    "maxa": 2243
+  },
+  {
+    "id": 2825,
+    "matinh": 29,
+    "ma": "2825",
+    "loai": "phường",
+    "tenhc": "Tân Thới Hiệp",
+    "maxa": 45
+  },
+  {
+    "id": 2826,
+    "matinh": 29,
+    "ma": "2826",
+    "loai": "phường",
+    "tenhc": "Tân Thuận",
+    "maxa": 254
+  },
+  {
+    "id": 2827,
+    "matinh": 29,
+    "ma": "2827",
+    "loai": "phường",
+    "tenhc": "Tân Uyên",
+    "maxa": 22
+  },
+  {
+    "id": 2828,
+    "matinh": 29,
+    "ma": "2828",
+    "loai": "xã",
+    "tenhc": "Tân Vĩnh Lộc",
+    "maxa": 204
+  },
+  {
+    "id": 2829,
+    "matinh": 29,
+    "ma": "2829",
+    "loai": "phường",
+    "tenhc": "Tăng Nhơn Phú",
+    "maxa": 66
+  },
+  {
+    "id": 2830,
+    "matinh": 29,
+    "ma": "2830",
+    "loai": "phường",
+    "tenhc": "Tây Nam",
+    "maxa": 8
+  },
+  {
+    "id": 2831,
+    "matinh": 29,
+    "ma": "2831",
+    "loai": "phường",
+    "tenhc": "Tây Thạnh",
+    "maxa": 117
+  },
+  {
+    "id": 2832,
+    "matinh": 29,
+    "ma": "2832",
+    "loai": "xã",
+    "tenhc": "Thái Mỹ",
+    "maxa": 194
+  },
+  {
+    "id": 2833,
+    "matinh": 29,
+    "ma": "2833",
+    "loai": "xã",
+    "tenhc": "Thanh An",
+    "maxa": 9
+  },
+  {
+    "id": 2834,
+    "matinh": 29,
+    "ma": "2834",
+    "loai": "xã",
+    "tenhc": "Thạnh An",
+    "maxa": 216
+  },
+  {
+    "id": 2835,
+    "matinh": 29,
+    "ma": "2835",
+    "loai": "phường",
+    "tenhc": "Thạnh Mỹ Tây",
+    "maxa": 94
+  },
+  {
+    "id": 2836,
+    "matinh": 29,
+    "ma": "2836",
+    "loai": "phường",
+    "tenhc": "Thới An",
+    "maxa": 43
+  },
+  {
+    "id": 2837,
+    "matinh": 29,
+    "ma": "2837",
+    "loai": "phường",
+    "tenhc": "Thới Hòa",
+    "maxa": 15
+  },
+  {
+    "id": 2838,
+    "matinh": 29,
+    "ma": "2838",
+    "loai": "phường",
+    "tenhc": "Thông Tây Hội",
+    "maxa": 91
+  },
+  {
+    "id": 2839,
+    "matinh": 29,
+    "ma": "2839",
+    "loai": "phường",
+    "tenhc": "Thủ Dầu Một",
+    "maxa": 2
+  },
+  {
+    "id": 2840,
+    "matinh": 29,
+    "ma": "2840",
+    "loai": "phường",
+    "tenhc": "Thủ Đức",
+    "maxa": 61
+  },
+  {
+    "id": 2841,
+    "matinh": 29,
+    "ma": "2841",
+    "loai": "phường",
+    "tenhc": "Thuận An",
+    "maxa": 32
+  },
+  {
+    "id": 2842,
+    "matinh": 29,
+    "ma": "2842",
+    "loai": "phường",
+    "tenhc": "Thuận Giao",
+    "maxa": 34
+  },
+  {
+    "id": 2843,
+    "matinh": 29,
+    "ma": "2843",
+    "loai": "xã",
+    "tenhc": "Thường Tân",
+    "maxa": 28
+  },
+  {
+    "id": 2844,
+    "matinh": 29,
+    "ma": "2844",
+    "loai": "xã",
+    "tenhc": "Trừ Văn Thố",
+    "maxa": 11
+  },
+  {
+    "id": 2845,
+    "matinh": 29,
+    "ma": "2845",
+    "loai": "phường",
+    "tenhc": "Trung Mỹ Tây",
+    "maxa": 47
+  },
+  {
+    "id": 2846,
+    "matinh": 29,
+    "ma": "2846",
+    "loai": "phường",
+    "tenhc": "Vĩnh Hội",
+    "maxa": 166
+  },
+  {
+    "id": 2847,
+    "matinh": 29,
+    "ma": "2847",
+    "loai": "xã",
+    "tenhc": "Vĩnh Lộc",
+    "maxa": 203
+  },
+  {
+    "id": 2848,
+    "matinh": 29,
+    "ma": "2848",
+    "loai": "phường",
+    "tenhc": "Vĩnh Tân",
+    "maxa": 26
+  },
+  {
+    "id": 2849,
+    "matinh": 29,
+    "ma": "2849",
+    "loai": "phường",
+    "tenhc": "Vũng Tàu",
+    "maxa": 2218
+  },
+  {
+    "id": 2850,
+    "matinh": 29,
+    "ma": "2850",
+    "loai": "phường",
+    "tenhc": "Vườn Lài",
+    "maxa": 99
+  },
+  {
+    "id": 2851,
+    "matinh": 29,
+    "ma": "2851",
+    "loai": "phường",
+    "tenhc": "Xóm Chiếu",
+    "maxa": 156
+  },
+  {
+    "id": 2852,
+    "matinh": 29,
+    "ma": "2852",
+    "loai": "phường",
+    "tenhc": "Xuân Hòa",
+    "maxa": 140
+  },
+  {
+    "id": 2853,
+    "matinh": 29,
+    "ma": "2853",
+    "loai": "xã",
+    "tenhc": "Xuân Sơn",
+    "maxa": 2227
+  },
+  {
+    "id": 2854,
+    "matinh": 29,
+    "ma": "2854",
+    "loai": "xã",
+    "tenhc": "Xuân Thới Sơn",
+    "maxa": 200
+  },
+  {
+    "id": 2855,
+    "matinh": 29,
+    "ma": "2855",
+    "loai": "xã",
+    "tenhc": "Xuyên Mộc",
+    "maxa": 2232
+  }
+]
