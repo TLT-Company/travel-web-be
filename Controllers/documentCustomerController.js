@@ -3,7 +3,6 @@ import DocumentCustomer from "../models/DocumentCustomer.js";
 import Customer from "../models/Customer.js"
 import AddressMapping from "../models/AddressMapping.js"
 import { Op, Sequelize, col  } from "sequelize";
-import {sequelize} from "../config/database.js"
 import fs from 'fs';
 import { LicenseManager, CaptureVisionRouter, EnumPresetTemplate } from "dynamsoft-capture-vision-for-node"
 import dotenv from "dotenv";
@@ -33,7 +32,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
     const maps = new Map();
     const mapsValue = new Map();
     for (const file of files) {
-      const fileBuffer = fs.readFileSync(file.path);
+      const fileBuffer = await fs.promises.readFile(file.path);
       let result = await CaptureVisionRouter.captureAsync(fileBuffer, EnumPresetTemplate.PT_READ_BARCODES_READ_RATE_FIRST);
       maps.set(file.filename, result.barcodeResultItems[0]?.text || "-1");
     }
@@ -63,93 +62,89 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
       const commune = parts[parts.length - 3];
       const village = parts[parts.length - 4];
 
-      await sequelize.transaction(async (t) => {
-        const [record] = await AddressMapping.findOrCreate({
-          where: { 
-            commune_old: commune,
-            district_old: district,
-            province_old: province
+      const [record] = await AddressMapping.findOrCreate({
+        where: { 
+          commune_old: commune,
+          district_old: district,
+          province_old: province
+        },
+        defaults: {
+          commune_old: commune,
+          district_old: district,
+          province_old: province,
+          province_new: null,
+          commune_new: null,
+        },
+      });
+
+      // find customer by card_id
+      let customer = await Customer.findOne({ where: { card_id: items[0] }});
+
+      if (customer) {
+        const exists = await DocumentCustomer.findOne({
+          where: {
+            customer_id: customer.id,
+            document_id: document.id,
           },
-          defaults: {
-            commune_old: commune,
-            district_old: district,
-            province_old: province,
-            province_new: null,
-            commune_new: null,
-          },
-          transaction: t
+          paranoid: false
         });
 
-        // find customer by card_id
-        let customer = await Customer.findOne({ where: { card_id: items[0] }, transaction: t });
+        // check exits customer in Document
+        if (exists && !exists.deleted_at) {
+          mapsValue.set(key, "khách hàng đã tồn tại ở số thông hành này");
+          continue;
+        }
 
-        if (customer) {
-          const exists = await DocumentCustomer.findOne({
-            where: {
-              customer_id: customer.id,
-              document_id: document.id,
-            },
-            paranoid: false,
-            transaction: t
-          });
+        // update customer
+        await customer.update({
+          full_name: items[2],
+          day_of_birth: parseDateDDMMYYYY(items[3]),
+          card_created_at: parseDateDDMMYYYY(items[6]),
+          gender: items[4],
+          address_mapping_id: record.id,
+          village: village,
+          address: items[5]
+        });
 
-          // check exits customer in Document
-          if (exists && !exists.deleted_at) {
-            mapsValue.set(key, "khách hàng đã tồn tại ở số thông hành này");
-            return;
-          }
+        // If the customer exists in the document but has been soft-deleted -> restore it
+        if (exists && exists.deleted_at) {
+          await exists.restore();
+        }
 
-          // If the customer exists in the document but has been soft-deleted -> restore it
-          if (exists && exists.deleted_at) {
-            await exists.restore({ transaction: t });
-          }
-
-          // update customer
-          await customer.update({
-            full_name: items[2],
-            day_of_birth: parseDateDDMMYYYY(items[3]),
-            card_created_at: parseDateDDMMYYYY(items[6]),
-            gender: items[4],
-            address_mapping_id: record.id,
-            village: village,
-            address: items[5]
-          }, { transaction: t });
-
-          // If not found, insert a new record.
-          if (!exists) {
-            await DocumentCustomer.create({
-              document_id: document.id,
-              customer_id: customer.id,
-            }, { transaction: t });
-          }
-        } else {
-          //  If the customer doesn't exist -> create a new one and link it to the document
-          customer = await Customer.create({ 
-            card_id: items[0],
-            full_name: items[2],
-            day_of_birth: parseDateDDMMYYYY(items[3]),
-            card_created_at: parseDateDDMMYYYY(items[6]),
-            gender: items[4],
-            address_mapping_id: record.id,
-            village: village,
-            address: items[5]
-          }, { transaction: t });
-
-          // If not found, insert a new record.
+        // If not found, insert a new record.
+        if (!exists) {
           await DocumentCustomer.create({
             document_id: document.id,
             customer_id: customer.id,
-          }, { transaction: t });
+          });
         }
-        mapsValue.set(key, "xử lý thành công")
-        count++;
-      });
+      } else {
+        //  If the customer doesn't exist -> create a new one and link it to the document
+        customer = await Customer.create({ 
+          card_id: items[0],
+          full_name: items[2],
+          day_of_birth: parseDateDDMMYYYY(items[3]),
+          card_created_at: parseDateDDMMYYYY(items[6]),
+          gender: items[4],
+          address_mapping_id: record.id,
+          village: village,
+          address: items[5]
+        });
+
+        // If not found, insert a new record.
+        await DocumentCustomer.create({
+          document_id: document.id,
+          customer_id: customer.id,
+        });
+      }
+      mapsValue.set(key, "xử lý thành công")
+      count++;
     }
 
     res.status(200).json({ success: true, message: count + "/" + maps.size, data: Array.from(mapsValue, ([key, value]) => ({ [key]: value })) })
 
   } catch (error) {
-    console.log(error)
+    console.error("scan cccd error:", error);
     return res.status(500).json({ error: false, message: "Lỗi xử lý quét căn cước công dân." });
   }
 }
@@ -372,70 +367,66 @@ export const addCustomerToDocument = async (req, res) => {
       // find customer by card_id
       let customer = await Customer.findOne({ where: { card_id: card_id } });
 
-      await sequelize.transaction(async (t) => {  
-        const [record] = await AddressMapping.findOrCreate({
-          where: { 
-            commune_new: commune,
-            province_new: province
+      const [record] = await AddressMapping.findOrCreate({
+        where: { 
+          commune_new: commune,
+          province_new: province
+        },
+        defaults: {
+          commune_old: null,
+          district_old: null,
+          province_old: null,
+          province_new: province,
+          commune_new: commune,
+        },
+      });
+
+      customerData.address_mapping_id = record.id;
+
+      if (customer) {
+        const exists = await DocumentCustomer.findOne({
+          where: {
+            customer_id: customer.id,
+            document_id: document.id,
           },
-          defaults: {
-            commune_old: null,
-            district_old: null,
-            province_old: null,
-            province_new: province,
-            commune_new: commune,
-          },
-          transaction: t
+          paranoid: false,
         });
 
-        customerData.address_mapping_id = record.id;
+        // check exits customer in Document
+        if (exists && !exists.deleted_at) {
+          return res.status(409).json({message: "Khách hàng có CCCD " + card_id + " đã tồn tại trong số thông hành " + document.document_number})
+        }
 
-        if (customer) {
-          const exists = await DocumentCustomer.findOne({
-            where: {
-              customer_id: customer.id,
-              document_id: document.id,
-            },
-            paranoid: false,
-            transaction: t
-          });
+        // If the customer exists in the document but has been soft-deleted -> restore it
+        if (exists && exists.deleted_at) {
+          await exists.restore();
+        }
 
-          // check exits customer in Document
-          if (exists && !exists.deleted_at) {
-            return res.status(409).json({message: "Khách hàng có CCCD " + card_id + " đã tồn tại trong số thông hành " + document.document_number})
-          }
+        // update customer
+        await customer.update(customerData);
 
-          // If the customer exists in the document but has been soft-deleted -> restore it
-          if (exists && exists.deleted_at) {
-            await exists.restore();{ transaction: t }
-          }
-
-          // update customer
-          await customer.update(customerData, { transaction: t });
-
-          // If not found, insert a new record.
-          if (!exists) {
-            await DocumentCustomer.create({
-              document_id: document.id,
-              customer_id: customer.id,
-            }, { transaction: t });
-          }
-        } else {
-          //  If the customer doesn't exist -> create a new one and link it to the document
-          customer = await Customer.create({ card_id, ...customerData }, { transaction: t });
-
-          // If not found, insert a new record.
+        // If not found, insert a new record.
+        if (!exists) {
           await DocumentCustomer.create({
             document_id: document.id,
             customer_id: customer.id,
-          }, { transaction: t });
+          });
         }
-      });
+      } else {
+        //  If the customer doesn't exist -> create a new one and link it to the document
+        customer = await Customer.create({ card_id, ...customerData });
+
+        // If not found, insert a new record.
+        await DocumentCustomer.create({
+          document_id: document.id,
+          customer_id: customer.id,
+        });
+      }
 
       res.status(200).json({ success: true, message: 'Thêm khách hàng thành công', data: customer })
     } catch (error) {
         console.error("create customers error:", error);
-        res.status(500).json({ success: true, message: 'Đã xảy ra lỗi. Vui lòng thử lại sau!' })
+        res.status(500).json({ success: false, message: 'Đã xảy ra lỗi. Vui lòng thử lại sau!' })
     }
 }
 
