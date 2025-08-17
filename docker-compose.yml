@@ -6,9 +6,9 @@ services:
     container_name: travel_postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: travel_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres123
+      POSTGRES_DB: web_travel
+      POSTGRES_USER: travel
+      POSTGRES_PASSWORD: password
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
