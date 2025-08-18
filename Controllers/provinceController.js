@@ -11,7 +11,11 @@ export const getAllProvinces = async (req, res) => {
   try {
     const data = await readFile(tinhFilePath, "utf8");
     const list = JSON.parse(data);
-    res.json(list);
+    res.status(200).json({
+      success: true,
+      message: "lấy danh sách tỉnh/ thành phố thành công",
+      data: list
+    });
   } catch (error) {
     console.error("Lỗi khi đọc JSON:", error);
     res.status(500).json({ error: "Không thể đọc danh sách tỉnh" });
@@ -30,7 +34,11 @@ export const getAllCommunesOfProvinces = async (req, res) => {
   try {
     const fileContent = await readFile(filePath, "utf-8");
     const data = JSON.parse(fileContent);
-    res.json(data);
+    res.status(200).json({
+      success: true,
+      message: "lấy danh sách xã/ phường thành công",
+      data: data
+    });
   } catch (err) {
     console.log(err)
     res.status(404).json({ error: `Không tồn tại mã tỉnh ${id}` });

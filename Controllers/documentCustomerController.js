@@ -13,7 +13,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 // TODO: Uncomment and add valid license key to .env file
-// LicenseManager.initLicense(process.env.LICENSE_DYNAMSOFT);
+LicenseManager.initLicense(process.env.LICENSE_DYNAMSOFT);
 
 // scan CCCD
 export const scanCCCDAndaddCustomer = async (req, res) => {
