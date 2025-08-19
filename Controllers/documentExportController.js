@@ -25,7 +25,7 @@ const CSV_HEADERS = [
   "id_card_number",
   "card_created_at",
   "province_new",
-  "commune_new"
+  "commune_new",
 ];
 
 // Get all document export histories
@@ -682,7 +682,7 @@ const getAllCustomers = async () => {
         model: AddressMapping,
         as: "address_mapping",
         attributes: ["province_new", "commune_new"],
-      }
+      },
     ],
     order: [["created_at", "DESC"]],
     raw: false,
@@ -718,7 +718,7 @@ const buildCustomerRow = (customer) => {
     `"${customer.id_card_number || ""}"`,
     `"${formattedDates.cardCreatedAt}"`,
     `"${addressData.provinceNew}"`,
-    `"${addressData.communeNew}"`
+    `"${addressData.communeNew}"`,
   ];
 };
 
@@ -730,15 +730,23 @@ const extractDocumentNumber = (customer) => {
 
 const extractAddressData = (customer) => {
   return {
-    provinceNew: customer.address_mapping ? customer.address_mapping.province_new : "",
-    communeNew: customer.address_mapping ? customer.address_mapping.commune_new : ""
+    provinceNew: customer.address_mapping
+      ? customer.address_mapping.province_new
+      : "",
+    communeNew: customer.address_mapping
+      ? customer.address_mapping.commune_new
+      : "",
   };
 };
 
 const formatCustomerDates = (customer) => {
   return {
-    dayOfBirth: customer.day_of_birth ? moment(customer.day_of_birth).format("DD/MM/YYYY") : "",
-    cardCreatedAt: customer.card_created_at ? moment(customer.card_created_at).format("DD/MM/YYYY") : ""
+    dayOfBirth: customer.day_of_birth
+      ? moment(customer.day_of_birth).format("DD/MM/YYYY")
+      : "",
+    cardCreatedAt: customer.card_created_at
+      ? moment(customer.card_created_at).format("DD/MM/YYYY")
+      : "",
   };
 };
 
@@ -773,16 +781,55 @@ const handleExportError = async (exportHistory, error) => {
   throw error;
 };
 
+const getAllCustomersByDocumentId = async (documentId) => {
+  return await Customer.findAll({
+    include: [
+      {
+        model: DocumentCustomer,
+        as: "documentCustomers",
+        include: [
+          {
+            model: Document,
+            as: "document",
+            where: {
+              id: documentId,
+            },
+            attributes: ["document_number"],
+            required: true,
+          },
+        ],
+        required: true,
+      },
+      {
+        model: AddressMapping,
+        as: "address_mapping",
+        attributes: ["province_new", "commune_new"],
+      },
+    ],
+    order: [["created_at", "DESC"]],
+    raw: false,
+  });
+};
+
 export const exportAllCustomersToCSV = async (req, res) => {
   let exportHistory = null;
 
   try {
-    const customers = await getAllCustomers();
+    const { document_id } = req.query;
+
+    if (!document_id) {
+      return res.status(400).json({
+        success: false,
+        message: "Vui lòng cung cấp document_id",
+      });
+    }
+
+    const customers = await getAllCustomersByDocumentId(document_id);
 
     if (customers.length === 0) {
       return res.status(404).json({
         success: false,
-        message: "Không có dữ liệu khách hàng để export",
+        message: "Không có dữ liệu khách hàng nào thuộc document này để export",
       });
     }
 
@@ -803,15 +850,21 @@ export const exportAllCustomersToCSV = async (req, res) => {
     // Update export history
     await updateExportHistory(exportHistory, filePath);
 
-    res.status(200).json({
-      success: true,
-      message: "Export CSV thành công!",
-      data: {
-        export_id: exportHistory.id,
-        file_name: fileName,
-        record_count: customers.length,
-      },
-    });
+    // Set headers for file download
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="${fileName}"; filename*=UTF-8''${encodeURIComponent(
+        fileName
+      )}`
+    );
+    res.setHeader("Content-Length", Buffer.byteLength(csvContent, "utf8"));
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+
+    // Send CSV content directly as response
+    res.status(200).send(csvContent);
   } catch (error) {
     await handleExportError(exportHistory, error);
     res.status(500).json({

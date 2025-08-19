@@ -22,7 +22,7 @@ router.get("/status/:status", getDocumentExportHistoriesByStatus);
 // Download file by ID (must come before /:id route)
 router.get("/download/:id", downloadFileById);
 
-// Export all customers to CSV
+// Export all customers to CSV by document_id
 router.get("/customer-csv", exportAllCustomersToCSV);
 
 // Get document export history by ID
