@@ -22,6 +22,18 @@ const Booking = sequelize.define(
       type: DataTypes.DATE,
       allowNull: true,
     },
+    front_image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    back_image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    picture_avatar: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     status: {
       type: DataTypes.STRING,
       allowNull: true,

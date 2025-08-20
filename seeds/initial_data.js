@@ -34,6 +34,14 @@ async function seedInitialData() {
       role: "admin",
     });
 
+    // Create collaborator user
+    const collaboratorPassword = await bcrypt.hash("collaborator123", 10);
+    const collaboratorUser = await Admin.create({
+      email: "collaborator@example.com",
+      password_hash: collaboratorPassword,
+      role: "collaborator",
+    });
+
     // Create customer user
     const customerPassword = await bcrypt.hash("customer123", 10);
     const customerUser = await User.create({
@@ -45,6 +53,13 @@ async function seedInitialData() {
     const employer = await Employer.create({
       admin_id: employerUser.id,
       full_name: "Nguyễn Văn A",
+      position: "Tour Guide",
+    });
+
+    // Create employer profile
+    const collaboratorer = await Employer.create({
+      admin_id: collaboratorUser.id,
+      full_name: "Cộng tác viên A",
       position: "Tour Guide",
     });
 
