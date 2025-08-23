@@ -715,7 +715,7 @@ const buildCustomerRow = (customer) => {
     `"${customer.village || ""}"`,
     `"${customer.place_of_birth || ""}"`,
     `"${customer.phone_number || ""}"`,
-    `"${customer.id_card_number || ""}"`,
+    `"${customer.card_id || ""}"`,
     `"${formattedDates.cardCreatedAt}"`,
     `"${addressData.provinceNew}"`,
     `"${addressData.communeNew}"`,
