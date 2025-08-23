@@ -2,40 +2,62 @@ import jwt from "jsonwebtoken";
 
 // Verify token from both header and cookie
 export const verifyToken = (req, res, next) => {
-  // Check for token in Authorization header first
-  const authHeader = req.headers.authorization;
-  let token = null;
+  try {
+    // Check for token in Authorization header first
+    const authHeader = req.headers.authorization;
+    let token = null;
 
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    token = authHeader.substring(7); // Remove 'Bearer ' prefix
-  } else {
-    // Fallback to cookie
-    token = req.cookies?.accessToken;
-  }
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.substring(7); // Remove 'Bearer ' prefix
+    } else {
+      // Fallback to cookie
+      token = req.cookies?.accessToken;
+    }
 
-  if (!token) {
-    return res.status(401).json({
-      success: false,
-      message: "Bạn chưa được xác thực! Vui lòng đăng nhập.",
+    // Debug logging
+    console.log("Token verification attempt:", {
+      hasAuthHeader: !!authHeader,
+      hasCookie: !!req.cookies?.accessToken,
+      tokenLength: token ? token.length : 0,
     });
-  }
 
-  // Verify the token
-  jwt.verify(
-    token,
-    process.env.JWT_SECRET_KEY || "your-secret-key",
-    (err, user) => {
+    if (!token) {
+      console.log("No token found in request");
+      return res.status(401).json({
+        success: false,
+        message: "Bạn chưa được xác thực! Vui lòng đăng nhập.",
+      });
+    }
+
+    // Verify the token
+    const secretKey = process.env.JWT_SECRET_KEY || "your-secret-key";
+    console.log("Using secret key:", secretKey ? "***" : "undefined");
+
+    jwt.verify(token, secretKey, (err, user) => {
       if (err) {
+        console.log("Token verification failed:", err.message);
         return res.status(401).json({
           success: false,
           message: "Token không hợp lệ hoặc đã hết hạn!",
         });
       }
 
+      console.log("Token verified successfully for user:", {
+        id: user.id,
+        role: user.role,
+        username: user.username,
+      });
+
       req.user = user;
       next();
-    }
-  );
+    });
+  } catch (error) {
+    console.error("Error in verifyToken middleware:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Lỗi xác thực token!",
+    });
+  }
 };
 
 // Verify user token (for customer routes)

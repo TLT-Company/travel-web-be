@@ -834,7 +834,9 @@ export const exportAllCustomersToCSV = async (req, res) => {
     }
 
     const csvContent = generateCustomerCSV(customers);
-    const fileName = generateFileName("customers");
+    const documentNumber =
+      customers[0].documentCustomers[0].document.document_number;
+    const fileName = generateFileName(documentNumber);
     const filePath = `./public/export/customer_csv/${fileName}`;
 
     // Create export history
