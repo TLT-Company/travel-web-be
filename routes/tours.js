@@ -1,4 +1,4 @@
-import express from 'express'
+import express from "express";
 import {
   createTour,
   deleteTour,
@@ -7,31 +7,35 @@ import {
   getSingleTour,
   getListToursByMonth,
   getTourCount,
-  updateTour
-} from '../Controllers/tourControllers.js'
+  updateTour,
+  getTourImagesZip,
+} from "../Controllers/tourControllers.js";
 import { uploadMultiImage } from "../middlewares/uploadMultiImage.js";
-import { verifyAdmin } from '../utils/verifyToken.js'
+import { verifyAdmin } from "../utils/verifyToken.js";
 
-const router = express.Router()
+const router = express.Router();
 
 //Create new tour
-router.post('/', verifyAdmin, uploadMultiImage, createTour)
+router.post("/", verifyAdmin, uploadMultiImage, createTour);
 
 //Update tour
-router.patch('/:id', verifyAdmin, uploadMultiImage, updateTour)
+router.patch("/:id", verifyAdmin, uploadMultiImage, updateTour);
 
 //Delete tour
-router.delete('/:id', verifyAdmin, deleteTour)
+router.delete("/:id", verifyAdmin, deleteTour);
 
 //Get all tour
-router.get('/', getAllTour)
+router.get("/", getAllTour);
 
 //Get tour by search
-router.get("/by-month", getListToursByMonth)
-router.get("/search/getFeaturedTour", getFeaturedTour)
-router.get("/search/getTourCount", getTourCount)
+router.get("/by-month", getListToursByMonth);
+router.get("/search/getFeaturedTour", getFeaturedTour);
+router.get("/search/getTourCount", getTourCount);
 
 //Get single tour
-router.get('/:id', getSingleTour)
+router.get("/:id", getSingleTour);
 
-export default router
+//Download tour images as zip
+router.get("/:tourId/images/zip", getTourImagesZip);
+
+export default router;

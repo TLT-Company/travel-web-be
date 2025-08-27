@@ -47,6 +47,7 @@ async function seedInitialData() {
     const customerUser = await User.create({
       email: "customer@example.com",
       password_hash: customerPassword,
+      role: "user",
     });
 
     // Create employer profile
