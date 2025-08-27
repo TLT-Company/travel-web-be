@@ -16,6 +16,11 @@ const DocumentCustomer = sequelize.define(
       primaryKey: true,
       comment: "Liên kết tới khách hàng",
     },
+    file_name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      comment: "file ảnh tải lên",
+    },
     deleted_at: {
       type: DataTypes.DATE,
       allowNull: true,
