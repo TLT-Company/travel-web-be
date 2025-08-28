@@ -288,6 +288,20 @@ export const performAnalysisFile = async (req, res) => {
     for (let i = 0; i < usersInfo2.length; i++) {
       let userInfo = usersInfo2[i];
 
+      const new_address = await AddressMapping.findAll({
+        attributes: ["id", "province_new", "commune_new"],
+        where: {
+          id: userInfo.address_mapping_id,
+        },
+      });
+
+      if (new_address && new_address.length > 0) {
+        userInfo.province_new = new_address[0].province_new || "";
+        userInfo.commune_new = new_address[0].commune_new || "";
+      } else {
+        userInfo.province_new = "";
+        userInfo.commune_new = "";
+      }
       // Create declaration file for each user
       const filePathDeclaration = await exportDeclarationFile(
         userInfo,
@@ -383,7 +397,6 @@ async function exportDeclarationFile(user, fileName) {
   targetCell.value = sourceCell.value;
   targetCell.fill = sourceCell.fill;
   targetCell.font = sourceCell.font;
-  targetCell.border = sourceCell.border;
   targetCell.alignment = sourceCell.alignment;
   targetCell.numberFormat = sourceCell.numberFormat;
 
@@ -406,10 +419,9 @@ async function exportDeclarationFile(user, fileName) {
   worksheet.getCell("E12").value = "Kinh";
   worksheet.getCell("K12").value = "Không";
   worksheet.getCell("S13").value = user.village;
-  worksheet.getCell("F14").value = user.commune;
-  worksheet.getCell("L14").value = user.district;
-  worksheet.getCell("S14").value = user.province;
-  worksheet.getCell("L28").value = user.full_name.toUpperCase();
+  worksheet.getCell("F14").value = user.commune_new;
+  worksheet.getCell("L14").value = "";
+  worksheet.getCell("S14").value = user.province_new;
 
   const digits = user.card_id.split("");
   let startRow = 10;
@@ -474,24 +486,23 @@ async function exportGroupCN(users, fileName) {
   await workbook.xlsx.readFile(
     path.join(
       __dirname,
-      "../public/export/group_list_cn/group_list_cn_tmp.xlsx"
+      "../public/export/group_list_cn/group_list_cn_tmp_v2.xlsx"
     )
   );
   const worksheet = workbook.getWorksheet(1);
 
   const sourceCell = worksheet.getCell("A1");
-  const targetCell = worksheet.getCell("B2");
+  const targetCell = worksheet.getCell("A1");
 
   targetCell.value = sourceCell.value;
   targetCell.fill = sourceCell.fill;
   targetCell.font = sourceCell.font;
-  targetCell.border = sourceCell.border;
   targetCell.alignment = sourceCell.alignment;
   targetCell.numberFormat = sourceCell.numberFormat;
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
-    const numOrder = i + 7;
+    const numOrder = i + 6;
     const englishName = user.full_name
       .toUpperCase()
       .normalize("NFD")
@@ -499,31 +510,46 @@ async function exportGroupCN(users, fileName) {
     const dayOfBirth = moment(user.day_of_birth).format("YYYYMMDD");
 
     const cells = [
+      worksheet.getCell(`A${numOrder}`),
       worksheet.getCell(`B${numOrder}`),
       worksheet.getCell(`C${numOrder}`),
       worksheet.getCell(`D${numOrder}`),
       worksheet.getCell(`E${numOrder}`),
       worksheet.getCell(`F${numOrder}`),
     ];
-    const genderCode = user.gender === "Nữ" ? "F" : "M";
+
+    const genderCode = user.gender === "Nữ" ? "女" : "男";
     cells[0].value = `${i + 1}`;
     cells[1].value = `${englishName}`;
     cells[2].value = `${genderCode}`;
     cells[3].value = `${dayOfBirth}`;
     cells[4].value = "";
+    cells[5].value = "";
 
-    cells.forEach((cell) => {
-      cell.border = {
-        top: { style: "thin" },
-        left: { style: "thin" },
-        bottom: { style: "thin" },
-        right: { style: "thin" },
+    cells.forEach((cell, index) => {
+      cell.font = {
+        size: 16,
+        name: "SimSun",
       };
+      if (index === 1 || index === 3) {
+        cell.font = { bold: true };
+      }
     });
+    setRowBorder(worksheet, numOrder);
   }
-
   const outputPath = `./public/export/group_list_cn/${fileName}_danh_sach_cn.xlsx`;
   await workbook.xlsx.writeFile(outputPath);
+}
+function setRowBorder(worksheet, rowNumber, columns = "ABCDEF") {
+  for (const col of columns.split("")) {
+    const cell = worksheet.getCell(`${col}${rowNumber}`);
+    cell.border = {
+      top: { style: "thin" },
+      left: { style: "thin" },
+      bottom: { style: "thin" },
+      right: { style: "thin" },
+    };
+  }
 }
 
 // Helper function to export group VN
@@ -535,6 +561,7 @@ async function exportGroupVN(users, fileName) {
       "../public/export/group_list_vn/group_list_vn_tmp.xlsx"
     )
   );
+
   const worksheet = workbook.getWorksheet(1);
 
   const sourceCell = worksheet.getCell("A1");
@@ -543,7 +570,6 @@ async function exportGroupVN(users, fileName) {
   targetCell.value = sourceCell.value;
   targetCell.fill = sourceCell.fill;
   targetCell.font = sourceCell.font;
-  targetCell.border = sourceCell.border;
   targetCell.alignment = sourceCell.alignment;
   targetCell.numberFormat = sourceCell.numberFormat;
 
@@ -558,6 +584,7 @@ async function exportGroupVN(users, fileName) {
       worksheet.getCell(`E${numOrder}`),
       worksheet.getCell(`F${numOrder}`),
       worksheet.getCell(`G${numOrder}`),
+      worksheet.getCell(`H${numOrder}`),
     ];
     const genderCode = user.gender === "Nữ" ? "F" : "M";
     const dayOfBirth = moment(user.day_of_birth).format("DD/MM/YYYY");
@@ -566,7 +593,8 @@ async function exportGroupVN(users, fileName) {
     cells[2].value = `${genderCode}`;
     cells[3].value = `${dayOfBirth}`;
     cells[4].value = `${user.card_id}`;
-    cells[5].value = `${user.province}`;
+    cells[5].value = `${user.place_of_birth}` || "";
+    cells[6].value = "";
 
     cells.forEach((cell) => {
       cell.border = {
