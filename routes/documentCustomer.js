@@ -7,7 +7,8 @@ import {
   updateCustomer,
   deleteCustomer,
   addDocument,
-  scanCCCDAndaddCustomer
+  scanCCCDAndaddCustomer,
+  updateDocument,
 } from "../Controllers/documentCustomerController.js";
 import { verifyAdmin } from '../utils/verifyToken.js'
 import { createUploadMiddleware } from "../middlewares/uploadImage.js";
@@ -21,6 +22,7 @@ router.post("/scancccd/:id", verifyAdmin, uploadCCCD.array("images", 50), handle
 router.post("/", verifyAdmin, addDocument);
 router.get("/", verifyAdmin, getAllDocuments);
 router.get("/:id", verifyAdmin, getSingleDocument);
+router.patch("/:id", verifyAdmin, updateDocument);
 router.post("/:id", verifyAdmin, addCustomerToDocument);
 router.get("/customers/:customer_id", verifyAdmin, getSingleCustomer);
 router.put("/customers/:customer_id", verifyAdmin, updateCustomer);

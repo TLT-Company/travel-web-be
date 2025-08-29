@@ -618,3 +618,26 @@ export const deleteCustomer = async (req, res) => {
     return res.status(500).json({ message: "Lỗi khi xóa khách hàng" });
   }
 };
+
+export const updateDocument = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { document_number } = req.body;
+    const [updated] = await Document.update({ document_number }, {where: {id}});
+
+    if (updated === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Không tìm thấy document cần cập nhật",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Chỉnh sửa số thông hành thành công",
+    })
+  } catch (e) {
+    console.error("Lỗi khi chỉnh sửa số thông hành: ", e);
+    return res.status(500).json({ message: "Lỗi khi chỉnh sửa số thông hành" });
+  }
+};
