@@ -10,6 +10,7 @@ import {
   EnumPresetTemplate,
 } from "dynamsoft-capture-vision-for-node";
 import dotenv from "dotenv";
+import { TextDecoder } from 'util';
 
 dotenv.config();
 // TODO: Uncomment and add valid license key to .env file
@@ -46,7 +47,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
         fileBuffer,
         EnumPresetTemplate.PT_READ_BARCODES_READ_RATE_FIRST
       );
-      maps.set(file.filename, result.barcodeResultItems[0]?.text || "-1");
+      maps.set(file.originalname, result.barcodeResultItems[0]?.text || "-1");
     }
 
     let count = 0;
@@ -116,11 +117,15 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           address_mapping_id: record.id,
           village: village,
           address: items[5],
+          national: "Việt Nam"
         });
 
         // If the customer exists in the document but has been soft-deleted -> restore it
         if (exists && exists.deleted_at) {
-          await exists.restore();
+            await exists.restore();
+
+            exists.file_name = fixEncoding(key);
+            await exists.save();
         }
 
         // If not found, insert a new record.
@@ -128,6 +133,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           await DocumentCustomer.create({
             document_id: document.id,
             customer_id: customer.id,
+            file_name: fixEncoding(key)
           });
         }
       } else {
@@ -141,12 +147,14 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           address_mapping_id: record.id,
           village: village,
           address: items[5],
+          national: "Việt Nam"
         });
 
         // If not found, insert a new record.
         await DocumentCustomer.create({
           document_id: document.id,
           customer_id: customer.id,
+          file_name: fixEncoding(key)
         });
       }
       mapsValue.set(key, "xử lý thành công");
@@ -165,6 +173,11 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
       .json({ error: false, message: "Lỗi xử lý quét căn cước công dân." });
   }
 };
+
+const fixEncoding = (str) => {
+  const bytes = new Uint8Array([...str].map(ch => ch.charCodeAt(0)));
+  return new TextDecoder("utf-8").decode(bytes);
+}
 
 const parseDateDDMMYYYY = (str) => {
   const day = str.substring(0, 2);
@@ -295,7 +308,9 @@ export const getSingleDocument = async (req, res) => {
           model: DocumentCustomer,
           required: true,
           as: "documentCustomers",
-          attributes: [],
+          attributes: [
+            "file_name"
+          ],
           where: {
             document_id: document_id,
           },
@@ -441,7 +456,10 @@ export const addCustomerToDocument = async (req, res) => {
 
       // If the customer exists in the document but has been soft-deleted -> restore it
       if (exists && exists.deleted_at) {
-        await exists.restore();
+          await exists.restore();
+
+          exists.file_name = "";
+          await exists.save();
       }
 
       // update customer
