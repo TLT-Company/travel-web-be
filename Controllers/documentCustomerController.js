@@ -420,6 +420,9 @@ export const addCustomerToDocument = async (req, res) => {
 
     const [record] = await AddressMapping.findOrCreate({
       where: {
+        commune_old: null,
+        district_old: null,
+        province_old: null,
         commune_new: commune,
         province_new: province,
       },
@@ -570,14 +573,20 @@ export const updateCustomer = async (req, res) => {
           success: false,
           message: "Không tìm thấy thông tin địa chỉ của khách hàng",
         });
-      } else if (!addressMapping.commune_new || !addressMapping.province_new) {
+      } else if (customer.address && addressMapping.commune_old && addressMapping.district_old && addressMapping.province_old) {  
         await addressMapping.update({
           commune_new: commune,
           province_new: province,
         });
       } else if (commune && province) {
         const exitsAdressMapping = await AddressMapping.findOne({
-          where: { commune_new: commune, province_new: province },
+          where: {
+            commune_old: null,
+            district_old: null,
+            province_old: null,
+            commune_new: commune,
+            province_new: province 
+            },
         });
 
         if (exitsAdressMapping) {
