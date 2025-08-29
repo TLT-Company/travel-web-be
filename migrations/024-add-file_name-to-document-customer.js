@@ -10,5 +10,10 @@ export async function up(queryInterface, Sequelize) {
 }
 
 export async function down(queryInterface, Sequelize) {
-  await queryInterface.removeColumn("document_customer", "file_name");
+  try {
+    await queryInterface.removeColumn("document_customer", "file_name");
+    console.log("Removed column: file_name");
+  } catch (error) {
+    console.log("Column file_name does not exist or already removed");
+  }
 }

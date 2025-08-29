@@ -1,6 +1,6 @@
 export async function up(queryInterface, Sequelize) {
-  const table = 'employers';
-  const column = 'referral_code';
+  const table = "employers";
+  const column = "referral_code";
 
   // Kiểm tra cột đã tồn tại chưa
   const tableDefinition = await queryInterface.describeTable(table);
@@ -13,11 +13,13 @@ export async function up(queryInterface, Sequelize) {
 }
 
 export async function down(queryInterface, Sequelize) {
-  const table = 'employers';
-  const column = 'referral_code';
+  const table = "employers";
+  const column = "referral_code";
 
-  const tableDefinition = await queryInterface.describeTable(table);
-  if (tableDefinition[column]) {
+  try {
     await queryInterface.removeColumn(table, column);
+    console.log(`Removed column: ${column}`);
+  } catch (error) {
+    console.log(`Column ${column} does not exist or already removed`);
   }
 }

@@ -3,6 +3,7 @@ import { readdir } from "fs/promises";
 import { join } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import { Migration } from "../models/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,6 +14,27 @@ async function runMigrations() {
     await sequelize.authenticate();
     console.log("Database connection established successfully.");
 
+    // Sync models to ensure migrations table exists
+    await sequelize.sync({ alter: true });
+    console.log("Models synchronized successfully.");
+
+    // Check if migrations table exists and has data
+    let executedFilenames = [];
+    try {
+      const executedMigrations = await Migration.findAll({
+        attributes: ["filename"],
+      });
+      executedFilenames = executedMigrations.map((m) => m.filename);
+      console.log(
+        `Found ${executedFilenames.length} already executed migrations.`
+      );
+    } catch (error) {
+      console.log(
+        "Migrations table is empty or doesn't exist. Starting fresh..."
+      );
+      executedFilenames = [];
+    }
+
     // Get all migration files
     const migrationsDir = join(__dirname, "..", "migrations");
     const files = await readdir(migrationsDir);
@@ -20,13 +42,32 @@ async function runMigrations() {
 
     console.log(`Found ${migrationFiles.length} migration files.`);
 
-    // Run each migration
-    for (const file of migrationFiles) {
+    // Filter out already executed migrations
+    const pendingMigrations = migrationFiles.filter(
+      (file) => !executedFilenames.includes(file)
+    );
+
+    if (pendingMigrations.length === 0) {
+      console.log("🎉 All migrations are already up to date!");
+      return;
+    }
+
+    console.log(`Found ${pendingMigrations.length} pending migrations.`);
+
+    // Run each pending migration
+    for (const file of pendingMigrations) {
       console.log(`Running migration: ${file}`);
       const migration = await import(join(migrationsDir, file));
 
       try {
         await migration.up(sequelize.getQueryInterface(), sequelize.Sequelize);
+
+        // Record successful migration
+        await Migration.create({
+          filename: file,
+          executed_at: new Date(),
+        });
+
         console.log(`✅ Migration ${file} completed successfully.`);
       } catch (error) {
         console.error(`❌ Migration ${file} failed:`, error.message);
@@ -34,7 +75,7 @@ async function runMigrations() {
       }
     }
 
-    console.log("🎉 All migrations completed successfully!");
+    console.log("🎉 All pending migrations completed successfully!");
   } catch (error) {
     console.error("Migration failed:", error);
     process.exit(1);

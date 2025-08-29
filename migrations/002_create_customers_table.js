@@ -48,21 +48,8 @@ export async function up(queryInterface, Sequelize) {
       allowNull: true,
       comment: "Thôn/Xóm",
     },
-    province: {
-      type: Sequelize.STRING(100),
-      allowNull: true,
-      comment: "Tỉnh/Thành phố",
-    },
-    district: {
-      type: Sequelize.STRING(100),
-      allowNull: true,
-      comment: "Quận/Huyện",
-    },
-    commune: {
-      type: Sequelize.STRING(100),
-      allowNull: true,
-      comment: "Xã/Phường",
-    },
+    // Note: province, district, commune columns are removed in migration 022
+    // and replaced with address_mapping_id
     place_of_birth: {
       type: Sequelize.STRING(100),
       allowNull: true,

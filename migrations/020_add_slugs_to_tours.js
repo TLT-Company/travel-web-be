@@ -25,6 +25,18 @@ export async function up(queryInterface, Sequelize) {
 
 export async function down(queryInterface, Sequelize) {
   const table = "tours";
-  await queryInterface.removeColumn(table, "slug_name");
-  await queryInterface.removeColumn(table, "slug_location");
+
+  try {
+    await queryInterface.removeColumn(table, "slug_name");
+    console.log("Removed column: slug_name");
+  } catch (error) {
+    console.log("Column slug_name does not exist or already removed");
+  }
+
+  try {
+    await queryInterface.removeColumn(table, "slug_location");
+    console.log("Removed column: slug_location");
+  } catch (error) {
+    console.log("Column slug_location does not exist or already removed");
+  }
 }

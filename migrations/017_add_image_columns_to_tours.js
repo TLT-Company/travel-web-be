@@ -21,6 +21,11 @@ export const down = async () => {
 
   for (let i = 1; i <= 10; i++) {
     const columnName = `image_url_${i}`;
-    await queryInterface.removeColumn("tours", columnName);
+    try {
+      await queryInterface.removeColumn("tours", columnName);
+      console.log(`Removed column: ${columnName}`);
+    } catch (error) {
+      console.log(`Column ${columnName} does not exist or already removed`);
+    }
   }
 };

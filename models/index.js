@@ -11,7 +11,8 @@ import Document from "./Document.js";
 import DocumentCustomer from "./DocumentCustomer.js";
 import Permission from "./Permission.js";
 import AdminPermission from "./AdminPermission.js";
-import AddressMapping from "./AddressMapping.js"
+import AddressMapping from "./AddressMapping.js";
+import Migration from "./Migration.js";
 
 // User relationships
 User.hasOne(Customer, { foreignKey: "user_id", as: "customer" });
@@ -57,7 +58,6 @@ Booking.hasMany(TaskAssignment, {
 });
 TaskAssignment.belongsTo(Booking, { foreignKey: "booking_id", as: "booking" });
 Booking.belongsTo(Customer, { foreignKey: "customer_id", as: "customer" });
-
 
 // Document relationships
 Document.hasMany(DocumentCustomer, {
@@ -120,4 +120,5 @@ export {
   Permission,
   AdminPermission,
   AddressMapping,
+  Migration,
 };
