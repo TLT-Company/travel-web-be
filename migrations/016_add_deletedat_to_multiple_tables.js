@@ -46,6 +46,13 @@ export async function down(queryInterface, Sequelize) {
   ];
 
   for (const table of tables) {
-    await queryInterface.removeColumn(table, "deleted_at");
+    try {
+      await queryInterface.removeColumn(table, "deleted_at");
+      console.log(`Removed column deleted_at from table: ${table}`);
+    } catch (error) {
+      console.log(
+        `Column deleted_at does not exist in table ${table} or already removed`
+      );
+    }
   }
 }

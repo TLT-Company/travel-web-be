@@ -8,3 +8,12 @@ export async function up(queryInterface, Sequelize) {
     });
   }
 }
+
+export async function down(queryInterface, Sequelize) {
+  try {
+    await queryInterface.removeColumn("bookings", "referral_code");
+    console.log("Removed column: referral_code");
+  } catch (error) {
+    console.log("Column referral_code does not exist or already removed");
+  }
+}

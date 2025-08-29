@@ -40,9 +40,20 @@ export async function up(queryInterface, Sequelize) {
 }
 
 export async function down(queryInterface, Sequelize) {
-  await queryInterface.removeColumn("employers", "phone_number");
-  await queryInterface.removeColumn("employers", "picture");
-  await queryInterface.removeColumn("employers", "day_of_birth");
-  await queryInterface.removeColumn("employers", "gender");
-  await queryInterface.removeColumn("employers", "address");
+  const columns = [
+    "phone_number",
+    "picture",
+    "day_of_birth",
+    "gender",
+    "address",
+  ];
+
+  for (const column of columns) {
+    try {
+      await queryInterface.removeColumn("employers", column);
+      console.log(`Removed column: ${column}`);
+    } catch (error) {
+      console.log(`Column ${column} does not exist or already removed`);
+    }
+  }
 }
