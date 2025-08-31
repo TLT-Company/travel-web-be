@@ -10,11 +10,31 @@ import {
   EnumPresetTemplate,
 } from "dynamsoft-capture-vision-for-node";
 import dotenv from "dotenv";
-import { TextDecoder } from 'util';
+import { TextDecoder } from "util";
+import path from "path";
 
 dotenv.config();
 // TODO: Uncomment and add valid license key to .env file
 LicenseManager.initLicense(process.env.LICENSE_DYNAMSOFT);
+
+// Function to get place of birth from ma_tinh.json
+const getPlaceOfBirth = (cardId) => {
+  try {
+    const maTinhPath = path.join(process.cwd(), "data", "ma_tinh.json");
+    const maTinhData = JSON.parse(fs.readFileSync(maTinhPath, "utf8"));
+
+    // Extract first 3 digits from card ID
+    const provinceCode = cardId.substring(0, 3);
+
+    // Find matching province in ma_tinh.json
+    const province = maTinhData.find((item) => item.ma === provinceCode);
+
+    return province ? province.ten : null;
+  } catch (error) {
+    console.error("Error reading ma_tinh.json:", error);
+    return null;
+  }
+};
 
 // scan CCCD
 export const scanCCCDAndaddCustomer = async (req, res) => {
@@ -117,15 +137,16 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           address_mapping_id: record.id,
           village: village,
           address: items[5],
-          national: "Việt Nam"
+          national: "Việt Nam",
+          place_of_birth: getPlaceOfBirth(items[0]),
         });
 
         // If the customer exists in the document but has been soft-deleted -> restore it
         if (exists && exists.deleted_at) {
-            await exists.restore();
+          await exists.restore();
 
-            exists.file_name = fixEncoding(key);
-            await exists.save();
+          exists.file_name = fixEncoding(key);
+          await exists.save();
         }
 
         // If not found, insert a new record.
@@ -133,7 +154,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           await DocumentCustomer.create({
             document_id: document.id,
             customer_id: customer.id,
-            file_name: fixEncoding(key)
+            file_name: fixEncoding(key),
           });
         }
       } else {
@@ -147,14 +168,15 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           address_mapping_id: record.id,
           village: village,
           address: items[5],
-          national: "Việt Nam"
+          national: "Việt Nam",
+          place_of_birth: getPlaceOfBirth(items[0]),
         });
 
         // If not found, insert a new record.
         await DocumentCustomer.create({
           document_id: document.id,
           customer_id: customer.id,
-          file_name: fixEncoding(key)
+          file_name: fixEncoding(key),
         });
       }
       mapsValue.set(key, "xử lý thành công");
@@ -175,9 +197,9 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
 };
 
 const fixEncoding = (str) => {
-  const bytes = new Uint8Array([...str].map(ch => ch.charCodeAt(0)));
+  const bytes = new Uint8Array([...str].map((ch) => ch.charCodeAt(0)));
   return new TextDecoder("utf-8").decode(bytes);
-}
+};
 
 const parseDateDDMMYYYY = (str) => {
   const day = str.substring(0, 2);
@@ -308,9 +330,7 @@ export const getSingleDocument = async (req, res) => {
           model: DocumentCustomer,
           required: true,
           as: "documentCustomers",
-          attributes: [
-            "file_name"
-          ],
+          attributes: ["file_name"],
           where: {
             document_id: document_id,
           },
@@ -459,14 +479,17 @@ export const addCustomerToDocument = async (req, res) => {
 
       // If the customer exists in the document but has been soft-deleted -> restore it
       if (exists && exists.deleted_at) {
-          await exists.restore();
+        await exists.restore();
 
-          exists.file_name = "";
-          await exists.save();
+        exists.file_name = "";
+        await exists.save();
       }
 
       // update customer
-      await customer.update(customerData);
+      await customer.update({
+        ...customerData,
+        place_of_birth: getPlaceOfBirth(card_id),
+      });
 
       // If not found, insert a new record.
       if (!exists) {
@@ -477,7 +500,11 @@ export const addCustomerToDocument = async (req, res) => {
       }
     } else {
       //  If the customer doesn't exist -> create a new one and link it to the document
-      customer = await Customer.create({ card_id, ...customerData });
+      customer = await Customer.create({
+        card_id,
+        ...customerData,
+        place_of_birth: getPlaceOfBirth(card_id),
+      });
 
       // If not found, insert a new record.
       await DocumentCustomer.create({
@@ -604,6 +631,7 @@ export const updateCustomer = async (req, res) => {
     await customer.update({
       ...updateData,
       address_mapping_id: newAddressMappingId,
+      place_of_birth: getPlaceOfBirth(customer.card_id),
     });
 
     res.status(200).json({
@@ -650,7 +678,10 @@ export const updateDocument = async (req, res) => {
   try {
     const { id } = req.params;
     const { document_number } = req.body;
-    const [updated] = await Document.update({ document_number }, {where: {id}});
+    const [updated] = await Document.update(
+      { document_number },
+      { where: { id } }
+    );
 
     if (updated === 0) {
       return res.status(404).json({
@@ -662,7 +693,7 @@ export const updateDocument = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Chỉnh sửa số thông hành thành công",
-    })
+    });
   } catch (e) {
     console.error("Lỗi khi chỉnh sửa số thông hành: ", e);
     return res.status(500).json({ message: "Lỗi khi chỉnh sửa số thông hành" });
