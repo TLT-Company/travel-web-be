@@ -213,10 +213,18 @@ const parseDateDDMMYYYY = (str) => {
 export const addDocument = async (req, res) => {
   try {
     const document_number = req.body.document_number.trim();
+    const departure_date = req.body.departure_date;
+    
     if (!document_number) {
       return res
         .status(400)
         .json({ success: false, message: "thiếu số thông hành" });
+    }
+
+    if (!departure_date) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Thiếu ngày khởi hành" });
     }
 
     const existing = await Document.findOne({
@@ -229,7 +237,10 @@ export const addDocument = async (req, res) => {
         .json({ message: "số thông hành " + document_number + " đã tồn tại" });
     }
 
-    const newDocument = await Document.create({ document_number });
+    const newDocument = await Document.create({ 
+      document_number,
+      departure_date,
+    });
 
     res.status(200).json({
       success: true,
@@ -260,6 +271,10 @@ export const getAllDocuments = async (req, res) => {
         [
           Sequelize.fn("MIN", Sequelize.col("Document.created_at")),
           "created_at",
+        ],
+        [
+          Sequelize.fn("MIN", Sequelize.col("Document.departure_date")),
+          "departure_date",
         ],
         [
           Sequelize.fn("COUNT", Sequelize.col("documentCustomers.customer_id")),
@@ -677,9 +692,13 @@ export const deleteCustomer = async (req, res) => {
 export const updateDocument = async (req, res) => {
   try {
     const { id } = req.params;
-    const { document_number } = req.body;
+    const { document_number, departure_date } = req.body;
+    
     const [updated] = await Document.update(
-      { document_number },
+      { 
+        document_number,
+        departure_date,
+      },
       { where: { id } }
     );
 
