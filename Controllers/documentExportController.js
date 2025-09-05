@@ -834,7 +834,13 @@ const getAllCustomersByDocumentId = async (documentId) => {
         attributes: ["province_new", "commune_new"],
       },
     ],
-    order: [["created_at", "DESC"]],
+    order: [
+      [
+        { model: DocumentCustomer, as: "documentCustomers" },
+        "created_at",
+        "ASC",
+      ],
+    ],
     raw: false,
   });
 };
