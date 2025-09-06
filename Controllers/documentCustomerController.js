@@ -358,9 +358,9 @@ export const getAllDocuments = async (req, res) => {
 //Get single Document
 export const getSingleDocument = async (req, res) => {
   const document_id = Number(req.params.id);
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 20;
-  const offset = (page - 1) * limit;
+  // const page = parseInt(req.query.page) || 1;
+  // const limit = parseInt(req.query.limit) || 20;
+  // const offset = (page - 1) * limit;
   const whereCondition = buildCustomerFilter(req.query);
 
   try {
@@ -441,18 +441,12 @@ export const getSingleDocument = async (req, res) => {
         document_id: document_id,
       },
       order: [
-        [
-          sequelize.literal(`
-            CAST(
-              NULLIF(regexp_replace("file_name", '^\\D*(\\d+).*$', '\\1'), '') 
-              AS INTEGER
-            ) ASC NULLS FIRST
-          `)
-        ]
+        [sequelize.col("print_flag"), "ASC NULLS FIRST"],
+        ["created_at", "ASC"],
       ]
     });
 
-    const document_customers = rows.slice(offset, offset + limit);
+    // const document_customers = rows.slice(offset, offset + limit);
 
     res.status(200).json({
       success: true,
@@ -464,7 +458,7 @@ export const getSingleDocument = async (req, res) => {
         created_at: document.created_at,
         departure_date: document.departure_date,
         customer_count: totalCustomers,
-        document_customers,
+        document_customers: rows,
       },
     });
   } catch (error) {
