@@ -9,6 +9,7 @@ import archiver from "archiver";
 import moment from "moment";
 import path from "path";
 import { fileURLToPath } from "url";
+import { Op } from "sequelize";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -797,7 +798,7 @@ const createExportDirectory = (filePath) => {
 
 const updateExportHistory = async (history, filePath, status = "success") => {
   history.file_path = filePath;
-  history.status = status;
+  history.status = status; 
   await history.save();
 };
 
@@ -809,12 +810,20 @@ const handleExportError = async (exportHistory, error) => {
   throw error;
 };
 
-const getAllCustomersByDocumentId = async (documentId) => {
+const getAllCustomersByDocumentId = async (documentId, excludedCustomerIds = []) => {
+
+  const whereDocCustomer = {};
+
+  if (excludedCustomerIds.length > 0) {
+    whereDocCustomer.customer_id = { [Op.notIn]: excludedCustomerIds };
+  }
+
   return await Customer.findAll({
     include: [
       {
         model: DocumentCustomer,
         as: "documentCustomers",
+        where: whereDocCustomer,
         include: [
           {
             model: Document,
@@ -843,7 +852,13 @@ export const exportAllCustomersToCSV = async (req, res) => {
   let exportHistory = null;
 
   try {
-    const { document_id } = req.query;
+    const { document_id, customerIds } = req.query;
+
+    // Convert customerIds to an array of strings/numbers
+    let excludedCustomerIds = [];
+    if (customerIds) {
+      excludedCustomerIds = Array.isArray(customerIds) ? customerIds : [customerIds];
+    }
 
     if (!document_id) {
       return res.status(400).json({
@@ -852,12 +867,12 @@ export const exportAllCustomersToCSV = async (req, res) => {
       });
     }
 
-    const customers = await getAllCustomersByDocumentId(document_id);
+    const customers = await getAllCustomersByDocumentId(document_id, excludedCustomerIds);
 
     if (customers.length === 0) {
       return res.status(404).json({
         success: false,
-        message: "Không có dữ liệu khách hàng nào thuộc document này để export",
+        message: "Không có dữ liệu khách hàng nào để export",
       });
     }
 
@@ -879,6 +894,19 @@ export const exportAllCustomersToCSV = async (req, res) => {
 
     // Update export history
     await updateExportHistory(exportHistory, filePath);
+
+    // update print_flag
+    await DocumentCustomer.update(
+      { print_flag: "1" },
+      {
+        where: {
+          document_id: document_id,
+          ...(excludedCustomerIds.length > 0 && {
+            customer_id: { [Op.notIn]: excludedCustomerIds },
+          }),
+        },
+      }
+    );
 
     // Set headers for file download
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
