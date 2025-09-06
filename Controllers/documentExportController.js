@@ -810,14 +810,14 @@ const handleExportError = async (exportHistory, error) => {
   throw error;
 };
 
-const getAllCustomersByDocumentId = async (documentId, excludedCustomerIds = [], card_id, full_name) => {
+const getAllCustomersByDocumentId = async (documentId, exportedCustomerIds = []) => {
 
   const whereDocCustomer = {};
-  const whereCustomer = buildCustomerFilter(card_id, full_name);
 
-  if (excludedCustomerIds.length > 0) {
-    whereDocCustomer.customer_id = { [Op.notIn]: excludedCustomerIds };
+  if (exportedCustomerIds.length === 0) {
+    return [];
   }
+  whereDocCustomer.customer_id = { [Op.in]: exportedCustomerIds };
 
   return await Customer.findAll({
     include: [
@@ -844,7 +844,6 @@ const getAllCustomersByDocumentId = async (documentId, excludedCustomerIds = [],
         attributes: ["province_new", "commune_new"],
       },
     ],
-    where: whereCustomer,
     order: [
       [
         { model: DocumentCustomer, as: "documentCustomers" },
@@ -860,12 +859,12 @@ export const exportAllCustomersToCSV = async (req, res) => {
   let exportHistory = null;
 
   try {
-    const { document_id, customerIds, card_id, full_name } = req.query;
+    const { document_id, customerIds } = req.query;
 
     // Convert customerIds to an array of strings/numbers
-    let excludedCustomerIds = [];
+    let exportedCustomerIds = [];
     if (customerIds) {
-      excludedCustomerIds = Array.isArray(customerIds) ? customerIds : [customerIds];
+      exportedCustomerIds = Array.isArray(customerIds) ? customerIds : [customerIds];
     }
 
     if (!document_id) {
@@ -875,7 +874,7 @@ export const exportAllCustomersToCSV = async (req, res) => {
       });
     }
 
-    const customers = await getAllCustomersByDocumentId(document_id, excludedCustomerIds, card_id, full_name);
+    const customers = await getAllCustomersByDocumentId(document_id, exportedCustomerIds);
 
     if (customers.length === 0) {
       return res.status(404).json({
@@ -909,8 +908,8 @@ export const exportAllCustomersToCSV = async (req, res) => {
       {
         where: {
           document_id: document_id,
-          ...(excludedCustomerIds.length > 0 && {
-            customer_id: { [Op.notIn]: excludedCustomerIds },
+          ...(exportedCustomerIds.length > 0 && {
+            customer_id: { [Op.in]: exportedCustomerIds },
           }),
         },
       }
@@ -938,19 +937,4 @@ export const exportAllCustomersToCSV = async (req, res) => {
       message: "Lỗi khi export CSV",
     });
   }
-};
-
-
-const buildCustomerFilter = (card_id, full_name) => {
-  const where = {};
-
-  if (card_id) {
-    where.card_id = { [Op.like]: `%${card_id}%` };
-  }
-
-  if (full_name) {
-    where.full_name = { [Op.iLike]: `%${full_name.trim()}%` };
-  }
-
-  return where;
 };
