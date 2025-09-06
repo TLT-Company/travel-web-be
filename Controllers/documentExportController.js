@@ -416,7 +416,7 @@ async function exportDeclarationFile(user, fileName) {
   worksheet.getCell("F11").value = createdAts[0];
   worksheet.getCell("H11").value = createdAts[1];
   worksheet.getCell("J11").value = createdAts[2];
-  worksheet.getCell("S11").value = user.province;
+  worksheet.getCell("S11").value = user.place_of_birth;
   worksheet.getCell("E12").value = "Kinh";
   worksheet.getCell("K12").value = "Không";
   worksheet.getCell("S13").value = user.village;
@@ -843,7 +843,13 @@ const getAllCustomersByDocumentId = async (documentId, excludedCustomerIds = [])
         attributes: ["province_new", "commune_new"],
       },
     ],
-    order: [["created_at", "DESC"]],
+    order: [
+      [
+        { model: DocumentCustomer, as: "documentCustomers" },
+        "created_at",
+        "ASC",
+      ],
+    ],
     raw: false,
   });
 };

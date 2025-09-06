@@ -62,7 +62,10 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
     }
     const maps = new Map();
     const mapsValue = new Map();
+    const filePathMap = new Map(); // Map to store filename -> file path mapping
+
     for (const file of files) {
+      filePathMap.set(file.originalname, file.path); // Store the mapping
       const fileBuffer = await fs.promises.readFile(file.path);
       let result = await CaptureVisionRouter.captureAsync(
         fileBuffer,
@@ -73,12 +76,48 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
 
     let count = 0;
     for (const [key, value] of maps) {
-      if (value == "-1") {
-        mapsValue.set(key, "lỗi không thể giải mã file");
-        continue;
+      let currentValue = value;
+
+      if (currentValue == "-1") {
+        // Try to call the scan-image API as fallback
+        try {
+          const filePath = filePathMap.get(key);
+          if (filePath) {
+            console.log("Calling scan-image API for file:", key);
+            const response = await fetch(
+              "https://tlttechnology.site/api/scan-image",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  path: filePath,
+                }),
+              }
+            );
+
+            if (response.ok) {
+              const result = await response.json();
+              if (result.data) {
+                console.log("Scan-image API success:", result.data);
+                // Update the value with the API result
+                currentValue = result.data;
+                maps.set(key, result.data);
+              }
+            }
+          }
+        } catch (apiError) {
+          console.error("Error calling scan-image API:", apiError);
+        }
+
+        if (currentValue == "-1") {
+          mapsValue.set(key, "lỗi không thể giải mã file");
+          continue;
+        }
       }
 
-      const items = value.split("|");
+      const items = currentValue.split("|");
 
       if (items.length < 7) {
         mapsValue.set(key, "Dữ liệu QR không đủ để phân tích");
@@ -661,7 +700,12 @@ export const updateCustomer = async (req, res) => {
           success: false,
           message: "Không tìm thấy thông tin địa chỉ của khách hàng",
         });
-      } else if (customer.address && addressMapping.commune_old && addressMapping.district_old && addressMapping.province_old) {  
+      } else if (
+        customer.address &&
+        addressMapping.commune_old &&
+        addressMapping.district_old &&
+        addressMapping.province_old
+      ) {
         await addressMapping.update({
           commune_new: commune,
           province_new: province,
@@ -673,8 +717,8 @@ export const updateCustomer = async (req, res) => {
             district_old: null,
             province_old: null,
             commune_new: commune,
-            province_new: province 
-            },
+            province_new: province,
+          },
         });
 
         if (exitsAdressMapping) {
