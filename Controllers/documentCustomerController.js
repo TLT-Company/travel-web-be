@@ -3,6 +3,7 @@ import DocumentCustomer from "../models/DocumentCustomer.js";
 import Customer from "../models/Customer.js";
 import AddressMapping from "../models/AddressMapping.js";
 import { Op, Sequelize, col } from "sequelize";
+import { sequelize } from "../config/database.js";
 import fs from "fs";
 import {
   LicenseManager,
@@ -357,9 +358,9 @@ export const getAllDocuments = async (req, res) => {
 //Get single Document
 export const getSingleDocument = async (req, res) => {
   const document_id = Number(req.params.id);
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 20;
-  const offset = (page - 1) * limit;
+  // const page = parseInt(req.query.page) || 1;
+  // const limit = parseInt(req.query.limit) || 20;
+  // const offset = (page - 1) * limit;
   const whereCondition = buildCustomerFilter(req.query);
 
   try {
@@ -378,36 +379,74 @@ export const getSingleDocument = async (req, res) => {
       where: { document_id: document_id },
     });
 
-    const { rows, count } = await Customer.findAndCountAll({
+    // const { rows, count } = await Customer.findAndCountAll({
+    //   include: [
+    //     {
+    //       model: DocumentCustomer,
+    //       required: true,
+    //       as: "documentCustomers",
+    //       attributes: ["file_name"],
+    //       where: {
+    //         document_id: document_id,
+    //       },
+    //     },
+    //     {
+    //       model: AddressMapping,
+    //       as: "address_mapping",
+    //       attributes: [
+    //         "id",
+    //         "province_old",
+    //         "district_old",
+    //         "commune_old",
+    //         "province_new",
+    //         "commune_new",
+    //       ],
+    //     },
+    //   ],
+    //   where: whereCondition,
+    //   order: [["updated_at", "DESC"]],
+    //   // raw: true,
+    // });
+
+     const { rows, count } = await DocumentCustomer.findAndCountAll({
+      attributes: ["file_name", "print_flag"],
       include: [
         {
-          model: DocumentCustomer,
-          required: true,
-          as: "documentCustomers",
-          attributes: ["file_name"],
-          where: {
-            document_id: document_id,
-          },
-        },
-        {
-          model: AddressMapping,
-          as: "address_mapping",
+          model: Customer,
+          as: "customer",
           attributes: [
             "id",
-            "province_old",
-            "district_old",
-            "commune_old",
-            "province_new",
-            "commune_new",
+            "user_id",
+            "card_id",
+            "full_name",
+            "day_of_birth",
+            "gender",
+            "national",
+            "card_created_at",
+            "village",
+            ["province_code", "province"],
+            ["district_code", "district"],
+            ["commune_code", "commune"],
+          ],
+          where: whereCondition,
+          include: [
+            {
+              model: AddressMapping,
+              as: "address_mapping",
+            },
           ],
         },
       ],
-      where: whereCondition,
-      order: [["updated_at", "DESC"]],
-      // raw: true,
+      where: {
+        document_id: document_id,
+      },
+      order: [
+        [sequelize.col("print_flag"), "ASC NULLS FIRST"],
+        ["created_at", "ASC"],
+      ]
     });
 
-    const customers = rows.slice(offset, offset + limit);
+    // const document_customers = rows.slice(offset, offset + limit);
 
     res.status(200).json({
       success: true,
@@ -417,8 +456,9 @@ export const getSingleDocument = async (req, res) => {
         id: document_id,
         document_number: document.document_number,
         created_at: document.created_at,
+        departure_date: document.departure_date,
         customer_count: totalCustomers,
-        customers,
+        document_customers: rows,
       },
     });
   } catch (error) {

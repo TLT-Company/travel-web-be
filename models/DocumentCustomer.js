@@ -21,6 +21,11 @@ const DocumentCustomer = sequelize.define(
       allowNull: true,
       comment: "file ảnh tải lên",
     },
+    print_flag: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      comment: "cờ xác định đã tải xuống csv hay chưa",
+    },
     deleted_at: {
       type: DataTypes.DATE,
       allowNull: true,
