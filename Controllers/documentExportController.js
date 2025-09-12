@@ -810,8 +810,11 @@ const handleExportError = async (exportHistory, error) => {
   throw error;
 };
 
-const getAllCustomersByDocumentId = async (documentId, exportedCustomerIds = []) => {
-
+const getAllCustomersByDocumentId = async (
+  documentId,
+  exportedCustomerIds = []
+) => {
+  console.log("documentId", documentId);
   const whereDocCustomer = {};
 
   if (exportedCustomerIds.length === 0) {
@@ -847,7 +850,7 @@ const getAllCustomersByDocumentId = async (documentId, exportedCustomerIds = [])
     order: [
       [
         { model: DocumentCustomer, as: "documentCustomers" },
-        "created_at",
+        "display_order",
         "ASC",
       ],
     ],
@@ -860,11 +863,14 @@ export const exportAllCustomersToCSV = async (req, res) => {
 
   try {
     const { document_id, customerIds } = req.query;
-
+    console.log("document_id", document_id);
+    console.log("customerIds", customerIds);
     // Convert customerIds to an array of strings/numbers
     let exportedCustomerIds = [];
     if (customerIds) {
-      exportedCustomerIds = Array.isArray(customerIds) ? customerIds : [customerIds];
+      exportedCustomerIds = Array.isArray(customerIds)
+        ? customerIds
+        : [customerIds];
     }
 
     if (!document_id) {
@@ -874,7 +880,10 @@ export const exportAllCustomersToCSV = async (req, res) => {
       });
     }
 
-    const customers = await getAllCustomersByDocumentId(document_id, exportedCustomerIds);
+    const customers = await getAllCustomersByDocumentId(
+      document_id,
+      exportedCustomerIds
+    );
 
     if (customers.length === 0) {
       return res.status(404).json({

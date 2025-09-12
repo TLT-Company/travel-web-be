@@ -26,6 +26,12 @@ const DocumentCustomer = sequelize.define(
       allowNull: true,
       comment: "cờ xác định đã tải xuống csv hay chưa",
     },
+    display_order: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0,
+      comment: "Thứ tự hiển thị của khách hàng trong công văn",
+    },
     deleted_at: {
       type: DataTypes.DATE,
       allowNull: true,
@@ -37,7 +43,7 @@ const DocumentCustomer = sequelize.define(
     createdAt: "created_at",
     updatedAt: "updated_at",
     paranoid: true,
-    deletedAt: "deleted_at", 
+    deletedAt: "deleted_at",
     comment: "Bảng liên kết giữa công văn và khách hàng",
   }
 );

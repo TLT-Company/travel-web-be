@@ -254,7 +254,7 @@ export const addDocument = async (req, res) => {
   try {
     const document_number = req.body.document_number.trim();
     const departure_date = req.body.departure_date;
-    
+
     if (!document_number) {
       return res
         .status(400)
@@ -277,7 +277,7 @@ export const addDocument = async (req, res) => {
         .json({ message: "số thông hành " + document_number + " đã tồn tại" });
     }
 
-    const newDocument = await Document.create({ 
+    const newDocument = await Document.create({
       document_number,
       departure_date,
     });
@@ -408,8 +408,8 @@ export const getSingleDocument = async (req, res) => {
     //   // raw: true,
     // });
 
-     const { rows, count } = await DocumentCustomer.findAndCountAll({
-      attributes: ["file_name", "print_flag"],
+    const { rows, count } = await DocumentCustomer.findAndCountAll({
+      attributes: ["file_name", "print_flag", "display_order"],
       include: [
         {
           model: Customer,
@@ -441,9 +441,10 @@ export const getSingleDocument = async (req, res) => {
         document_id: document_id,
       },
       order: [
+        ["display_order", "ASC"],
         [sequelize.col("print_flag"), "ASC NULLS FIRST"],
         ["created_at", "ASC"],
-      ]
+      ],
     });
 
     // const document_customers = rows.slice(offset, offset + limit);
@@ -776,29 +777,42 @@ export const deleteCustomer = async (req, res) => {
 export const updateDocument = async (req, res) => {
   try {
     const { id } = req.params;
-    const { document_number, departure_date } = req.body;
-    
-    const [updated] = await Document.update(
-      { 
-        document_number,
-        departure_date,
-      },
-      { where: { id } }
-    );
-
-    if (updated === 0) {
-      return res.status(404).json({
-        success: false,
-        message: "Không tìm thấy document cần cập nhật",
-      });
+    const { document_customers } = req.body;
+    // Update display_order for document customers if provided
+    if (document_customers && Array.isArray(document_customers)) {
+      for (const docCustomer of document_customers) {
+        const { customer, display_order } = docCustomer;
+        const customer_id = customer.id;
+        if (customer_id && display_order !== undefined) {
+          console.log("customer_id", customer_id);
+          console.log("display_order", display_order);
+          const [updated] = await DocumentCustomer.update(
+            { display_order },
+            {
+              where: {
+                document_id: id,
+                customer_id: customer_id,
+              },
+            }
+          );
+          console.log("updated", updated);
+          if (updated === 0) {
+            console.log(
+              `Không tìm thấy customer_id ${customer_id} trong document ${id}`
+            );
+          }
+        }
+      }
     }
 
     return res.status(200).json({
       success: true,
-      message: "Chỉnh sửa số thông hành thành công",
+      message: "Cập nhật thứ tự hiển thị thành công",
     });
   } catch (e) {
-    console.error("Lỗi khi chỉnh sửa số thông hành: ", e);
-    return res.status(500).json({ message: "Lỗi khi chỉnh sửa số thông hành" });
+    console.error("Lỗi khi cập nhật thứ tự hiển thị: ", e);
+    return res
+      .status(500)
+      .json({ message: "Lỗi khi cập nhật thứ tự hiển thị" });
   }
 };
