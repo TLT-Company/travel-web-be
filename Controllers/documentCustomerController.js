@@ -188,13 +188,18 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           exists.file_name = fixEncoding(key);
           await exists.save();
         }
-
-        // If not found, insert a new record.
+        const display_order = await DocumentCustomer.max("display_order", {
+          where: { document_id: document.id },
+        });
+        if (!display_order) {
+          display_order = 0;
+        }
         if (!exists) {
           await DocumentCustomer.create({
             document_id: document.id,
             customer_id: customer.id,
             file_name: fixEncoding(key),
+            display_order: display_order + 1,
           });
         }
       } else {
@@ -212,11 +217,14 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           place_of_birth: getPlaceOfBirth(items[0]),
         });
 
-        // If not found, insert a new record.
+        const display_order = await DocumentCustomer.max("display_order", {
+          where: { document_id: document.id },
+        });
         await DocumentCustomer.create({
           document_id: document.id,
           customer_id: customer.id,
           file_name: fixEncoding(key),
+          display_order: display_order + 1,
         });
       }
       mapsValue.set(key, "xử lý thành công");
@@ -552,6 +560,14 @@ export const addCustomerToDocument = async (req, res) => {
 
     customerData.address_mapping_id = record.id;
 
+    // Get the maximum display_order for this document
+    let display_order = await DocumentCustomer.max("display_order", {
+      where: { document_id: document.id },
+    });
+    if (!display_order) {
+      display_order = 0;
+    }
+
     if (customer) {
       const exists = await DocumentCustomer.findOne({
         where: {
@@ -577,6 +593,7 @@ export const addCustomerToDocument = async (req, res) => {
         await exists.restore();
 
         exists.file_name = "";
+        exists.display_order = display_order + 1;
         await exists.save();
       }
 
@@ -591,6 +608,7 @@ export const addCustomerToDocument = async (req, res) => {
         await DocumentCustomer.create({
           document_id: document.id,
           customer_id: customer.id,
+          display_order: display_order + 1,
         });
       }
     } else {
@@ -605,6 +623,7 @@ export const addCustomerToDocument = async (req, res) => {
       await DocumentCustomer.create({
         document_id: document.id,
         customer_id: customer.id,
+        display_order: display_order + 1,
       });
     }
 

@@ -863,8 +863,6 @@ export const exportAllCustomersToCSV = async (req, res) => {
 
   try {
     const { document_id, customerIds } = req.query;
-    console.log("document_id", document_id);
-    console.log("customerIds", customerIds);
     // Convert customerIds to an array of strings/numbers
     let exportedCustomerIds = [];
     if (customerIds) {
