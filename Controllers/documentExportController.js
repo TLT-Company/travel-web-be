@@ -262,6 +262,13 @@ export const performAnalysisFile = async (req, res) => {
           required: true,
         },
       ],
+      order: [
+        [
+          { model: DocumentCustomer, as: "documentCustomers" },
+          "display_order",
+          "ASC",
+        ],
+      ],
     }).then((results) => results.map((item) => item.dataValues));
 
     // Create ZIP file for declaration list
