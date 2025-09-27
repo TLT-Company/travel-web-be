@@ -217,17 +217,17 @@ export const performAnalysisFile = async (req, res) => {
     // });
     documentExportDeclaration = await DocumentExportHistory.create({
       kind: "declarationList",
-      file_name: fileName,
+      file_name: fileName + "-TK",
       status: "processing",
     });
     documentExportGroupVN = await DocumentExportHistory.create({
       kind: "groupListVN",
-      file_name: fileName,
+      file_name: fileName + "-VN",
       status: "processing",
     });
     documentExportGroupCN = await DocumentExportHistory.create({
       kind: "groupListCN",
-      file_name: fileName,
+      file_name: fileName + "-CN",
       status: "processing",
     });
 
