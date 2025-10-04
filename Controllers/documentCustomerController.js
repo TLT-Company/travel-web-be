@@ -85,7 +85,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           if (filePath) {
             console.log("Calling scan-image API for file:", key);
             const response = await fetch(
-              "https://tlttechnology.site/api/scan-image",
+              "https://vsttravel.com/api/scan-image",
               {
                 method: "POST",
                 headers: {
