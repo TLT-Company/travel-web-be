@@ -84,6 +84,9 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           const filePath = filePathMap.get(key);
           if (filePath) {
             console.log("Calling scan-image API for file:", key);
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
             const response = await fetch(
               "https://vsttravel.com/api/scan-image",
               {
@@ -94,8 +97,11 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
                 body: JSON.stringify({
                   path: filePath,
                 }),
+                signal: controller.signal,
               }
             );
+
+            clearTimeout(timeoutId);
 
             if (response.ok) {
               const result = await response.json();
@@ -188,7 +194,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           exists.file_name = fixEncoding(key);
           await exists.save();
         }
-        const display_order = await DocumentCustomer.max("display_order", {
+        let display_order = await DocumentCustomer.max("display_order", {
           where: { document_id: document.id },
         });
         if (!display_order) {
@@ -217,7 +223,7 @@ export const scanCCCDAndaddCustomer = async (req, res) => {
           place_of_birth: getPlaceOfBirth(items[0]),
         });
 
-        const display_order = await DocumentCustomer.max("display_order", {
+        let display_order = await DocumentCustomer.max("display_order", {
           where: { document_id: document.id },
         });
         await DocumentCustomer.create({
