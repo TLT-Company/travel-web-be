@@ -802,15 +802,23 @@ export const deleteCustomer = async (req, res) => {
 export const updateDocument = async (req, res) => {
   try {
     const { id } = req.params;
-    const { document_customers } = req.body;
+
+    const { document_customers, document_number, departure_date } = req.body;
+
+    if (document_number) {
+      await Document.update({ document_number }, { where: { id } });
+    }
+
+    if (departure_date) {
+      await Document.update({ departure_date }, { where: { id } });
+    }
+
     // Update display_order for document customers if provided
     if (document_customers && Array.isArray(document_customers)) {
       for (const docCustomer of document_customers) {
         const { customer, display_order } = docCustomer;
         const customer_id = customer.id;
         if (customer_id && display_order !== undefined) {
-          console.log("customer_id", customer_id);
-          console.log("display_order", display_order);
           const [updated] = await DocumentCustomer.update(
             { display_order },
             {
