@@ -18,6 +18,11 @@ const Document = sequelize.define(
       type: DataTypes.DATE,
       allowNull: true,
     },
+    download_code: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      comment: "Mã download cho document",
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: true,

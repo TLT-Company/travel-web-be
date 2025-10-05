@@ -33,6 +33,11 @@ const DocumentExportHistory = sequelize.define(
         isIn: [["success", "failed", "processing", "pending"]],
       },
     },
+    download_code: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      comment: "Mã download duy nhất cho file export",
+    },
   },
   {
     tableName: "document_export_histories",

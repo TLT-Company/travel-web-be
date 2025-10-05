@@ -29,6 +29,14 @@ const CSV_HEADERS = [
   "commune_new",
 ];
 
+// Generate unique download code
+const generateDownloadCode = () => {
+  // Generate a random 16-character code with timestamp prefix to ensure uniqueness
+  const timestamp = Date.now().toString(36);
+  const randomStr = Math.random().toString(36).substring(2, 10);
+  return (timestamp + randomStr).toUpperCase();
+};
+
 // Get all document export histories
 export const getAllDocumentExportHistories = async (req, res) => {
   try {
@@ -81,11 +89,13 @@ export const createDocumentExportHistory = async (req, res) => {
   try {
     const { kind, file_path, file_name, status } = req.body;
 
+    const downloadCode = generateDownloadCode();
     const newHistory = await DocumentExportHistory.create({
       kind,
       file_path,
       file_name,
       status: status || "pending",
+      download_code: downloadCode,
     });
 
     res.status(201).json({
@@ -190,6 +200,93 @@ export const getDocumentExportHistoriesByStatus = async (req, res) => {
   }
 };
 
+// Download file by download_code
+export const downloadFileByCode = async (req, res) => {
+  try {
+    const { download_code } = req.params;
+    console.log("download_code", download_code);
+
+    // Find the document export history by download_code
+    const history = await DocumentExportHistory.findOne({
+      where: { download_code: download_code },
+    });
+
+    if (!history) {
+      return res.status(404).json({
+        success: false,
+        message: "Document export history not found with this download code",
+      });
+    }
+
+    // Check if file exists
+    if (!history.file_path || !fs.existsSync(history.file_path)) {
+      return res.status(404).json({
+        success: false,
+        message: "File not found on server",
+      });
+    }
+
+    // Check if the export was successful
+    if (history.status !== "success") {
+      return res.status(400).json({
+        success: false,
+        message:
+          "File export was not successful. Current status: " + history.status,
+      });
+    }
+
+    // Get file stats
+    const stats = fs.statSync(history.file_path);
+
+    // Get file extension from file_path
+    const fileExtension = path.extname(history.file_path);
+    const fileName = history.file_name
+      ? `${history.file_name}${fileExtension}`
+      : path.basename(history.file_path);
+
+    // Set appropriate Content-Type based on file extension
+    let contentType = "application/octet-stream";
+    if (fileExtension === ".xlsx") {
+      contentType =
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    } else if (fileExtension === ".zip") {
+      contentType = "application/zip";
+    } else if (fileExtension === ".txt") {
+      contentType = "text/plain";
+    } else if (fileExtension === ".csv") {
+      contentType = "text/csv";
+    }
+
+    // Set headers for file download
+    res.setHeader("Content-Length", stats.size);
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+
+    // Create read stream and pipe to response
+    const fileStream = fs.createReadStream(history.file_path);
+    fileStream.pipe(res);
+
+    // Handle stream errors
+    fileStream.on("error", (error) => {
+      console.error("File stream error:", error);
+      if (!res.headersSent) {
+        res.status(500).json({
+          success: false,
+          message: "Error reading file",
+        });
+      }
+    });
+  } catch (error) {
+    console.error("Download file by download_code error:", error);
+    if (!res.headersSent) {
+      res.status(500).json({
+        success: false,
+        message: "Failed to download file",
+      });
+    }
+  }
+};
+
 // Perform analysis file - Main function
 export const performAnalysisFile = async (req, res) => {
   // let documentExportTxt = null;
@@ -215,21 +312,38 @@ export const performAnalysisFile = async (req, res) => {
     //   file_name: fileName,
     //   status: "processing",
     // });
+    const downloadCode = generateDownloadCode();
     documentExportDeclaration = await DocumentExportHistory.create({
       kind: "declarationList",
       file_name: fileName + "-TK",
       status: "processing",
+      download_code: downloadCode,
     });
     documentExportGroupVN = await DocumentExportHistory.create({
       kind: "groupListVN",
       file_name: fileName + "-VN",
       status: "processing",
+      download_code: downloadCode,
     });
     documentExportGroupCN = await DocumentExportHistory.create({
       kind: "groupListCN",
       file_name: fileName + "-CN",
       status: "processing",
+      download_code: downloadCode,
     });
+
+    // Update download_code in document table
+    try {
+      await Document.update(
+        { download_code: downloadCode },
+        { where: { document_number: fileName } }
+      );
+      console.log(
+        `✅ Updated download_code ${downloadCode} for document ${fileName}`
+      );
+    } catch (error) {
+      console.error("Error updating document download_code:", error.message);
+    }
 
     // Define file paths
     const txtFilePath = `./public/export/encrypted_list/${fileName}.txt`;
@@ -904,11 +1018,26 @@ export const exportAllCustomersToCSV = async (req, res) => {
     const filePath = `./public/export/customer_csv/${fileName}`;
 
     // Create export history
+    const downloadCode = generateDownloadCode();
     exportHistory = await DocumentExportHistory.create({
       kind: "customer_list_csv",
       file_name: fileName,
       status: "processing",
+      download_code: downloadCode,
     });
+
+    // Update download_code in document table
+    try {
+      await Document.update(
+        { download_code: downloadCode },
+        { where: { id: document_id } }
+      );
+      console.log(
+        `✅ Updated download_code ${downloadCode} for document ID ${document_id}`
+      );
+    } catch (error) {
+      console.error("Error updating document download_code:", error.message);
+    }
 
     // Write CSV file
     writeCSVFile(filePath, csvContent);

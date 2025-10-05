@@ -474,6 +474,7 @@ export const getSingleDocument = async (req, res) => {
         departure_date: document.departure_date,
         customer_count: totalCustomers,
         document_customers: rows,
+        download_code: document.download_code,
       },
     });
   } catch (error) {
