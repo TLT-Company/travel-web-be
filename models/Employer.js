@@ -42,6 +42,9 @@ const Employer = sequelize.define(
     gender: {
       type: DataTypes.STRING,
       allowNull: true,
+      set(value) {
+        this.setDataValue("gender", value === "---" ? null : value);
+      },
       validate: {
         isIn: [["Nam", "Nữ", "Khác"]],
       },
